@@ -81,7 +81,7 @@
 
   /* hero */
   .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-  #gas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.9}
+  #gas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.95;z-index:1}
   .hero .inner{position:relative;z-index:2;padding:76px 0 60px}
   .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;
     letter-spacing:.14em;text-transform:uppercase;color:var(--sulfur);border:1px solid var(--line2);
@@ -229,6 +229,10 @@
   /* consult / final */
   .consult{background:var(--accent);color:#fff;border-radius:20px;padding:44px 40px;text-align:center;position:relative;overflow:hidden}
   :root[data-theme="dark"] .consult{background:var(--accent2)}
+  .consult>*{position:relative;z-index:1}
+  .moldecor{position:absolute;pointer-events:none;color:#fff;z-index:0}
+  .moldecor.a{right:-26px;bottom:-32px;width:230px;height:auto;opacity:.15}
+  .moldecor.b{left:-30px;top:-30px;width:140px;height:auto;opacity:.1}
   .consult h2{color:#fff;font-size:clamp(24px,3.4vw,34px);font-weight:800;max-width:20ch;margin:0 auto}
   .consult p{color:#ffffffcc;max-width:44ch;margin:16px auto 0;font-size:15.5px}
   .consult .btn{background:#fff;color:var(--accent2);margin-top:26px}
@@ -249,9 +253,9 @@
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
   /* hero: oscilloscope measurement grid over the gas trace */
-  .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:46px 46px;opacity:.4;
+    background-size:46px 46px;opacity:.35;
     -webkit-mask-image:radial-gradient(ellipse 82% 62% at 50% 42%,#000 28%,transparent 80%);
     mask-image:radial-gradient(ellipse 82% 62% at 50% 42%,#000 28%,transparent 80%)}
   .hero .inner{padding-top:84px}
@@ -458,6 +462,8 @@
 <section id="consult">
   <div class="wrap narrow">
     <div class="consult">
+      <svg class="moldecor a" viewBox="0 0 230 150" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><path d="M26 104 L70 68 L112 98 L156 60 L204 88"/><path d="M70 68 L62 30"/><path d="M156 60 L164 22"/></g><g fill="currentColor"><circle cx="26" cy="104" r="5"/><circle cx="70" cy="68" r="8"/><circle cx="112" cy="98" r="5"/><circle cx="156" cy="60" r="8"/><circle cx="204" cy="88" r="5"/><circle cx="62" cy="30" r="4.5"/><circle cx="164" cy="22" r="4.5"/></g></svg>
+      <svg class="moldecor b" viewBox="0 0 120 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><path d="M24 70 L60 32 L96 70"/></g><g fill="currentColor"><circle cx="24" cy="70" r="5"/><circle cx="60" cy="32" r="8"/><circle cx="96" cy="70" r="5"/></g></svg>
       <h2>당신의 패턴은, 당신의 가스로 확인됩니다.</h2>
       <p>자가진단은 시작일 뿐입니다. 실제 호흡 가스 측정과 임상 평가로, 흩어진 증상의 상류를 함께 찾습니다.</p>
       <a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener" class="btn" id="consultBtn">카카오톡 채널 — 양준상의원</a>
@@ -487,41 +493,70 @@
     root.setAttribute('data-theme', cur==='dark'?'light':'dark');
   });
 
-  /* ---------- hero breath-gas waveform ---------- */
+  /* ---------- hero: generative gas-molecule field ---------- */
   var cv=document.getElementById('gas'), cx=cv&&cv.getContext('2d');
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
-  function resize(){ if(!cv)return; var p=cv.parentElement, r=devicePixelRatio||1;
-    cv.width=p.clientWidth*r; cv.height=p.clientHeight*r; cx.setTransform(r,0,0,r,0,0);
-    W=p.clientWidth; H=p.clientHeight; }
-  var W,H,t=0, spikes=[];
-  function seedSpikes(){ spikes=[]; for(var i=0;i<5;i++) spikes.push({x:Math.random(),a:0.5+Math.random()*0.5,w:0.012+Math.random()*0.02}); }
-  function line(off,color,amp,fill){
-    cx.beginPath();
-    for(var x=0;x<=W;x+=6){
-      var nx=x/W, base=Math.sin((nx*7)+off)*3 + Math.sin((nx*17)+off*1.6)*1.5;
-      var sp=0; for(var s=0;s<spikes.length;s++){ var d=nx-((spikes[s].x+off*0.02)%1); d=Math.abs(d); if(d>0.5)d=1-d; sp+=spikes[s].a*Math.exp(-(d*d)/(spikes[s].w))* -1; }
-      var y=H*0.5 + base*amp + sp*amp*14;
-      if(x===0)cx.moveTo(x,y); else cx.lineTo(x,y);
-    }
-    if(fill){ cx.lineTo(W,H); cx.lineTo(0,H); cx.closePath(); cx.fillStyle=color; cx.fill(); }
-    else { cx.strokeStyle=color; cx.lineWidth=1.5; cx.stroke(); }
+  var W,H,DPR,t=0,raf,mols=[];
+  // molecule templates — atom coords (unit) + bonds; 'big' = central/heavy atom index
+  var TPL={
+    bent:  {a:[[-1,0.34],[0,-0.46],[1,0.34]], b:[[0,1],[1,2]], big:1},                 // H₂S · H₂O
+    chain: {a:[[-1.6,0.18],[-0.55,-0.22],[0.5,0.24],[1.55,-0.16]], b:[[0,1],[1,2],[2,3]], big:2}, // CH₃SH
+    branch:{a:[[0,0],[-0.95,0.55],[0.95,0.55],[0,-1.05]], b:[[0,1],[0,2],[0,3]], big:0},// methyl
+    di:    {a:[[-0.8,0],[0.8,0]], b:[[0,1]], big:0}
+  };
+  var TYPES=['bent','chain','branch','di','bent','chain'];
+  function resize(){ if(!cv)return; var p=cv.parentElement; DPR=devicePixelRatio||1;
+    W=p.clientWidth; H=p.clientHeight; cv.width=W*DPR; cv.height=H*DPR; cx.setTransform(DPR,0,0,DPR,0,0); seed(); }
+  function seed(){
+    var n=Math.max(7, Math.min(15, Math.round(W/95))); mols=[];
+    for(var i=0;i<n;i++) mols.push({
+      x:Math.random()*W, y:H*0.05+Math.random()*H*0.9,
+      vx:(Math.random()-0.5)*0.17, vy:(Math.random()-0.5)*0.13,
+      s:12+Math.random()*13, rot:Math.random()*6.283, vr:(Math.random()-0.5)*0.0028,
+      type:TYPES[(Math.random()*TYPES.length)|0], toxic:(i%3===0), ph:Math.random()*6.283 });
+  }
+  function molecule(m,accent,sulfur){
+    var tpl=TPL[m.type], col=m.toxic?sulfur:accent,
+        pulse=m.toxic?(0.55+0.45*Math.sin(t*1.5+m.ph)):0.7;
+    cx.save(); cx.translate(m.x,m.y); cx.rotate(m.rot);
+    var pts=tpl.a.map(function(p){return [p[0]*m.s,p[1]*m.s];});
+    cx.strokeStyle=col; cx.lineWidth=1.3; cx.globalAlpha=0.48*pulse;
+    tpl.b.forEach(function(bd){ cx.beginPath(); cx.moveTo(pts[bd[0]][0],pts[bd[0]][1]); cx.lineTo(pts[bd[1]][0],pts[bd[1]][1]); cx.stroke(); });
+    pts.forEach(function(p,idx){
+      var r=idx===tpl.big?3.3:2;
+      cx.globalAlpha=0.9*pulse; cx.fillStyle=col;
+      cx.beginPath(); cx.arc(p[0],p[1],r,0,6.283); cx.fill();
+      cx.globalAlpha=0.42*pulse; cx.strokeStyle=col; cx.lineWidth=1;
+      cx.beginPath(); cx.arc(p[0],p[1],r+2.4,0,6.283); cx.stroke();
+    });
+    cx.restore();
   }
   function frame(){
     if(!cv)return;
+    var accent=css('--accent'), sulfur=css('--sulfur-line');
     cx.clearRect(0,0,W,H);
-    // faint baseline grid
-    cx.globalAlpha=0.5;
-    line(t*0.6, css('--sulfur-line')+'22', 1.1, true);
-    cx.globalAlpha=1;
-    line(t, css('--accent')+'55', 1.4, false);
-    line(t*1.3+2, css('--sulfur-line')+'aa', 1.0, false);
-    t+=0.02;
-    raf=requestAnimationFrame(frame);
+    var D=155; cx.lineWidth=1;                                   // constellation filaments
+    for(var i=0;i<mols.length;i++) for(var j=i+1;j<mols.length;j++){
+      var dx=mols[i].x-mols[j].x, dy=mols[i].y-mols[j].y, d=Math.sqrt(dx*dx+dy*dy);
+      if(d<D){ cx.globalAlpha=(1-d/D)*0.15; cx.strokeStyle=(mols[i].toxic||mols[j].toxic)?sulfur:accent;
+        cx.beginPath(); cx.moveTo(mols[i].x,mols[i].y); cx.lineTo(mols[j].x,mols[j].y); cx.stroke(); }
+    }
+    for(var k=0;k<mols.length;k++) molecule(mols[k],accent,sulfur);
+    cx.globalAlpha=0.2; cx.strokeStyle=sulfur; cx.lineWidth=1.3;  // subtle analyzer trace
+    cx.beginPath();
+    for(var x=0;x<=W;x+=8){ var y=H*0.92+Math.sin(x*0.02+t)*4+Math.sin(x*0.006-t*0.7)*6; x===0?cx.moveTo(x,y):cx.lineTo(x,y); }
+    cx.stroke(); cx.globalAlpha=1;
+    if(!reduce){
+      t+=0.016;
+      for(var q=0;q<mols.length;q++){ var m=mols[q]; m.x+=m.vx; m.y+=m.vy; m.rot+=m.vr;
+        if(m.x<-45)m.x=W+45; else if(m.x>W+45)m.x=-45;
+        if(m.y<-45)m.y=H+45; else if(m.y>H+45)m.y=-45; }
+      raf=requestAnimationFrame(frame);
+    }
   }
-  var raf;
-  function start(){ resize(); seedSpikes(); if(reduce){ frame(); cancelAnimationFrame(raf);} else { cancelAnimationFrame(raf); frame(); } }
-  if(cv){ addEventListener('resize',function(){resize();}); start(); }
+  function start(){ resize(); frame(); }
+  if(cv){ addEventListener('resize',function(){ resize(); if(reduce)frame(); }); start(); }
 
   /* ---------- self-assessment ---------- */
   // clusters: A=황가스/SRB, B=변연계/GLP-1, C=뇌/정신, D=피부, E=기질노출
