@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>구취 — 검사는 정상인데 냄새는 그대로라면 | Neo-Skepticism</title>
+<meta name="description" content="양치·스케일링·치과·이비인후과가 모두 정상인데 입냄새가 남는다면. 표준 VSC 측정이 놓치는 비-VSC 구취와, 입이 아닌 바이오필름·장에서 오는 냄새. 양준상 MD의 임상 프레임 (교육 목적).">
+<style>
+  :root{
+    --bg:#eef2f1; --surface:#ffffff; --surface2:#f6f8f7;
+    --ink:#141d1c; --ink2:#485755; --faint:#7f8e8c;
+    --line:#dde4e2; --line2:#cbd5d2;
+    --accent:#0d7a70; --accent2:#0a5d55; --accent-wash:#e2efed;
+    --sulfur:#8f6412; --sulfur-line:#b8862b; --sulfur-wash:#f4ecd6;
+    --danger:#9e3b2b;
+    --sans:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Malgun Gothic',system-ui,sans-serif;
+    --mono:'SF Mono',ui-monospace,'JetBrains Mono','Roboto Mono',Menlo,Consolas,monospace;
+    --serif:'Apple Myungjo','Nanum Myeongjo',ui-serif,Georgia,serif;
+    --maxw:1080px;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#0c1211; --surface:#121b19; --surface2:#0f1716; --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
+    --line:#233230; --line2:#2c3b39; --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
+    --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e; --danger:#e0846f;}}
+  :root[data-theme="dark"]{
+    --bg:#0c1211; --surface:#121b19; --surface2:#0f1716; --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
+    --line:#233230; --line2:#2c3b39; --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
+    --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e; --danger:#e0846f;}
+  :root[data-theme="light"]{
+    --bg:#eef2f1; --surface:#ffffff; --surface2:#f6f8f7; --ink:#141d1c; --ink2:#485755; --faint:#7f8e8c;
+    --line:#dde4e2; --line2:#cbd5d2; --accent:#0d7a70; --accent2:#0a5d55; --accent-wash:#e2efed;
+    --sulfur:#8f6412; --sulfur-line:#b8862b; --sulfur-wash:#f4ecd6; --danger:#9e3b2b;}
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;font-size:16px;
+    -webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .narrow{max-width:760px;margin:0 auto}
+  a{color:var(--accent);text-decoration:none}
+  h1,h2,h3{letter-spacing:-.02em;text-wrap:balance;margin:0}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .eyebrow.s{color:var(--sulfur)}
+  nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .row{display:flex;align-items:center;gap:20px;height:60px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;letter-spacing:-.03em;color:var(--ink)}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-wash);flex:none}
+  .brand small{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.08em;color:var(--faint)}
+  .navlinks{margin-left:auto;display:flex;gap:22px;align-items:center;font-size:13.5px;color:var(--ink2)}
+  .navlinks a:hover{color:var(--ink)}
+  @media(max-width:680px){.navlinks a:not(.btn){display:none}}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;
+    padding:10px 18px;border-radius:8px;border:none;cursor:pointer;font-family:var(--sans);letter-spacing:-.01em;
+    transition:transform .12s ease, background .15s ease}
+  .btn:hover{background:var(--accent2);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line2)}
+  .btn.ghost:hover{background:var(--surface2);border-color:var(--accent)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+  .theme{border:1px solid var(--line2);background:var(--surface);color:var(--ink2);border-radius:7px;width:34px;height:30px;cursor:pointer;font-size:14px;display:grid;place-items:center}
+  .theme:hover{border-color:var(--accent);color:var(--ink)}
+
+  .crumb{font-family:var(--mono);font-size:12px;color:var(--faint);padding:22px 0 0}
+  .crumb a{color:var(--faint)} .crumb a:hover{color:var(--accent)}
+  .hero{padding:26px 0 20px;border-bottom:1px solid var(--line)}
+  .hero .k{margin-bottom:20px}
+  .hero h1{font-size:clamp(28px,5vw,46px);line-height:1.1;font-weight:800;max-width:20ch}
+  .hero .lede{font-size:clamp(16px,2vw,18.5px);color:var(--ink2);max-width:56ch;margin:22px 0 0;line-height:1.6}
+  .hero .lede b{color:var(--ink)}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 8px}
+
+  section{padding:60px 0}
+  .sechead{max-width:640px;margin-bottom:30px}
+  .sechead h2{font-size:clamp(23px,3.3vw,32px);line-height:1.14;font-weight:800;margin:12px 0 0}
+  .sechead p{color:var(--ink2);font-size:16px;margin:13px 0 0}
+  .alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  p.body{font-size:16px;color:var(--ink2);max-width:64ch}
+  p.body b{color:var(--ink)}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:24px 26px}
+  .card.warn{border-color:color-mix(in srgb,var(--sulfur-line) 45%,var(--line))}
+  .card .tag{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    padding:4px 9px;border-radius:6px;background:var(--accent-wash);color:var(--accent);display:inline-block;margin-bottom:12px}
+  .card.warn .tag{background:var(--sulfur-wash);color:var(--sulfur)}
+  .card h3{font-size:18px;font-weight:800}
+  .card .sm{font-family:var(--mono);font-size:12px;color:var(--faint);margin:4px 0 12px}
+  .card p{font-size:14.5px;color:var(--ink2);margin:0}
+  .card ul{margin:10px 0 0;padding-left:18px;font-size:14.5px;color:var(--ink2)}
+  .card li{margin:5px 0}
+  .smell{margin-top:14px;display:flex;gap:7px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px}
+  .smell span{border:1px dashed var(--line2);border-radius:5px;padding:3px 9px;color:var(--sulfur)}
+
+  .callout{border-left:3px solid var(--sulfur-line);background:var(--sulfur-wash);border-radius:0 12px 12px 0;
+    padding:20px 24px;margin:26px 0;max-width:64ch}
+  .callout .l{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sulfur);font-weight:600}
+  .callout p{margin:8px 0 0;font-size:15.5px;color:var(--ink)}
+
+  .steps{display:grid;gap:12px;counter-reset:s;margin-top:8px}
+  .st{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;border:1px solid var(--line);
+    background:var(--surface);border-radius:14px;padding:17px 20px}
+  .st .n{counter-increment:s;font-family:var(--mono);font-weight:700;font-size:12.5px;color:#fff;background:var(--accent);
+    width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .st .n::before{content:counter(s,decimal-leading-zero)}
+  .st h3{font-size:15px;font-weight:700}
+  .st p{font-size:13.5px;color:var(--ink2);margin:4px 0 0}
+
+  .consult{background:var(--accent);color:#fff;border-radius:20px;padding:42px 38px;text-align:center;margin-top:10px}
+  :root[data-theme="dark"] .consult{background:var(--accent2)}
+  .consult h2{color:#fff;font-size:clamp(22px,3.2vw,30px);font-weight:800;max-width:22ch;margin:0 auto}
+  .consult p{color:#ffffffcc;max-width:46ch;margin:14px auto 0;font-size:15px}
+  .consult .btn{background:#fff;color:var(--accent2);margin-top:24px}
+  .consult .btn:hover{background:#f0fffb}
+  .disc{font-size:12.5px;color:var(--faint);line-height:1.65;border-left:2px solid var(--line2);padding:2px 0 2px 14px;max-width:64ch;margin:22px 0 0}
+
+  footer{border-top:1px solid var(--line);padding:38px 0 60px;color:var(--faint);font-size:12.5px}
+  footer .dl{max-width:760px;line-height:1.7} footer b{color:var(--ink2)}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap row">
+  <a class="brand" href="index.html"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>
+  <div class="navlinks">
+    <a href="index.html">홈</a>
+    <a href="index.html#assess">자가진단</a>
+    <a href="index.html#mechanism">기전</a>
+    <button class="theme" id="themeBtn" aria-label="테마 전환">◐</button>
+    <a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener" class="btn">카카오 상담</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <div class="crumb"><a href="index.html">Neo-Skepticism</a> · <a href="index.html#map">증상 지도</a> · <span>구취</span></div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow s k">증상 심화 · 구취(Halitosis)</span>
+    <h1>양치도, 스케일링도, 검사도 정상. 그런데 입냄새는 그대로입니다.</h1>
+    <p class="lede">치과·이비인후과·위내시경 다 돌았고 <b>구취 측정기도 정상</b>인데, 본인과 주변은 분명히 느낀다 — 이건 기분 탓이 아닙니다. 표준 측정이 <b>놓치는 종류의 냄새</b>가 있고, 냄새의 상당 부분은 입이 아니라 더 깊은 곳에서 옵니다.</p>
+    <div class="cta">
+      <a href="index.html#assess" class="btn">내 구취 패턴 확인 · 60초</a>
+      <a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener" class="btn ghost">카카오로 상담</a>
+    </div>
+  </div>
+</header>
+
+<!-- 1. two kinds -->
+<section>
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">1 · 두 종류의 입냄새</span>
+      <h2>구취 측정기는 절반만 잡습니다.</h2>
+      <p>입냄새를 만드는 물질은 크게 둘로 나뉩니다. 병원에서 흔히 쓰는 VSC 측정기는 이 중 <b>황(黃) 계열</b>만 봅니다.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <span class="tag">측정기가 잡음</span>
+        <h3>VSC · 황 계열</h3>
+        <div class="sm">H₂S · CH₃SH</div>
+        <p>황화수소·메틸메르캅탄. 흔히 아는 "계란 썩은·양파·마늘" 입냄새. VSC 측정기 수치로 나타납니다.</p>
+        <div class="smell"><span>썩은 계란</span><span>양파·마늘</span></div>
+      </div>
+      <div class="card warn">
+        <span class="tag">측정기가 놓침</span>
+        <h3>비-VSC · 인돌 계열</h3>
+        <div class="sm">Indole · Skatole · Putrescine</div>
+        <p>황이 아닌 물질이 만드는 냄새. <b>VSC 측정기로는 "정상"</b>으로 나오는데도 냄새는 심합니다 — "측정은 정상, 그런데 난다"의 정체.</p>
+        <div class="smell"><span>대변·나프탈렌</span><span>비린내</span></div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="l">핵심</div>
+      <p>구취 측정기 수치가 정상인데 주관적 구취가 강하다면 — 인돌·스카톨 같은 <b>비황계 물질</b>이 주범일 가능성이 큽니다. 정상 수치가 곧 "냄새 없음"을 뜻하지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. not just the mouth -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow s">2 · 냄새는 입에서만 오지 않는다</span>
+      <h2>바이오필름과 장(腸), 두 개의 근원.</h2>
+    </div>
+    <div class="two">
+      <div class="card">
+        <span class="tag">근원 A</span>
+        <h3>바이오필름 — 설태·치주낭</h3>
+        <p>설태와 치주 주머니 속 세균은 끈끈한 막(바이오필름)에 정착합니다. 일부 균은 VSC를 직접 만들지 않으면서도 비황계 악취 물질을 냅니다.</p>
+        <ul>
+          <li>타액만 보는 검사는 놓치기 쉽습니다 — 냄새의 뿌리는 <b>치주낭 속</b>에 있습니다.</li>
+          <li>그래서 잠깐 좋아졌다가도, 막이 남아 있으면 다시 올라옵니다.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">근원 B</span>
+        <h3>장(腸) — 마늘냄새의 진짜 정체</h3>
+        <p>마늘 먹은 뒤 이틀까지 가는 입냄새는 마늘 성분이 아니라, <b>장내 세균이 만든 대사산물</b>(메틸메르캅탄)입니다.</p>
+        <ul>
+          <li>기존 SIBO 호흡검사(수소·메탄·황화수소)엔 <b>메틸메르캅탄이 빠져 있어</b> 놓치기 쉽습니다.</li>
+          <li>이 가스는 시안화물과 같은 계열의 미토콘드리아 독성을 가집니다.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. why it doesn't go away -->
+<section>
+  <div class="wrap narrow">
+    <div class="sechead" style="max-width:none">
+      <span class="eyebrow">3 · 왜 안 낫는가</span>
+      <h2>정상이라는 오진, 그리고 정착한 막.</h2>
+    </div>
+    <p class="body">구취가 "안 낫는" 게 아니라, <b>제대로 보지 못한</b> 경우가 많습니다. 이유는 대개 세 가지입니다.</p>
+    <div class="steps">
+      <div class="st"><span class="n"></span><div><h3>표준 검사가 절반을 놓친다</h3><p>비-VSC(인돌 계열)와 메틸메르캅탄이 표준 패널에서 빠져, "정상"이라는 오진이 나옵니다.</p></div></div>
+      <div class="st"><span class="n"></span><div><h3>바이오필름이 정착해 있다</h3><p>치주낭·설태 속 막을 함께 관리하지 않으면, 표면만 닦아선 중단 즉시 재발합니다.</p></div></div>
+      <div class="st"><span class="n"></span><div><h3>상류가 장에 있다</h3><p>냄새가 장내 세균 과증식의 하류라면, 입만 관리해선 근원이 남습니다 — 전신 증상(복부팽만·불안·피로)과 같이 오는 이유입니다.</p></div></div>
+    </div>
+    <div class="callout">
+      <div class="l">그래서 어떻게 보나</div>
+      <p>정확한 <b>측정</b>(호흡 가스 + 치주낭 표적 검사) → <b>바이오필름·설태 관리</b> → 필요 시 <b>표적 제균</b>. 순서와 방법은 사람마다 다르며, 구체적 처방은 반드시 진료로 결정합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- consult -->
+<section>
+  <div class="wrap narrow">
+    <div class="consult">
+      <h2>"정상인데 냄새는 난다"면, 놓친 절반을 확인할 때입니다.</h2>
+      <p>호흡 가스 측정과 표적 검사로, 당신의 구취가 어느 근원에서 오는지 함께 찾습니다.</p>
+      <a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener" class="btn">카카오톡 채널로 상담 — 양준상의원</a>
+    </div>
+    <p class="disc"><b>고지.</b> 이 페이지는 양준상 MD의 임상 프레임을 <b>교육·성찰 목적</b>으로 소개하며, 특정 질병의 진단·치료·처방을 제공하지 않습니다. 언급된 검사·접근은 일반적 설명이고, 어떤 증상이든 반드시 의료 전문가와 상의하세요.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="margin-bottom:16px"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>
+    <div class="dl"><b>고지.</b> 교육·성찰 목적의 콘텐츠이며 의학적 조언을 대체하지 않습니다. 견해 중 일부는 확립된 정설과 다를 수 있습니다.</div>
+    <div style="margin-top:18px;font-family:var(--mono);font-size:11.5px">© 2026 Neo-Skepticism · 양준상 MD</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+    root.setAttribute('data-theme',cur==='dark'?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
