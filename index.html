@@ -190,6 +190,20 @@
   .maptbl td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
   .maptbl .g{font-family:var(--mono);font-size:12px;color:var(--sulfur)}
   .maptbl tbody tr:hover{background:var(--surface2)}
+  .maptbl td:first-child a{color:var(--accent);font-weight:700}
+  .maptbl td:first-child a:hover{text-decoration:underline}
+  .divehd{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+    font-weight:600;margin:40px 0 16px;display:flex;align-items:center;gap:10px}
+  .divehd::after{content:"";flex:1;height:1px;background:var(--line)}
+  .dives{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+  .dive{display:flex;flex-direction:column;border:1px solid var(--line);background:var(--surface);border-radius:16px;
+    padding:22px 24px;transition:border-color .13s ease,transform .13s ease,box-shadow .13s ease}
+  .dive:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 30px -18px #0006}
+  .dive .de{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sulfur)}
+  .dive .dt{font-weight:800;font-size:17.5px;color:var(--ink);margin:9px 0 6px;letter-spacing:-.02em;line-height:1.25}
+  .dive .dp{font-size:13.5px;color:var(--ink2);line-height:1.55;flex:1}
+  .dive .dgo{font-family:var(--mono);font-size:12px;color:var(--accent);margin-top:14px;font-weight:600}
+  .dive:hover .dgo{text-decoration:underline}
 
   /* freedom */
   .quad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -234,8 +248,8 @@
   <div class="brand"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></div>
   <div class="navlinks">
     <a href="#assess">자가진단</a>
-    <a href="#paradox">웰니스의 역설</a>
     <a href="#mechanism">기전</a>
+    <a href="#map">증상별</a>
     <a href="#evidence">근거</a>
     <button class="theme" id="themeBtn" aria-label="테마 전환">◐</button>
     <a href="#consult" class="btn">상담 문의</a>
@@ -357,6 +371,15 @@
         <tr><td><a href="skin.html">아토피 · 지루성 · 주사 →</a></td><td>황색포도상구균 · 말라쎄지아</td><td class="g">피부 알칼리화</td></tr>
       </tbody>
     </table></div>
+
+    <div class="divehd">증상별로 더 깊이 — 교육 페이지</div>
+    <div class="dives">
+      <a class="dive" href="halitosis.html"><div class="de">구취</div><div class="dt">검사는 정상인데 냄새는 그대로</div><div class="dp">VSC 측정이 놓치는 냄새, 그리고 입이 아닌 바이오필름·장 두 근원.</div><div class="dgo">자세히 보기 →</div></a>
+      <a class="dive" href="bloating.html"><div class="de">복부팽만 · 가스</div><div class="dt">냄새가 답을 말해준다</div><div class="dp">무취 가스 vs 악취 가스, 그리고 SRB가 먹고 자라는 것들.</div><div class="dgo">자세히 보기 →</div></a>
+      <a class="dive" href="mind.html"><div class="de">불안 · 브레인포그</div><div class="dt">심리 문제가 아니라 가스 중독</div><div class="dp">매일 재흡입되는 황 가스와 미토콘드리아·변연계.</div><div class="dgo">자세히 보기 →</div></a>
+      <a class="dive" href="appetite.html"><div class="de">식욕 · 중독</div><div class="dt">의지박약이 아니라 꺼진 스위치</div><div class="dp">SRB가 꺼버리는 포만 스위치 GLP-1, 주사제의 한계까지.</div><div class="dgo">자세히 보기 →</div></a>
+      <a class="dive" href="skin.html"><div class="de">피부</div><div class="dt">부족해서가 아니라 하나가 넘쳐서</div><div class="dp">황색포도상구균 과증식과 피부 알칼리화의 악순환.</div><div class="dgo">자세히 보기 →</div></a>
+    </div>
   </div>
 </section>
 
