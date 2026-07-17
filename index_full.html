@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-theme="dark">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,6 @@
       --danger:#e0846f;
     }
   }
-  /* dark locked — always applied via data-theme="dark" on <html> */
   :root[data-theme="dark"]{
     --bg:#0c1211; --surface:#121b19; --surface2:#0f1716;
     --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
@@ -36,15 +35,21 @@
     --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
     --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e;
     --danger:#e0846f;
-    color-scheme:dark;
+  }
+  :root[data-theme="light"]{
+    --bg:#eef2f1; --surface:#ffffff; --surface2:#f6f8f7;
+    --ink:#141d1c; --ink2:#485755; --faint:#7f8e8c;
+    --line:#dde4e2; --line2:#cbd5d2;
+    --accent:#0d7a70; --accent2:#0a5d55; --accent-wash:#e2efed;
+    --sulfur:#8f6412; --sulfur-line:#b8862b; --sulfur-wash:#f4ecd6;
+    --danger:#9e3b2b;
   }
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
-    line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;
-    word-break:keep-all;overflow-wrap:break-word} /* 한글 어절 단위 줄바꿈 */
+    line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
   .narrow{max-width:760px;margin-left:auto;margin-right:auto}
   a{color:var(--accent);text-decoration:none}
@@ -77,8 +82,7 @@
   /* hero */
   .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
   #gas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.95;z-index:1}
-  /* padding-block only — keep .wrap's horizontal 24px (was padding:76px 0 60px → 0 side padding on mobile) */
-  .hero .inner{position:relative;z-index:2;padding-block:76px 60px}
+  .hero .inner{position:relative;z-index:2;padding:76px 0 60px}
   .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;
     letter-spacing:.14em;text-transform:uppercase;color:var(--sulfur);border:1px solid var(--line2);
     background:var(--surface);padding:6px 12px;border-radius:100px;margin-bottom:26px}
@@ -91,8 +95,6 @@
     box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 2px}
   .hero .lede{font-size:clamp(16px,2.1vw,19.5px);color:var(--ink2);max-width:52ch;margin:24px 0 0;line-height:1.6}
   .hero .lede b{color:var(--ink);font-weight:700}
-  /* forced breaks = PC only; mobile reflows naturally */
-  @media(max-width:680px){ br.pcbr{display:none} }
   .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
   .readout{margin-top:40px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;
     font-family:var(--mono);font-size:12px;color:var(--faint)}
@@ -286,15 +288,18 @@
   <div class="navlinks">
     <a href="#assess">자가진단</a>
     <a href="#mechanism">기전</a>
+    <a href="#map">증상별</a>
+    <a href="#evidence">근거</a>
+    <button class="theme" id="themeBtn" aria-label="테마 전환">◐</button>
   </div>
 </div></nav>
 
 <header class="hero">
   <canvas id="gas" aria-hidden="true"></canvas>
   <div class="wrap inner">
-    <span class="kicker"><span class="pulse"></span>호흡 가스 분석 · 임상 관찰</span>
-    <h1>당신의 만성 증상은<br>낫지 않는 게 아니라,<br><span class="u">매일 키우고 있는</span> 겁니다.</h1>
-    <p class="lede">복부팽만·구취·브레인포그·불안·피부질환 — 흩어진 증상처럼 보이지만, 상당수는<br class="pcbr"> <b>장내 세균 과증식</b>이라는 하나의 상류에서 옵니다. 그리고 그 세균에게 먹이를 준 것은<br class="pcbr"> 한 세대 동안 <b>'건강식'으로 권장된 음식들</b>입니다.</p>
+    <span class="kicker"><span class="pulse"></span>호흡 가스 분석 · 8년 임상 관찰</span>
+    <h1>당신의 만성 증상은 낫지 않는 게 아니라,<br><span class="u">매일 먹이고 있는</span> 겁니다.</h1>
+    <p class="lede">복부팽만·구취·브레인포그·불안·피부질환 — 흩어진 증상처럼 보이지만, 상당수는 <b>장 속 세균 과증식</b>이라는 하나의 상류에서 옵니다. 그리고 그 세균에게 먹이를 준 것은 다름 아닌, 한 세대 동안 <b>'건강식'으로 권장된 음식들</b>입니다.</p>
     <div class="cta">
       <a href="#assess" class="btn">내 증상 패턴 확인 · 60초</a>
       <a href="#paradox" class="btn ghost">역설부터 읽기</a>
@@ -313,13 +318,13 @@
     <div class="sechead" style="max-width:none">
       <span class="eyebrow">자가진단 도구</span>
       <h2>증상은 흩어져 있어도, 기전은 하나일 수 있습니다.</h2>
-      <p>아래 문항에 답하면, 당신의 증상 패턴이 어떤 <b>기전(세균·가스)</b>과 맞는지 보여드립니다.</p>
+      <p>아래 문항에 답하면, 당신의 증상 패턴이 어떤 <b>기전(세균·가스)</b>과 맞는지 보여드립니다. 같은 입력이면 언제나 같은 결과가 나오는 결정론적 도구입니다.</p>
     </div>
 
     <div class="tool">
       <div class="top">
         <span class="t">증상 패턴 셀프체크</span>
-        <span class="meta" id="counter">0 / 19 응답</span>
+        <span class="meta" id="counter">0 / 14 응답</span>
       </div>
       <div class="prog"><i id="prog"></i></div>
 
@@ -341,7 +346,7 @@
           <div id="findingList"></div>
         </div>
         <div class="rcta">
-          <a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener" class="btn" style="width:100%;justify-content:center">이 패턴, 진료로 확인하기 →</a>
+          <a href="#consult" class="btn" style="width:100%;justify-content:center">이 패턴, 진료로 확인하기 →</a>
         </div>
       </div>
     </div>
@@ -354,14 +359,14 @@
     <div class="sechead">
       <span class="eyebrow s">웰니스의 역설</span>
       <h2>'몸에 좋다'고 배운 음식이, 사실은 세균의 먹이였습니다.</h2>
-      <p>아래는 건강식으로 권장되어 왔으나, 장내 발효의 <b>기질</b>로 지목되는 것이다.</p>
+      <p>저자는 한국에 LCHF·저탄고지 운동을 처음 들여온 의사입니다. 그런데 호흡 가스 분석기로 환자를 측정하기 시작하면서, <b>자신이 수년간 홍보해 온 프레임에 데이터가 맞지 않는다</b>는 것을 발견했습니다. 아래는 건강식으로 권장되지만, 이 프레임에서는 장내 발효의 <b>기질(substrate)</b>로 지목되는 것들입니다.</p>
     </div>
     <div class="foods">
       <div class="food"><div class="fnm">섬유질</div><div class="halo mono">= 좋은 균의 먹이</div><div class="real">→ 난소화성 발효 기질</div></div>
       <div class="food"><div class="fnm">통곡물·잡곡</div><div class="halo mono">= 저속노화</div><div class="real">→ 발효 시간 연장</div></div>
       <div class="food"><div class="fnm">발효식품</div><div class="halo mono">= 프로바이오틱</div><div class="real">→ 외부 균 직접 투입</div></div>
       <div class="food"><div class="fnm">마늘·양파</div><div class="halo mono">= 항염·면역</div><div class="real">→ 식물 황(黃) 공급</div></div>
-      <div class="food"><div class="fnm">프로바이오틱스</div><div class="halo mono">= 좋은 균 보충</div><div class="real">→ 검증 안 된 세균</div></div>
+      <div class="food"><div class="fnm">프로바이오틱스</div><div class="halo mono">= 좋은 균 보충</div><div class="real">→ 히스타민 생산균</div></div>
       <div class="food"><div class="fnm">생채소·날것</div><div class="halo mono">= 효소·비타민</div><div class="real">→ 세균 직접 섭취</div></div>
     </div>
   </div>
@@ -373,14 +378,97 @@
     <div class="sechead">
       <span class="eyebrow">기전 · 하나의 인과 사슬</span>
       <h2>식단에서 시작해, 변연계에서 끝납니다.</h2>
-      <p>장내 세균들이 만들어내는 황 가스가 두 방향으로 몸을 흔듭니다.</p>
+      <p>핵심 용의자는 <b>SRB(황산염환원세균)</b> — 대표적으로 <i>디설포비브리오</i>. 이들이 만드는 황 가스가 두 방향으로 몸을 흔듭니다.</p>
     </div>
     <div class="chain">
-      <div class="step"><span class="num"></span><div><h3>난소화성 식단 + 황</h3><p>섬유·잡곡·발효식품·마늘이 소장에서 다 흡수되지 못하고 발효의 재료가 됩니다.</p></div><span class="arrow">▼</span></div>
-      <div class="step"><span class="num"></span><div><h3>SRB·후소박테리움 과증식</h3><p>황과 난소화성 기질이 만나면 황 가스를 생성하는 세균이 증식합니다.</p></div><span class="arrow">▼</span></div>
-      <div class="step"><span class="num"></span><div><h3>황 가스 생산 — H₂S · 메틸메르캅탄</h3><p>입 냄새, 체취, 독한 방귀 냄새로 나타납니다. <b>황화수소와 메틸메르캅탄(CH₃SH)</b>은 시안화물(청산가리)와 같은 계열의 미토콘드리아 독성을 가집니다.</p></div><span class="arrow">▼</span></div>
+      <div class="step"><span class="num"></span><div><h3>난소화성 식단 + 황</h3><p>섬유·잡곡·발효식품·마늘이 소장에서 다 흡수되지 못하고 대장으로 내려가 발효의 재료가 됩니다.</p></div><span class="arrow">▼</span></div>
+      <div class="step"><span class="num"></span><div><h3>SRB·후소박테리움 과증식</h3><p>황과 난소화성 기질이 만나면 황산염환원세균이 증식합니다.</p></div><span class="arrow">▼</span></div>
+      <div class="step"><span class="num"></span><div><h3>황 가스 생산 — H₂S · 메틸메르캅탄</h3><p>호기·체취·방귀로 검출됩니다. <b>메틸메르캅탄(CH₃SH)</b>은 시안화물·황화수소와 같은 계열의 미토콘드리아 독성을 가집니다.</p></div><span class="arrow">▼</span></div>
       <div class="step"><span class="num"></span><div><h3>① GLP-1 억제 → 변연계 폭주</h3><p>SRB가 포만 호르몬 GLP-1의 분비를 억제 → 식욕 조절 실패, 도파민 과잉, 중독성 충동, 자기 파괴적 행동으로 이어집니다.</p></div><span class="arrow">▼</span></div>
       <div class="step"><span class="num"></span><div><h3>② 가스 재흡입 → 뇌·미토콘드리아</h3><p>매일 자기가 만든 가스를 다시 들이마시면 변연계가 손상됩니다 — 불안, 강박, 브레인포그, 만성 피로. 같은 균(후소박테리움)이 불안장애와 대장암에도 관여합니다.</p></div><span class="arrow">▼</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SYMPTOM MAP -->
+<section id="map">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow s">증상 지도</span>
+      <h2>흩어진 증상, 겹치는 용의자.</h2>
+      <p>서로 다른 과(科)를 전전하던 증상들이, 이 프레임에서는 같은 세균·가스로 모입니다.</p>
+    </div>
+    <div class="mapwrap"><table class="maptbl">
+      <thead><tr><th>증상</th><th>지목되는 균</th><th>가스 / 물질</th></tr></thead>
+      <tbody>
+        <tr><td><a href="halitosis.html">구취 · 설태 →</a></td><td>후소박테리움 · Aggregatibacter · 비-VSC 계열</td><td class="g">VSC / 인돌·스카톨</td></tr>
+        <tr><td><a href="bloating.html">복부팽만 · 가스 →</a></td><td>SRB(디설포비브리오) · SIBO</td><td class="g">H₂S · CH₃SH</td></tr>
+        <tr><td><a href="mind.html">불안 · 공황 · 짜증 →</a></td><td>후소박테리움 + 대장균</td><td class="g">메틸메르캅탄</td></tr>
+        <tr><td><a href="mind.html">브레인포그 · 만성피로 →</a></td><td>황 가스 재흡입</td><td class="g">미토콘드리아 독성</td></tr>
+        <tr><td><a href="appetite.html">식욕조절 실패 · 중독 →</a></td><td>SRB → GLP-1 억제</td><td class="g">변연계 도파민</td></tr>
+        <tr><td><a href="skin.html">아토피 · 지루성 · 주사 →</a></td><td>황색포도상구균 · 말라쎄지아</td><td class="g">피부 알칼리화</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="divehd">증상별로 더 깊이 — 교육 페이지</div>
+    <div class="dives">
+      <a class="dive" href="halitosis.html"><div class="de">구취</div><div class="dt">검사는 정상인데 냄새는 그대로</div><div class="dp">VSC 측정이 놓치는 냄새, 그리고 입이 아닌 바이오필름·장 두 근원.</div><div class="dgo">자세히 보기 →</div></a>
+      <a class="dive" href="bloating.html"><div class="de">복부팽만 · 가스</div><div class="dt">냄새가 답을 말해준다</div><div class="dp">무취 가스 vs 악취 가스, 그리고 SRB가 먹고 자라는 것들.</div><div class="dgo">자세히 보기 →</div></a>
+      <a class="dive" href="mind.html"><div class="de">불안 · 브레인포그</div><div class="dt">심리 문제가 아니라 가스 중독</div><div class="dp">매일 재흡입되는 황 가스와 미토콘드리아·변연계.</div><div class="dgo">자세히 보기 →</div></a>
+      <a class="dive" href="appetite.html"><div class="de">식욕 · 중독</div><div class="dt">의지박약이 아니라 꺼진 스위치</div><div class="dp">SRB가 꺼버리는 포만 스위치 GLP-1, 주사제의 한계까지.</div><div class="dgo">자세히 보기 →</div></a>
+      <a class="dive" href="skin.html"><div class="de">피부</div><div class="dt">부족해서가 아니라 하나가 넘쳐서</div><div class="dp">황색포도상구균 과증식과 피부 알칼리화의 악순환.</div><div class="dgo">자세히 보기 →</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FREEDOM -->
+<section id="freedom" class="alt">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">세균 프리덤 4가지</span>
+      <h2>좋은 뜻으로 배운 습관이, 세균에게 자유를 준다면.</h2>
+      <p>"자유는 세균의 것이 아니라 인간의 것이어야 한다." — 위생과 항생제를 되돌리는 네 가지 습관.</p>
+    </div>
+    <div class="quad">
+      <div class="fcard"><div class="n">01</div><h3>세균 먹기</h3><div class="guise">명분: <s>프로바이오틱스·유산균</s></div><p>락토바실러스·비피도가 히스타민을 생산해 알러지를 유발할 수 있습니다.</p></div>
+      <div class="fcard"><div class="n">02</div><h3>세균 만지기</h3><div class="guise">명분: <s>어싱·맨발 걷기·면역력</s></div><p>토양 프로테오박테리아(살모넬라·녹농균)에 노출됩니다.</p></div>
+      <div class="fcard"><div class="n">03</div><h3>세균 키우기</h3><div class="guise">명분: <s>섬유질 = 좋은 균의 먹이</s></div><p>SRB 등 SIBO·SIFO 과증식 → H₂S·메틸메르캅탄.</p></div>
+      <div class="fcard"><div class="n">04</div><h3>세균 죽이지 않기</h3><div class="guise">명분: <s>항생제 내성 우려</s></div><p>제균 실패 → 만성 염증과 면역세포 혹사.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EVIDENCE -->
+<section id="evidence">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">근거와 정직</span>
+      <h2>주장이 아니라, 측정과 기록으로.</h2>
+      <p>추상적으로는 어떤 이야기든 그럴듯합니다. 이 프레임은 <b>호흡 가스 분석기</b>라는 도구와, 8년간 반복된 임상 관찰로 뒷받침됩니다 — 아직 연구가 부족한 영역은 그렇다고 명시하면서.</p>
+    </div>
+    <div class="ev">
+      <div class="stat"><div class="big">8년</div><div class="cap">한국 환자 호흡 가스 측정 임상 관찰</div></div>
+      <div class="stat"><div class="big s mono">2000 ppb</div><div class="cap">불안·복부팽만 환자에서 검출된 메틸메르캅탄 — 산업 기준치 초과 사례</div></div>
+      <div class="stat"><div class="big mono">~70%</div><div class="cap">아토피 환자의 황색포도상구균 검출률 (비환자 ~10%)</div></div>
+      <div class="stat"><div class="big mono">H₂S·CH₃SH</div><div class="cap">기존 SIBO 호흡검사 패널이 놓치는 황 가스를 직접 측정</div></div>
+    </div>
+    <p style="margin-top:24px;font-size:15px;color:var(--ink2);max-width:66ch">이 논리는 낯설어도 fringe가 아닙니다 — 장내 세균이 만든 냄새를 <b style="color:var(--ink)">저용량 항생제</b>로 다스리는 <b style="color:var(--ink)">생선냄새증후군(TMAU)</b>은 의학이 이미 인정한 선례입니다. <a href="halitosis.html">구취 편에서 →</a></p>
+    <div style="margin-top:44px;border-top:1px solid var(--line);padding-top:36px">
+      <p class="pull">“내 클리닉에서 호흡 가스 분석기는, 현대 웰니스 식단의 <em style="font-style:normal;background:var(--sulfur-wash)">거짓말 탐지기</em>에 가장 가까운 도구다.”<span class="by">— 양준상 MD · Neo-Skepticism</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULT -->
+<section id="consult">
+  <div class="wrap narrow">
+    <div class="consult">
+      <svg class="moldecor a" viewBox="0 0 230 150" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><path d="M26 104 L70 68 L112 98 L156 60 L204 88"/><path d="M70 68 L62 30"/><path d="M156 60 L164 22"/></g><g fill="currentColor"><circle cx="26" cy="104" r="5"/><circle cx="70" cy="68" r="8"/><circle cx="112" cy="98" r="5"/><circle cx="156" cy="60" r="8"/><circle cx="204" cy="88" r="5"/><circle cx="62" cy="30" r="4.5"/><circle cx="164" cy="22" r="4.5"/></g></svg>
+      <svg class="moldecor b" viewBox="0 0 120 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><path d="M24 70 L60 32 L96 70"/></g><g fill="currentColor"><circle cx="24" cy="70" r="5"/><circle cx="60" cy="32" r="8"/><circle cx="96" cy="70" r="5"/></g></svg>
+      <h2>당신의 패턴은, 당신의 가스로 확인됩니다.</h2>
+      <p>자가진단은 시작일 뿐입니다. 실제 호흡 가스 측정과 임상 평가로, 흩어진 증상의 상류를 함께 찾습니다.</p>
+      <a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener" class="btn" id="consultBtn">카카오톡 채널 — 양준상의원</a>
+      <div style="margin-top:16px"><a href="https://blog.naver.com/healthcrew" target="_blank" rel="noopener" style="color:#fff;opacity:.82;font-size:13.5px;text-decoration:underline">네이버 블로그에서 더 읽어보기 →</a></div>
     </div>
   </div>
 </section>
@@ -398,8 +486,13 @@
 (function(){
   "use strict";
 
-  /* ---------- theme: dark locked (data-theme="dark" on <html>) ---------- */
-  var root=document.documentElement;
+  /* ---------- theme toggle ---------- */
+  var root=document.documentElement, tb=document.getElementById('themeBtn');
+  tb.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){ cur = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark':'light'; }
+    root.setAttribute('data-theme', cur==='dark'?'light':'dark');
+  });
 
   /* ---------- hero: generative gas-molecule field ---------- */
   var cv=document.getElementById('gas'), cx=cv&&cv.getContext('2d');
@@ -467,22 +560,17 @@
   if(cv){ addEventListener('resize',function(){ resize(); if(reduce)frame(); }); start(); }
 
   /* ---------- self-assessment ---------- */
-  // clusters: A=황가스/SRB, G=장내세균과증식(비-황), B=변연계/GLP-1, C=뇌/정신, D=피부, E=기질노출
+  // clusters: A=황가스/SRB, B=변연계/GLP-1, C=뇌/정신, D=피부, E=기질노출
   var Q=[
-    {t:"아침 입냄새·설태가 심하고, 양치 후에도 텁텁하다", c:{A:2}},
+    {t:"아침 입냄새·설태가 심하고, 양치 후에도 오래 가지 않는다", c:{A:2}},
     {t:"방귀·트림·체취에서 계란 썩은 냄새 또는 마늘 냄새가 난다", c:{A:2}},
-    {t:"배가 자주 더부룩하고 가스가 찬다", c:{G:2}},
-    {t:"가스·트림은 잦은데 냄새는 심하지 않은 편이다", s:"무취 가스", c:{G:1.5}},
-    {t:"식사 후 배가 눈에 띄게 부풀어 오른다", c:{G:1.5}},
+    {t:"배가 자주 더부룩하고 가스가 찬다", c:{A:1.5}},
     {t:"마늘·양파를 먹으면 다음 날까지 냄새나 컨디션 저하가 남는다", c:{A:1,E:1}},
     {t:"이유 없는 불안·초조·짜증이 올라온다", c:{C:2}},
     {t:"머리에 안개 낀 듯 집중이 안 되고 기억이 흐릿하다", s:"브레인포그", c:{C:2}},
     {t:"단것·야식·자극적인 음식에 대한 충동을 참기 어렵다", c:{B:2}},
     {t:"다이어트를 해도 식욕과 체중이 조절되지 않는다", c:{B:2}},
-    {t:"먹어도 포만감이 잘 느껴지지 않고, 금방 다시 배가 고프다", s:"포만 신호", c:{B:1.5}},
-    {t:"아토피·지루성 피부염·주사·성인 여드름 등의 피부문제가 있다", c:{D:2,A:1}},
-    {t:"피부 상태가 장 증상(더부룩·가스)이 심한 시기에 같이 나빠진다", s:"장-피부 축", c:{D:1.5,A:1}},
-    {t:"특정 음식을 먹으면 피부가 눈에 띄게 나빠진다", s:"장-피부 축", c:{D:1.5}},
+    {t:"아토피·지루성 피부염·주사(rosacea)·성인 여드름이 있다", c:{D:2}},
     {t:"충분히 쉬어도 만성 피로가 개선되지 않는다", c:{C:1,A:1}},
     {t:"건강을 위해 섬유질·통곡물·잡곡을 챙겨 먹는다", s:"기질 노출", c:{E:2}},
     {t:"김치·요거트 등 발효식품을 매일 먹는다", s:"기질 노출", c:{E:2}},
@@ -490,16 +578,14 @@
     {t:"생채소·샐러드·회·초밥 등 날것을 즐긴다", s:"기질 노출", c:{E:1.5}}
   ];
   var CLU={
-    A:{tag:"황 가스 · SRB", nm:"황 가스 과증식 패턴", gases:["H₂S","CH₃SH"],
-       p:"구취·악취 신호가 뚜렷합니다. 황산염환원세균(SRB)·후소박테리움이 만드는 황 가스가 원인일 수 있습니다 — 이 가스들은 시안화물(청산가리)과 같은 계열의 미토콘드리아 독성을 가집니다."},
-    G:{tag:"발효 가스 · 과증식", nm:"장내 세균 과증식 패턴", gases:["H₂","CO₂","CH₄"],
-       p:"가스와 팽만은 뚜렷하지만 악취 신호는 약한 편입니다. 발효로 생기는 가스가 전부 황 가스는 아닙니다 — 수소·이산화탄소·메탄은 냄새가 거의 없어, 이 경우 냄새보다 부피와 팽만이 주 증상이 됩니다."},
+    A:{tag:"황 가스 · SRB", nm:"황화 가스 과증식 패턴", gases:["H₂S","CH₃SH"],
+       p:"구취·복부팽만·악취 신호가 뚜렷합니다. 황산염환원세균(SRB)·후소박테리움이 만드는 황 가스가 상류일 수 있습니다 — 이 가스들은 시안화물과 같은 계열의 미토콘드리아 독성을 가집니다."},
     B:{tag:"GLP-1 · 변연계", nm:"식욕·중독 회로 패턴", gases:["GLP-1 억제","도파민"],
        p:"식욕 조절 실패와 충동은 의지의 문제가 아닐 수 있습니다. SRB가 포만 호르몬 GLP-1을 억제하면 변연계 도파민이 폭주합니다 — 제균 없이 식이·약물만으로는 잘 잡히지 않는 이유입니다."},
     C:{tag:"뇌 · 정신", nm:"가스 재흡입 · 신경 패턴", gases:["메틸메르캅탄"],
        p:"불안·브레인포그·만성피로가 겹칩니다. 매일 자기가 만든 황 가스를 재흡입하면 변연계가 손상됩니다. 불안장애 환자에서 메틸메르캅탄이 검출되는 패턴과 결이 맞습니다."},
-    D:{tag:"피부", nm:"피부 균 과증식 패턴", gases:["S. aureus","말라쎄지아","SIBO"],
-       p:"만성 피부질환은 '다양성 부족'이 아니라 황색포도상구균·말라쎄지아의 과증식과 피부 알칼리화로 설명될 수 있습니다. 그리고 피부는 장과 따로 놀지 않습니다 — 주사(rosacea) 환자의 소장 세균 과증식(SIBO) 동반률은 대조군보다 뚜렷이 높고, 소장 세균을 제균하자 피부 병변이 사라진 무작위 대조 시험이 있습니다."}
+    D:{tag:"피부", nm:"피부 균 과증식 패턴", gases:["S. aureus","말라쎄지아"],
+       p:"만성 피부질환은 '다양성 부족'이 아니라 황색포도상구균·말라쎄지아의 과증식과 피부 알칼리화로 설명될 수 있습니다 — 제균 관점의 접근이 필요한 영역입니다."}
   };
   var ans=new Array(Q.length).fill(null), labels=["아니다","가끔","자주"];
   var qbody=document.getElementById('qbody');
@@ -534,7 +620,7 @@
   update();
 
   rbtn.addEventListener('click',function(){
-    var sc={A:0,G:0,B:0,C:0,D:0,E:0}, max={A:0,G:0,B:0,C:0,D:0,E:0};
+    var sc={A:0,B:0,C:0,D:0,E:0}, max={A:0,B:0,C:0,D:0,E:0};
     Q.forEach(function(q,i){
       for(var k in q.c){ max[k]+=q.c[k]*2; if(ans[i])sc[k]+=q.c[k]*ans[i]; }
     });
@@ -547,12 +633,12 @@
                    exp>=33 ? '기질 공급이 <b>중간</b> 수준입니다.' :
                              '기질 공급은 <b>낮은</b> 편입니다.';
     // rank symptom clusters
-    var order=['A','G','B','C','D'].map(function(k){return {k:k,v:max[k]?sc[k]/max[k]:0};})
+    var order=['A','B','C','D'].map(function(k){return {k:k,v:max[k]?sc[k]/max[k]:0};})
                 .sort(function(a,b){return b.v-a.v;});
     var list=document.getElementById('findingList'); list.innerHTML='';
     var shown=0;
     order.forEach(function(o){
-      if(o.v<0.25) return; shown++;
+      if(o.v<0.25 || shown>=2) return; shown++;
       var C=CLU[o.k], f=document.createElement('div'); f.className='finding';
       f.innerHTML='<div class="fh"><span class="tag">'+C.tag+'</span><span class="fn">'+C.nm+'</span>'+
         '<span class="score">'+Math.round(o.v*100)+'% 일치</span></div>'+
