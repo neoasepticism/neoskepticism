@@ -38,6 +38,7 @@ G['mito']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><ellipse cx
 G['gutbrain']=svg('<g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"><path d="M40 22 Q32 24 34 34 Q48 32 54 25 Q52 18 40 22 Z"/><path d="M45 40 V52" stroke-width="2.4"/><path d="M30 60 Q50 50 70 60 Q64 76 50 73 Q36 76 30 60 Z"/><path d="M38 64 Q50 70 62 64" stroke-width="1.8" opacity=".55"/></g>')
 G['analyzer']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><rect x="26" y="34" width="40" height="34" rx="6"/><path d="M38 52 A11 11 0 0 1 60 52" stroke-width="2.4"/><path d="M49 52 L57 44" stroke-width="2.4" stroke-linecap="round"/><rect x="66" y="45" width="16" height="11" rx="3.5"/></g><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M82 50 q6 -3 10 0"/></g>')
 G['ricebowl']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><path d="M26 54 Q26 71 50 73 Q74 71 74 54 Z"/><path d="M31 54 Q50 41 69 54" stroke-width="2.6"/></g><g fill="currentColor"><circle cx="44" cy="52" r="2.2"/><circle cx="54" cy="50" r="2.2"/><circle cx="50" cy="57" r="2.2"/></g><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".7"><path d="M44 40 q-3 -7 1 -12 M56 40 q3 -7 -1 -12"/></g>')
+G['bread']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M24 56 Q22 40 34 38 Q38 30 50 30 Q62 30 66 38 Q78 40 76 56 Q76 62 70 62 L30 62 Q24 62 24 56 Z"/><path d="M34 48 V60 M50 44 V60 M66 48 V60" stroke-width="1.8" opacity=".5"/></g>')
 G['antibiotic']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><rect x="20" y="40" width="34" height="17" rx="8.5" transform="rotate(-18 37 48)"/><path d="M31 37 L44 55" stroke-width="2" opacity=".6"/></g><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><circle cx="70" cy="58" r="9"/><path d="M64 52 l12 12 M76 52 l-12 12"/></g>')
 G['steam']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><path d="M28 58 Q30 72 50 74 Q70 72 72 58 Z"/><path d="M28 58 H72" stroke-width="2.6"/></g><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".8"><path d="M40 48 q-4 -6 0 -11 q4 -5 0 -11 M50 46 q-4 -6 0 -11 q4 -5 0 -11 M60 48 q-4 -6 0 -11 q4 -5 0 -11"/></g>')
 G['tab_round']=svg('<g fill="none" stroke="currentColor" stroke-width="3.2"><circle cx="50" cy="50" r="22"/><path d="M32 50 H68"/></g>')
@@ -120,6 +121,7 @@ SX=[
 FIX=[
  ("호흡가스 분석기","Breath gas analyzer","analyzer","fix","해법 · 도구","현대 웰니스 식단의 '거짓말 탐지기'. 표준 검사가 놓치는 황 가스를 직접 측정합니다.","★ 이 프레임의 심장"),
  ("흰쌀밥","White rice · Carni-rice","ricebowl","fix","해법 · 도구","난소화성 기질의 반대편. 발효를 덜 부르고 GLP-1이 정상 작동하는 탄수화물.","→ 기질의 반대편"),
+ ("흰빵","White bread","bread","fix","해법 · 도구","정제되어 잔사·발효가 적은 탄수화물. 흰쌀밥과 같은 저잔사 편에 속합니다.","→ 저잔사 정제탄수"),
  ("경험적 제균","Empirical antimicrobials","antibiotic","fix","해법 · 도구","냄새가 있다면 원인은 세균 — 측정이 안 돼도 경험적으로 다스립니다. 다수 성공.","→ 냄새 → 세균 → 치료"),
  ("뜨거운 음식","Hot, cooked food","steam","fix","해법 · 도구","날것·아이스의 반대. 세균 노출을 줄이는 디컨타미네이션의 기본.","→ 아이스 · 날것의 반대"),
 ]
@@ -147,6 +149,11 @@ IMG={
  '비염':'rhinitis.jpg','집중력 장애':'attentiondeficit.jpg','질염':'vaginitis.jpg',
  '생리전 증후군':'PMS.jpg','우울증':'depression.jpg',
  '메탄':'CH4.jpg','장누수':'leakygut.jpg',
+ '섬유질':'fiber.jpg','통곡물·잡곡':'wholegrain.jpg','김치·발효식품':'kimchi.jpg',
+ '프로바이오틱스':'probiotics.jpg','콜린·카르니틴':'choline.jpg','대장균':'ecoli.jpg',
+ '락토바실러스':'lactobacillus.jpg','트리메틸아민':'trimethylamine.jpg','히스타민':'histamine.jpg',
+ '호흡가스 분석기':'analyzer.jpg','흰쌀밥':'whiterice.jpg','경험적 제균':'medicine.jpg',
+ '뜨거운 음식':'hotfood.jpg','흰빵':'whitebread.jpg',
 }
 def cls_for(b):
     if '기질' in b: return 'sub'
