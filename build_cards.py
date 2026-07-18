@@ -59,6 +59,7 @@ G['fog']=svg('<g fill="none" stroke="currentColor" stroke-width="2.8" stroke-lin
 G['venus']=svg('<g fill="none" stroke="currentColor" stroke-width="3.4"><circle cx="50" cy="40" r="15"/><path d="M50 55 V78 M39 68 H61"/></g>')
 G['cycle']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="24" stroke-dasharray="3 6" opacity=".55"/></g><path d="M60 33 A18 18 0 1 0 60 67 A22 22 0 0 1 60 33 Z" fill="currentColor" stroke="none" opacity=".55"/>')
 G['raincloud']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M32 50 Q25 50 25 43 Q25 34 36 34 Q38 26 48 26 Q59 26 61 35 Q73 35 73 45 Q73 51 65 51 Z"/></g><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".75"><path d="M38 58 L34 68 M50 58 L46 70 M62 58 L58 68"/></g>')
+G['gingiv']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M28 40 Q28 30 40 30 Q50 30 50 40 L50 66 Q50 74 44 74 Q40 74 39 66 Q38 58 34 58 Q30 58 30 52 Z"/><path d="M50 40 Q50 30 62 30 Q72 30 72 42 L72 52 Q72 58 68 58 Q64 58 62 66 Q61 74 56 74 Q50 74 50 66 Z"/></g><g fill="currentColor"><circle cx="40" cy="46" r="2.4"/><circle cx="60" cy="46" r="2.4"/><circle cx="50" cy="43" r="2"/></g>')
 G['ch4']=svg('<circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/><g fill="none" stroke="currentColor" stroke-width="3"><path d="M50 50 L30 38 M50 50 L30 62 M50 50 L70 38 M50 50 L70 62"/></g><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="30" cy="38" r="5"/><circle cx="30" cy="62" r="5"/><circle cx="70" cy="38" r="5"/><circle cx="70" cy="62" r="5"/></g>')
 G['leaky']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><path d="M20 42 H80 M20 58 H80"/></g><g fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="9 7"><path d="M20 50 H80"/></g><g fill="currentColor"><circle cx="42" cy="50" r="3"/><circle cx="58" cy="50" r="2.6"/><circle cx="50" cy="50" r="2.2"/></g>')
 
@@ -111,6 +112,7 @@ MECH=[
 SX=[
  ("대장암","Colorectal cancer","colon","sx","결과 · 증상","후소박테리움이 FadA로 추동하는 것으로 연구되는 암. 젊은 층에서 증가하는 추세.","← 후소박테리움"),
  ("구취","Halitosis","mouth","sx","결과 · 증상","VSC·인돌 계열이 만드는 입냄새. 측정이 정상이어도 존재할 수 있습니다.","← 가스 · 세균"),
+ ("치은염","Gingivitis","gingiv","sx","결과 · 증상","잇몸의 만성 염증·출혈. 진지발리스 등 치주 세균과 연결되며 구취·전신 염증의 통로.","← 진지발리스 · 치주 세균"),
  ("피부염","Dermatitis","rash","sx","결과 · 증상","아토피·지루성·주사 — 황색포도상구균·말라쎄지아 과증식과 피부 알칼리화.","← 황포 · 말라쎄지아"),
  ("비염","Rhinitis","nose","sx","결과 · 증상","히스타민·알러지 반응과 연결되는 코 증상.","← 히스타민"),
  ("집중력 장애","Brain fog","fog","sx","결과 · 증상","황가스 재흡입으로 인한 뇌 안개·집중 저하·만성 피로.","← 가스 재흡입"),
@@ -153,7 +155,7 @@ IMG={
  '프로바이오틱스':'probiotics.jpg','콜린·카르니틴':'choline.jpg','대장균':'ecoli.jpg',
  '락토바실러스':'lactobacillus.jpg','트리메틸아민':'trimethylamine.jpg','히스타민':'histamine.jpg',
  '호흡가스 분석기':'analyzer.jpg','흰쌀밥':'whiterice.jpg','경험적 제균':'medicine.jpg',
- '뜨거운 음식':'hotfood.jpg','흰빵':'whitebread.jpg',
+ '뜨거운 음식':'hotfood.jpg','흰빵':'whitebread.jpg','치은염':'gingivitis.jpg',
 }
 def cls_for(b):
     if '기질' in b: return 'sub'
