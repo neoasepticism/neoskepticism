@@ -58,6 +58,8 @@ G['fog']=svg('<g fill="none" stroke="currentColor" stroke-width="2.8" stroke-lin
 G['venus']=svg('<g fill="none" stroke="currentColor" stroke-width="3.4"><circle cx="50" cy="40" r="15"/><path d="M50 55 V78 M39 68 H61"/></g>')
 G['cycle']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="24" stroke-dasharray="3 6" opacity=".55"/></g><path d="M60 33 A18 18 0 1 0 60 67 A22 22 0 0 1 60 33 Z" fill="currentColor" stroke="none" opacity=".55"/>')
 G['raincloud']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M32 50 Q25 50 25 43 Q25 34 36 34 Q38 26 48 26 Q59 26 61 35 Q73 35 73 45 Q73 51 65 51 Z"/></g><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".75"><path d="M38 58 L34 68 M50 58 L46 70 M62 58 L58 68"/></g>')
+G['ch4']=svg('<circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/><g fill="none" stroke="currentColor" stroke-width="3"><path d="M50 50 L30 38 M50 50 L30 62 M50 50 L70 38 M50 50 L70 62"/></g><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="30" cy="38" r="5"/><circle cx="30" cy="62" r="5"/><circle cx="70" cy="38" r="5"/><circle cx="70" cy="62" r="5"/></g>')
+G['leaky']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><path d="M20 42 H80 M20 58 H80"/></g><g fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="9 7"><path d="M20 50 H80"/></g><g fill="currentColor"><circle cx="42" cy="50" r="3"/><circle cx="58" cy="50" r="2.6"/><circle cx="50" cy="50" r="2.2"/></g>')
 
 # ---- data: (name, sci, glyph, [cls,] badge, desc, meta) ----
 STAGE=[
@@ -95,6 +97,7 @@ GAS=[
  ("히스타민","Histamine","histamine","가스 · 독소","프로바이오틱·발효식품이 늘리는 물질. 두드러기·알러지성 두통·물 알러지의 기여자.","→ 결과: 알러지 · 두드러기"),
  ("수소","H₂ · Hydrogen","h2","가스 · 무취","발효로 나오는 흔한 무취 가스. SIBO 호흡검사의 기본 측정 대상.","→ 무취 · 발효 부산물"),
  ("이산화탄소","CO₂ · Carbon dioxide","co2","가스 · 무취","발효가 만드는 무취 가스. 가스·팽만감의 '부피'를 채웁니다.","→ 무취 · 팽만의 부피"),
+ ("메탄","CH₄ · Methane","ch4","가스 · 무취","메탄생성 고세균이 만드는 무취 가스. 장운동을 늦춰 변비형 팽만과 연결됩니다.","→ 무취 · 변비형 · 장운동 지연"),
 ]
 MECH=[
  ("GLP-1","Glucagon-like peptide-1","glp1","mech","기전 · 회로","식후 분비되어 포만감을 주고 충동을 진정시키는 스위치. SRB가 이걸 꺼버립니다.","→ 세균이 끄는 포만 스위치"),
@@ -102,6 +105,7 @@ MECH=[
  ("바이오필름","Biofilm","biofilm","mech","기전 · 회로","균이 스스로 만드는 끈끈한 막. 표면만 닦아선 안 잡히고, 제균이 어려운 이유.","→ 균이 숨는 막"),
  ("미토콘드리아 독성","Mitochondrial toxicity","mito","mech","기전 · 회로","황가스가 시안화물과 같은 방식으로 세포의 에너지 공장을 억제 → 피로·브레인포그.","→ 세포 호흡 억제"),
  ("장뇌축","Gut–brain axis","gutbrain","mech","기전 · 회로","장에서 만든 가스가 뇌와 감정 중추에 닿는 실제 경로. 은유가 아닙니다.","→ 장 → 뇌 실경로"),
+ ("장누수","Leaky gut","leaky","mech","기전 · 회로","장벽의 조밀결합이 느슨해져 세균 산물이 혈류로 새는 상태. 저강도 전신 염증의 통로.","→ 장벽 투과 → 전신 염증"),
 ]
 SX=[
  ("대장암","Colorectal cancer","colon","sx","결과 · 증상","후소박테리움이 FadA로 추동하는 것으로 연구되는 암. 젊은 층에서 증가하는 추세.","← 후소박테리움"),
@@ -142,6 +146,7 @@ IMG={
  '장뇌축':'gut_brain_axis.jpg','대장암':'coloncancer.jpg','구취':'halitosis.jpg','피부염':'dermatitis.jpg',
  '비염':'rhinitis.jpg','집중력 장애':'attentiondeficit.jpg','질염':'vaginitis.jpg',
  '생리전 증후군':'PMS.jpg','우울증':'depression.jpg',
+ '메탄':'CH4.jpg','장누수':'leakygut.jpg',
 }
 def cls_for(b):
     if '기질' in b: return 'sub'
@@ -212,8 +217,7 @@ HTML=('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
 '<link rel="stylesheet" href="style.css">\n<style>'+CARDCSS+'</style>\n</head>\n<body>\n'
 '<nav><div class="wrap row">\n  <a class="brand" href="index.html"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>\n'
 '  <div class="navlinks">\n    <a href="index.html">홈</a>\n    <a href="index.html#assess">자가진단</a>\n    <a href="index.html#mechanism">기전</a>\n'
-'    <button class="theme" id="themeBtn" aria-label="테마 전환">◐</button>\n'
-'    <a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener" class="btn">카카오 상담</a>\n  </div>\n</div></nav>\n\n'
+'    <button class="theme" id="themeBtn" aria-label="테마 전환">◐</button>\n  </div>\n</div></nav>\n\n'
 '<div class="wrap"><div class="crumb"><a href="index.html">Neo-Skepticism</a> · <span>개념 카드덱</span></div></div>\n\n'
 '<header class="hero deckhero"><div class="wrap">\n  <span class="eyebrow s">'+T+' CARDS · 개념 카드덱</span>\n'
 '  <h1>흩어진 이름들을, 한 벌의 카드로.</h1>\n'
@@ -222,13 +226,11 @@ HTML=('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
 +BODY+
 '\n<section><div class="wrap narrow">\n  <div class="consult"><h2>이 카드들이 당신 안에서 어떻게 엮이는지.</h2>'
 '<p>증상 자가진단으로 당신의 패턴이 어느 카드와 맞는지 확인하고, 필요하면 상담으로 이어가세요.</p>\n'
-'  <a href="index.html#assess" class="btn" style="background:#fff;color:var(--accent2)">자가진단 하러 가기 →</a>\n'
-'  <div style="margin-top:16px"><a href="https://blog.naver.com/healthcrew" target="_blank" rel="noopener" style="color:#fff;opacity:.82;font-size:13.5px;text-decoration:underline">네이버 블로그에서 더 읽어보기 →</a></div></div>\n'
+'  <a href="index.html#assess" class="btn" style="background:#fff;color:var(--accent2)">자가진단 하러 가기 →</a></div>\n'
 '  <p class="disc"><b>고지.</b> 각 카드는 양준상 MD의 임상 프레임을 <b>교육·성찰 목적</b>으로 요약한 것으로, 특정 질병의 진단·치료·처방을 뜻하지 않습니다. 결과·증상 카드는 원인과의 <b>연결이 연구·지목된다</b>는 뜻이지 인과의 단정이 아니며, 항생제·항진균제 카드는 약의 성격을 소개할 뿐 처방·용량 안내가 아닙니다. 실제 진단·치료는 반드시 의사의 진료로 결정하세요.</p>\n'
 '</div></section>\n\n'
 '<footer><div class="wrap">\n  <a class="brand" href="index.html" style="margin-bottom:16px"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>\n'
 '  <div class="dl"><b>고지.</b> 교육·성찰 목적의 콘텐츠이며 의학적 조언을 대체하지 않습니다.</div>\n'
-'  <div style="margin-top:16px;font-size:13px"><a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener">카카오톡 채널</a> · <a href="https://blog.naver.com/healthcrew" target="_blank" rel="noopener">네이버 블로그</a></div>\n'
 '  <div style="margin-top:18px;font-family:var(--mono);font-size:11.5px">© 2026 Neo-Skepticism · 양준상 MD</div>\n</div></footer>\n\n'
 '<script>\n(function(){var root=document.documentElement;'
 'document.getElementById("themeBtn").addEventListener("click",function(){var c=root.getAttribute("data-theme");'
