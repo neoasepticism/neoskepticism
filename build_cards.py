@@ -131,6 +131,18 @@ DRUG=[
  ("테르비나핀","Terbinafine","tab_fungi","drug","항진균제","피부·손발톱 곰팡이의 대표 무기.","→ 표적: 피부 진균"),
 ]
 
+# ---- 사진 아트 (art/): 카드 이름 → 파일명. 없는 카드는 SVG 글리프 유지 ----
+IMG={
+ 'SIBO':'SIBO.jpg','SIFO':'SIFO.jpg','마늘':'garlic.jpg','양파':'onion.jpg',
+ '김밥':'gimbap.jpg','상추':'lettuce.jpg','SRB':'SRB.jpg','에거텔라':'egerthella.jpg',
+ '후소박테리움':'fusobacterium.jpg','진지발리스':'gingivalis.jpg','황색포도상구균':'staphylococcus.jpg',
+ '칸디다':'candida.jpg','효모':'yeast.jpg','말라쎄지아':'malassezia.jpg',
+ '황화수소':'h2s.jpg','메틸메르캅탄':'CH3SH.jpg','수소':'H2.jpg','이산화탄소':'CO2.jpg',
+ 'GLP-1':'GLP1.jpg','변연계':'limbic.jpg','바이오필름':'biofilm.jpg','미토콘드리아 독성':'mitochondrion.jpg',
+ '장뇌축':'gut_brain_axis.jpg','대장암':'coloncancer.jpg','구취':'halitosis.jpg','피부염':'dermatitis.jpg',
+ '비염':'rhinitis.jpg','집중력 장애':'attentiondeficit.jpg','질염':'vaginitis.jpg',
+ '생리전 증후군':'PMS.jpg','우울증':'depression.jpg',
+}
 def cls_for(b):
     if '기질' in b: return 'sub'
     if '가스' in b: return 'gas'
@@ -140,7 +152,11 @@ def cards(rows):
     for r in rows:
         name,sci,gl,badge,desc,meta=r[0],r[1],r[2],r[-3],r[-2],r[-1]
         cls=r[3] if (len(r)==7 and r[3] in ('mech','fix','drug','sx')) else cls_for(badge)
-        o+=('    <div class="pcard '+cls+'">\n      <div class="pglyph">'+G[gl]+'</div>\n'
+        if name in IMG:
+            glyph='<div class="pglyph img"><img src="art/'+IMG[name]+'" alt="'+name+'" loading="lazy"></div>'
+        else:
+            glyph='<div class="pglyph">'+G[gl]+'</div>'
+        o+=('    <div class="pcard '+cls+'">\n      '+glyph+'\n'
             '      <div class="psci">'+sci+'</div>\n      <div class="pname">'+name+'</div>\n'
             '      <span class="pbadge">'+badge+'</span>\n      <p class="pdesc">'+desc+'</p>\n'
             '      <div class="pmeta">'+meta+'</div>\n    </div>\n')
@@ -170,12 +186,15 @@ CARDCSS='''
   .pcard{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
     border-radius:16px;padding:20px 18px 16px;overflow:hidden;--c:var(--accent);
     transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
-  .pcard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c)}
+  .pcard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c);z-index:2}
   .pcard:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 18px 36px -22px #0008}
   .pcard.gas{--c:var(--sulfur-line)} .pcard.sub{--c:var(--danger)} .pcard.mech{--c:var(--mech)}
   .pcard.fix{--c:var(--fix)} .pcard.drug{--c:var(--drug)} .pcard.sx{--c:var(--sx)}
   .pglyph{height:92px;display:grid;place-items:center;color:var(--c);margin-bottom:12px}
   .pglyph svg{width:82px;height:82px}
+  /* 사진 아트: 카드 상단 배너로 꽉 채움 (padding 상쇄 후 가장자리까지 bleed) */
+  .pglyph.img{height:132px;display:block;margin:-20px -18px 14px;background:var(--surface2)}
+  .pglyph.img img{width:100%;height:100%;object-fit:cover;display:block}
   .psci{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--faint);line-height:1.3;min-height:26px}
   .pname{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:3px 0 9px;line-height:1.15}
   .pbadge{align-self:flex-start;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
@@ -216,6 +235,6 @@ HTML=('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
 'if(!c){c=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";}root.setAttribute("data-theme",c==="dark"?"light":"dark");});})();\n</script>\n'
 '</body>\n</html>\n')
 
-open('card.html'),'w',encoding='utf-8').write(HTML)
+open('card.html','w',encoding='utf-8').write(HTML)
 miss=[r[2] for grp in groups for r in grp if r[2] not in G]
 print('card.html', len(HTML), 'bytes ·', HTML.count('class="pcard'), 'cards · total', total, '· missing glyphs:', miss or 'none')

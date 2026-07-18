@@ -15,12 +15,15 @@
   .pcard{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
     border-radius:16px;padding:20px 18px 16px;overflow:hidden;--c:var(--accent);
     transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
-  .pcard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c)}
+  .pcard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c);z-index:2}
   .pcard:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 18px 36px -22px #0008}
   .pcard.gas{--c:var(--sulfur-line)} .pcard.sub{--c:var(--danger)} .pcard.mech{--c:var(--mech)}
   .pcard.fix{--c:var(--fix)} .pcard.drug{--c:var(--drug)} .pcard.sx{--c:var(--sx)}
   .pglyph{height:92px;display:grid;place-items:center;color:var(--c);margin-bottom:12px}
   .pglyph svg{width:82px;height:82px}
+  /* 사진 아트: 카드 상단 배너로 꽉 채움 (padding 상쇄 후 가장자리까지 bleed) */
+  .pglyph.img{height:132px;display:block;margin:-20px -18px 14px;background:var(--surface2)}
+  .pglyph.img img{width:100%;height:100%;object-fit:cover;display:block}
   .psci{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--faint);line-height:1.3;min-height:26px}
   .pname{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:3px 0 9px;line-height:1.15}
   .pbadge{align-self:flex-start;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
@@ -55,7 +58,7 @@
 <div class="sechead"><span class="eyebrow ">① 무대 · 2장</span><h2>어디서 벌어지나</h2><p>증상이 시작되는 장소 — 세균과 진균이 소장에서 과하게 늘어난 두 상태.</p></div>
   <div class="deck">
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><rect x="16" y="30" width="24" height="11" rx="5.5"/><rect x="46" y="40" width="24" height="11" rx="5.5"/><rect x="26" y="54" width="24" height="11" rx="5.5"/><rect x="56" y="60" width="20" height="10" rx="5"/><path d="M74 26 l7 6 -7 6"/></g></svg></div>
+      <div class="pglyph img"><img src="art/SIBO.jpg" alt="SIBO" loading="lazy"></div>
       <div class="psci">Small Intestinal Bacterial Overgrowth</div>
       <div class="pname">SIBO</div>
       <span class="pbadge">과증식 상태</span>
@@ -63,7 +66,7 @@
       <div class="pmeta">→ 무대: 세균이 자라는 곳</div>
     </div>
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="34" cy="40" r="10"/><circle cx="54" cy="34" r="7"/><circle cx="60" cy="56" r="11"/><circle cx="38" cy="62" r="7"/><path d="M74 26 l7 6 -7 6" fill="none" stroke-linecap="round"/></g></svg></div>
+      <div class="pglyph img"><img src="art/SIFO.jpg" alt="SIFO" loading="lazy"></div>
       <div class="psci">Small Intestinal Fungal Overgrowth</div>
       <div class="pname">SIFO</div>
       <span class="pbadge">과증식 상태</span>
@@ -93,7 +96,7 @@
       <div class="pmeta">명분 <s>저속노화</s> → 실체: 발효 시간 연장</div>
     </div>
     <div class="pcard sub">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><path d="M30 56 Q30 36 50 36 Q70 36 70 56 Q70 72 50 72 Q30 72 30 56 Z"/><path d="M42 38 Q42 58 43 70 M50 36 V72 M58 38 Q58 58 57 70" stroke-width="2" opacity=".6"/><path d="M50 36 Q47 26 50 20 Q53 26 50 36" stroke-width="2.4"/></g></svg></div>
+      <div class="pglyph img"><img src="art/garlic.jpg" alt="마늘" loading="lazy"></div>
       <div class="psci">Garlic</div>
       <div class="pname">마늘</div>
       <span class="pbadge">기질 · 먹이</span>
@@ -101,7 +104,7 @@
       <div class="pmeta">명분 <s>항염 · 면역</s> → 실체: 식물 황 공급</div>
     </div>
     <div class="pcard sub">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><path d="M28 56 Q28 34 50 34 Q72 34 72 56 Q72 74 50 74 Q28 74 28 56 Z"/><ellipse cx="50" cy="55" rx="11" ry="15" stroke-width="2" opacity=".55"/><path d="M50 34 q-4 -8 -1 -14 M50 34 q4 -8 1 -14" stroke-width="2.4"/></g></svg></div>
+      <div class="pglyph img"><img src="art/onion.jpg" alt="양파" loading="lazy"></div>
       <div class="psci">Onion</div>
       <div class="pname">양파</div>
       <span class="pbadge">기질 · 먹이</span>
@@ -117,7 +120,7 @@
       <div class="pmeta">명분 <s>프로바이오틱</s> → 실체: 외부 균 투입</div>
     </div>
     <div class="pcard sub">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor"><circle cx="50" cy="50" r="25" stroke-width="4"/><circle cx="50" cy="50" r="20" stroke-width="2" opacity=".5"/><circle cx="50" cy="50" r="7" stroke-width="2.6"/><circle cx="50" cy="38" r="3.2" fill="currentColor" stroke="none"/><circle cx="61" cy="55" r="3.2" fill="currentColor" stroke="none"/><circle cx="40" cy="58" r="3.2" fill="currentColor" stroke="none"/></g></svg></div>
+      <div class="pglyph img"><img src="art/gimbap.jpg" alt="김밥" loading="lazy"></div>
       <div class="psci">Gimbap</div>
       <div class="pname">김밥</div>
       <span class="pbadge">기질 · 먹이</span>
@@ -125,7 +128,7 @@
       <div class="pmeta">명분 <s>간편한 한 끼</s> → 실체: 기질 + 상온 세균</div>
     </div>
     <div class="pcard sub">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M50 20 C40 30 30 34 34 50 C36 62 30 66 34 74 C48 72 46 78 50 80 C54 78 52 72 66 74 C70 66 64 62 66 50 C70 34 60 30 50 20 Z"/><path d="M50 30 V74" stroke-width="2" opacity=".55"/><path d="M50 46 L40 42 M50 56 L60 52 M50 40 L58 36" stroke-width="1.8" opacity=".5"/></g></svg></div>
+      <div class="pglyph img"><img src="art/lettuce.jpg" alt="상추" loading="lazy"></div>
       <div class="psci">Lettuce</div>
       <div class="pname">상추</div>
       <span class="pbadge">기질 · 먹이</span>
@@ -155,7 +158,7 @@
 <div class="sechead"><span class="eyebrow ">③ 용의자 · 10장</span><h2>누가 자라나</h2><p>흩어진 증상 뒤에서 반복해 등장하는 세균과 진균.</p></div>
   <div class="deck">
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M32 62 Q34 34 62 34" stroke-width="9"/><path d="M62 34 q12 -3 16 -13 M63 40 q13 2 18 -6" stroke-width="2.4"/></g></svg></div>
+      <div class="pglyph img"><img src="art/SRB.jpg" alt="SRB" loading="lazy"></div>
       <div class="psci">Sulfate-Reducing Bacteria · Desulfovibrio</div>
       <div class="pname">SRB</div>
       <span class="pbadge">세균</span>
@@ -163,7 +166,7 @@
       <div class="pmeta">→ 만드는 것: H₂S · GLP-1 억제</div>
     </div>
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.5"><rect x="26" y="42" width="44" height="17" rx="8.5"/><path d="M35 50 h26" stroke-width="1.6" opacity=".5"/></g></svg></div>
+      <div class="pglyph img"><img src="art/egerthella.jpg" alt="에거텔라" loading="lazy"></div>
       <div class="psci">Eggerthella</div>
       <div class="pname">에거텔라</div>
       <span class="pbadge">세균</span>
@@ -171,7 +174,7 @@
       <div class="pmeta">→ 연결: 우울 · H₂S</div>
     </div>
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2"><path d="M16 50 Q50 34 84 50 Q50 66 16 50 Z"/><path d="M50 40 V60" stroke-width="1.8" opacity=".55"/></g></svg></div>
+      <div class="pglyph img"><img src="art/fusobacterium.jpg" alt="후소박테리움" loading="lazy"></div>
       <div class="psci">Fusobacterium nucleatum</div>
       <div class="pname">후소박테리움</div>
       <span class="pbadge">세균</span>
@@ -179,7 +182,7 @@
       <div class="pmeta">→ 만드는 것: 메틸메르캅탄</div>
     </div>
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2"><rect x="30" y="40" width="20" height="13" rx="6.5"/><rect x="50" y="52" width="20" height="13" rx="6.5"/><path d="M30 40 l-5 -5 M50 40 l4 -6 M70 52 l6 -3" stroke-width="2" stroke-linecap="round" opacity=".6"/></g></svg></div>
+      <div class="pglyph img"><img src="art/gingivalis.jpg" alt="진지발리스" loading="lazy"></div>
       <div class="psci">Porphyromonas gingivalis</div>
       <div class="pname">진지발리스</div>
       <span class="pbadge">세균</span>
@@ -187,7 +190,7 @@
       <div class="pmeta">→ 자리: 잇몸 · 구강</div>
     </div>
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="40" cy="38" r="9"/><circle cx="56" cy="36" r="9"/><circle cx="48" cy="50" r="9"/><circle cx="62" cy="50" r="9"/><circle cx="42" cy="62" r="9"/><circle cx="58" cy="64" r="9"/></g></svg></div>
+      <div class="pglyph img"><img src="art/staphylococcus.jpg" alt="황색포도상구균" loading="lazy"></div>
       <div class="psci">Staphylococcus aureus</div>
       <div class="pname">황색포도상구균</div>
       <span class="pbadge">세균</span>
@@ -211,7 +214,7 @@
       <div class="pmeta">→ 프로바이오틱의 실체</div>
     </div>
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><ellipse cx="30" cy="64" rx="10" ry="8"/><ellipse cx="48" cy="52" rx="10" ry="8"/><ellipse cx="66" cy="40" rx="10" ry="8"/><ellipse cx="80" cy="30" rx="6.5" ry="5.5"/></g></svg></div>
+      <div class="pglyph img"><img src="art/candida.jpg" alt="칸디다" loading="lazy"></div>
       <div class="psci">Candida</div>
       <div class="pname">칸디다</div>
       <span class="pbadge">진균 · 곰팡이</span>
@@ -219,7 +222,7 @@
       <div class="pmeta">→ 결과: 재발성 감염</div>
     </div>
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2"><circle cx="44" cy="56" r="18"/><circle cx="68" cy="38" r="10"/><path d="M57 45 l4 4" stroke-width="2" opacity=".5"/></g></svg></div>
+      <div class="pglyph img"><img src="art/yeast.jpg" alt="효모" loading="lazy"></div>
       <div class="psci">Yeast</div>
       <div class="pname">효모</div>
       <span class="pbadge">진균 · 곰팡이</span>
@@ -227,7 +230,7 @@
       <div class="pmeta">→ 무대: SIFO</div>
     </div>
     <div class="pcard ">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2"><circle cx="45" cy="56" r="17"/><path d="M57 45 q5 -1 5 -6 q0 -5 -5 -6" stroke-width="2.6"/><circle cx="66" cy="33" r="8.5"/></g></svg></div>
+      <div class="pglyph img"><img src="art/malassezia.jpg" alt="말라쎄지아" loading="lazy"></div>
       <div class="psci">Malassezia</div>
       <div class="pname">말라쎄지아</div>
       <span class="pbadge">진균 · 곰팡이</span>
@@ -241,7 +244,7 @@
 <div class="sechead"><span class="eyebrow s">④ 산물 · 7장</span><h2>무엇을 뿜나</h2><p>미생물이 만들어내는 가스 — 냄새·독성을 지닌 것과 무취 부산물.</p></div>
   <div class="deck">
     <div class="pcard gas">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M30 62 L50 44 L70 62" stroke-width="3"/><circle cx="50" cy="44" r="8" fill="currentColor" stroke="none"/><circle cx="30" cy="62" r="5"/><circle cx="70" cy="62" r="5"/></g><text x="50" y="30" text-anchor="middle" font-size="14" font-family="monospace" fill="currentColor">S</text></svg></div>
+      <div class="pglyph img"><img src="art/h2s.jpg" alt="황화수소" loading="lazy"></div>
       <div class="psci">H₂S · Hydrogen sulfide</div>
       <div class="pname">황화수소</div>
       <span class="pbadge">가스 · 독소</span>
@@ -249,7 +252,7 @@
       <div class="pmeta">→ 독성: 세포 호흡 억제</div>
     </div>
     <div class="pcard gas">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M22 60 L42 48 L62 60 L82 48" stroke-width="3"/><circle cx="42" cy="48" r="6"/><circle cx="62" cy="60" r="6"/><circle cx="82" cy="48" r="8" fill="currentColor" stroke="none"/><path d="M42 48 l-4 -10 M42 48 l6 -9" stroke-width="2" opacity=".6"/></g><text x="82" y="38" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">S</text></svg></div>
+      <div class="pglyph img"><img src="art/CH3SH.jpg" alt="메틸메르캅탄" loading="lazy"></div>
       <div class="psci">CH₃SH · Methyl mercaptan</div>
       <div class="pname">메틸메르캅탄</div>
       <span class="pbadge">가스 · 독소</span>
@@ -281,7 +284,7 @@
       <div class="pmeta">→ 결과: 알러지 · 두드러기</div>
     </div>
     <div class="pcard gas">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><path d="M38 50 H62"/><circle cx="38" cy="50" r="9"/><circle cx="62" cy="50" r="9"/></g><text x="50" y="30" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">H₂</text></svg></div>
+      <div class="pglyph img"><img src="art/H2.jpg" alt="수소" loading="lazy"></div>
       <div class="psci">H₂ · Hydrogen</div>
       <div class="pname">수소</div>
       <span class="pbadge">가스 · 무취</span>
@@ -289,7 +292,7 @@
       <div class="pmeta">→ 무취 · 발효 부산물</div>
     </div>
     <div class="pcard gas">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6"><path d="M34 46 H46 M34 54 H46 M54 46 H66 M54 54 H66"/></g><g stroke="currentColor" stroke-width="3" fill="none"><circle cx="24" cy="50" r="7"/><circle cx="76" cy="50" r="7"/></g><circle cx="50" cy="50" r="9" fill="currentColor" stroke="none"/><text x="50" y="30" text-anchor="middle" font-size="11" font-family="monospace" fill="currentColor">CO₂</text></svg></div>
+      <div class="pglyph img"><img src="art/CO2.jpg" alt="이산화탄소" loading="lazy"></div>
       <div class="psci">CO₂ · Carbon dioxide</div>
       <div class="pname">이산화탄소</div>
       <span class="pbadge">가스 · 무취</span>
@@ -303,7 +306,7 @@
 <div class="sechead"><span class="eyebrow ">⑤ 회로 · 5장</span><h2>어떻게 몸을 흔드나</h2><p>가스와 세균이 실제로 몸을 무너뜨리는 통로 — 기전 카드.</p></div>
   <div class="deck">
     <div class="pcard mech">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><rect x="24" y="42" width="52" height="22" rx="11"/></g><circle cx="63" cy="53" r="7.5" fill="currentColor" stroke="none"/><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M78 40 q6 -4 4 -12 M84 46 q7 -2 9 -9"/></g></svg></div>
+      <div class="pglyph img"><img src="art/GLP1.jpg" alt="GLP-1" loading="lazy"></div>
       <div class="psci">Glucagon-like peptide-1</div>
       <div class="pname">GLP-1</div>
       <span class="pbadge">기전 · 회로</span>
@@ -311,7 +314,7 @@
       <div class="pmeta">→ 세균이 끄는 포만 스위치</div>
     </div>
     <div class="pcard mech">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M30 54 Q26 36 44 32 Q54 24 66 32 Q80 34 78 50 Q80 64 66 68 Q54 76 42 70 Q30 68 30 54 Z"/><path d="M44 40 Q50 46 44 52 M58 36 Q64 44 56 50" stroke-width="1.8" opacity=".55"/></g><path d="M46 58 Q54 52 62 58 Q58 68 54 66 Q48 68 46 58 Z" fill="currentColor" stroke="none" opacity=".4"/></svg></div>
+      <div class="pglyph img"><img src="art/limbic.jpg" alt="변연계" loading="lazy"></div>
       <div class="psci">Limbic system</div>
       <div class="pname">변연계</div>
       <span class="pbadge">기전 · 회로</span>
@@ -319,7 +322,7 @@
       <div class="pmeta">→ 도파민 · 충동의 무대</div>
     </div>
     <div class="pcard mech">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><path d="M18 60 Q50 36 82 60" stroke-width="2.6"/><path d="M18 66 H82"/></g><g fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="34" cy="61" r="4"/><rect x="45" y="57" width="12" height="8" rx="4"/><circle cx="66" cy="61" r="4"/></g></svg></div>
+      <div class="pglyph img"><img src="art/biofilm.jpg" alt="바이오필름" loading="lazy"></div>
       <div class="psci">Biofilm</div>
       <div class="pname">바이오필름</div>
       <span class="pbadge">기전 · 회로</span>
@@ -327,7 +330,7 @@
       <div class="pmeta">→ 균이 숨는 막</div>
     </div>
     <div class="pcard mech">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><ellipse cx="46" cy="52" rx="28" ry="16"/><path d="M26 52 Q34 42 40 52 Q46 62 52 52 Q58 42 64 52" stroke-width="2.2"/></g><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M66 34 L84 52 M84 34 L66 52"/></g></svg></div>
+      <div class="pglyph img"><img src="art/mitochondrion.jpg" alt="미토콘드리아 독성" loading="lazy"></div>
       <div class="psci">Mitochondrial toxicity</div>
       <div class="pname">미토콘드리아 독성</div>
       <span class="pbadge">기전 · 회로</span>
@@ -335,7 +338,7 @@
       <div class="pmeta">→ 세포 호흡 억제</div>
     </div>
     <div class="pcard mech">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"><path d="M40 22 Q32 24 34 34 Q48 32 54 25 Q52 18 40 22 Z"/><path d="M45 40 V52" stroke-width="2.4"/><path d="M30 60 Q50 50 70 60 Q64 76 50 73 Q36 76 30 60 Z"/><path d="M38 64 Q50 70 62 64" stroke-width="1.8" opacity=".55"/></g></svg></div>
+      <div class="pglyph img"><img src="art/gut_brain_axis.jpg" alt="장뇌축" loading="lazy"></div>
       <div class="psci">Gut–brain axis</div>
       <div class="pname">장뇌축</div>
       <span class="pbadge">기전 · 회로</span>
@@ -349,7 +352,7 @@
 <div class="sechead"><span class="eyebrow ">⑥ 결과 · 8장</span><h2>무엇으로 드러나나</h2><p>상류가 흔들면 하류에 나타나는 증상들 — 각 카드는 원인 카드를 거꾸로 가리킵니다.</p></div>
   <div class="deck">
     <div class="pcard sx">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M24 40 Q24 28 38 28 L56 28 Q70 28 70 42 Q70 54 56 54 L40 54 Q30 54 30 62 Q30 72 42 72 L64 72"/></g><circle cx="60" cy="40" r="10" fill="currentColor" stroke="none" opacity=".45"/><circle cx="60" cy="40" r="12" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></div>
+      <div class="pglyph img"><img src="art/coloncancer.jpg" alt="대장암" loading="lazy"></div>
       <div class="psci">Colorectal cancer</div>
       <div class="pname">대장암</div>
       <span class="pbadge">결과 · 증상</span>
@@ -357,7 +360,7 @@
       <div class="pmeta">← 후소박테리움</div>
     </div>
     <div class="pcard sx">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><path d="M26 50 Q50 36 74 50 Q50 66 26 50 Z"/><path d="M35 52 Q50 59 65 52"/></g><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".7"><path d="M50 34 q6 -6 2 -12 M63 36 q6 -5 3 -11"/></g></svg></div>
+      <div class="pglyph img"><img src="art/halitosis.jpg" alt="구취" loading="lazy"></div>
       <div class="psci">Halitosis</div>
       <div class="pname">구취</div>
       <span class="pbadge">결과 · 증상</span>
@@ -365,7 +368,7 @@
       <div class="pmeta">← 가스 · 세균</div>
     </div>
     <div class="pcard sx">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><rect x="26" y="30" width="48" height="40" rx="11"/></g><g fill="currentColor"><circle cx="40" cy="44" r="3.6"/><circle cx="56" cy="40" r="3"/><circle cx="50" cy="55" r="3.6"/><circle cx="63" cy="57" r="2.6"/><circle cx="36" cy="58" r="2.6"/></g></svg></div>
+      <div class="pglyph img"><img src="art/dermatitis.jpg" alt="피부염" loading="lazy"></div>
       <div class="psci">Dermatitis</div>
       <div class="pname">피부염</div>
       <span class="pbadge">결과 · 증상</span>
@@ -373,7 +376,7 @@
       <div class="pmeta">← 황포 · 말라쎄지아</div>
     </div>
     <div class="pcard sx">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M54 24 Q47 44 41 54 Q38 60 45 62 Q52 64 56 59"/><path d="M41 56 Q34 56 34 62 Q34 67 41 66"/></g><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".7"><path d="M44 72 v8 M53 72 v6"/></g></svg></div>
+      <div class="pglyph img"><img src="art/rhinitis.jpg" alt="비염" loading="lazy"></div>
       <div class="psci">Rhinitis</div>
       <div class="pname">비염</div>
       <span class="pbadge">결과 · 증상</span>
@@ -381,7 +384,7 @@
       <div class="pmeta">← 히스타민</div>
     </div>
     <div class="pcard sx">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round" opacity=".85"><path d="M32 44 Q28 30 44 28 Q54 22 64 30 Q76 32 74 46"/></g><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M28 54 H72 M32 62 H68 M36 70 H64"/></g></svg></div>
+      <div class="pglyph img"><img src="art/attentiondeficit.jpg" alt="집중력 장애" loading="lazy"></div>
       <div class="psci">Brain fog</div>
       <div class="pname">집중력 장애</div>
       <span class="pbadge">결과 · 증상</span>
@@ -389,7 +392,7 @@
       <div class="pmeta">← 가스 재흡입</div>
     </div>
     <div class="pcard sx">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.4"><circle cx="50" cy="40" r="15"/><path d="M50 55 V78 M39 68 H61"/></g></svg></div>
+      <div class="pglyph img"><img src="art/vaginitis.jpg" alt="질염" loading="lazy"></div>
       <div class="psci">Vaginitis</div>
       <div class="pname">질염</div>
       <span class="pbadge">결과 · 증상</span>
@@ -397,7 +400,7 @@
       <div class="pmeta">← 칸디다</div>
     </div>
     <div class="pcard sx">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="24" stroke-dasharray="3 6" opacity=".55"/></g><path d="M60 33 A18 18 0 1 0 60 67 A22 22 0 0 1 60 33 Z" fill="currentColor" stroke="none" opacity=".55"/></svg></div>
+      <div class="pglyph img"><img src="art/PMS.jpg" alt="생리전 증후군" loading="lazy"></div>
       <div class="psci">PMS</div>
       <div class="pname">생리전 증후군</div>
       <span class="pbadge">결과 · 증상</span>
@@ -405,7 +408,7 @@
       <div class="pmeta">← 장내 상태</div>
     </div>
     <div class="pcard sx">
-      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M32 50 Q25 50 25 43 Q25 34 36 34 Q38 26 48 26 Q59 26 61 35 Q73 35 73 45 Q73 51 65 51 Z"/></g><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".75"><path d="M38 58 L34 68 M50 58 L46 70 M62 58 L58 68"/></g></svg></div>
+      <div class="pglyph img"><img src="art/depression.jpg" alt="우울증" loading="lazy"></div>
       <div class="psci">Depression</div>
       <div class="pname">우울증</div>
       <span class="pbadge">결과 · 증상</span>
