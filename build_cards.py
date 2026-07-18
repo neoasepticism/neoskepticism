@@ -60,6 +60,13 @@ G['venus']=svg('<g fill="none" stroke="currentColor" stroke-width="3.4"><circle 
 G['cycle']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="24" stroke-dasharray="3 6" opacity=".55"/></g><path d="M60 33 A18 18 0 1 0 60 67 A22 22 0 0 1 60 33 Z" fill="currentColor" stroke="none" opacity=".55"/>')
 G['raincloud']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M32 50 Q25 50 25 43 Q25 34 36 34 Q38 26 48 26 Q59 26 61 35 Q73 35 73 45 Q73 51 65 51 Z"/></g><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".75"><path d="M38 58 L34 68 M50 58 L46 70 M62 58 L58 68"/></g>')
 G['gingiv']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M28 40 Q28 30 40 30 Q50 30 50 40 L50 66 Q50 74 44 74 Q40 74 39 66 Q38 58 34 58 Q30 58 30 52 Z"/><path d="M50 40 Q50 30 62 30 Q72 30 72 42 L72 52 Q72 58 68 58 Q64 58 62 66 Q61 74 56 74 Q50 74 50 66 Z"/></g><g fill="currentColor"><circle cx="40" cy="46" r="2.4"/><circle cx="60" cy="46" r="2.4"/><circle cx="50" cy="43" r="2"/></g>')
+G['parasite']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M26 42 Q38 32 50 42 Q62 52 74 42 Q80 37 80 28"/></g><circle cx="26" cy="42" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/><g fill="currentColor"><circle cx="23" cy="40" r="1.5"/><circle cx="28" cy="40" r="1.5"/></g><g fill="none" stroke="currentColor" stroke-width="1.6" opacity=".5"><path d="M38 37 v9 M50 42 v9 M62 42 v9"/></g>')
+G['albendazole']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><rect x="20" y="42" width="38" height="18" rx="9"/><path d="M39 42 V60" stroke-width="1.8" opacity=".5"/></g><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M66 40 Q76 44 70 51 Q66 56 74 60"/></g><path d="M62 42 L82 62" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>')
+G['diarrhea']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M34 22 V52 M50 18 V58 M66 22 V52"/></g><g fill="currentColor"><path d="M34 62 l-6 -9 h12 Z"/><path d="M50 68 l-6 -9 h12 Z"/><path d="M66 62 l-6 -9 h12 Z"/></g>')
+G['constipation']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><path d="M18 40 H82 M18 60 H82"/></g><circle cx="50" cy="50" r="13" fill="currentColor" stroke="none" opacity=".22"/><circle cx="50" cy="50" r="13" fill="none" stroke="currentColor" stroke-width="3"/><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M44 44 l12 12 M56 44 l-12 12"/></g>')
+G['bloating']=svg('<g fill="none" stroke="currentColor" stroke-width="3.2"><circle cx="50" cy="55" r="23"/></g><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M50 30 V19 M67 35 l7 -7 M33 35 l-7 -7"/></g><circle cx="50" cy="55" r="3.6" fill="currentColor" stroke="none"/>')
+G['abx']=svg('<g fill="none" stroke="currentColor" stroke-width="3.2"><circle cx="40" cy="46" r="16"/><path d="M26 46 H54"/></g><g fill="none" stroke="currentColor" stroke-width="2.6"><rect x="60" y="57" width="20" height="10" rx="5"/></g><path d="M58 70 L82 50" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/>')
+G['afg']=svg('<g fill="none" stroke="currentColor" stroke-width="3.2"><ellipse cx="42" cy="46" rx="17" ry="11"/><path d="M50 36 V64" stroke-width="1.8" opacity=".5"/></g><g fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="70" cy="60" r="8"/></g><path d="M62 70 L82 50" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/>')
 G['ch4']=svg('<circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/><g fill="none" stroke="currentColor" stroke-width="3"><path d="M50 50 L30 38 M50 50 L30 62 M50 50 L70 38 M50 50 L70 62"/></g><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="30" cy="38" r="5"/><circle cx="30" cy="62" r="5"/><circle cx="70" cy="38" r="5"/><circle cx="70" cy="62" r="5"/></g>')
 G['leaky']=svg('<g fill="none" stroke="currentColor" stroke-width="3"><path d="M20 42 H80 M20 58 H80"/></g><g fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="9 7"><path d="M20 50 H80"/></g><g fill="currentColor"><circle cx="42" cy="50" r="3"/><circle cx="58" cy="50" r="2.6"/><circle cx="50" cy="50" r="2.2"/></g>')
 
@@ -90,6 +97,7 @@ MIC=[
  ("칸디다","Candida","pseudo","진균 · 곰팡이","재발성 질염과 장 과증식의 주역. 가성균사를 뻗어 조직을 파고듭니다.","→ 결과: 재발성 감염"),
  ("효모","Yeast","yeast","진균 · 곰팡이","당을 발효시키는 미생물. SIFO의 핵심 — 몸 안에서 원치 않는 발효.","→ 무대: SIFO"),
  ("말라쎄지아","Malassezia","malassezia","진균 · 곰팡이","지루성 피부염·비듬의 방아쇠. 피부를 알칼리화시켜 포도상구균 악순환을 엽니다.","→ 결과: 지루성 · 비듬"),
+ ("기생충","Parasite · 원충·연충","parasite","기생충","장에 기생하는 원충·연충. 세균·진균과 별개의 과증식 축으로, 만성 설사·복통·영양 저하와 연결됩니다.","→ 표적: 구충제(알벤다졸)"),
 ]
 GAS=[
  ("황화수소","H₂S · Hydrogen sulfide","h2s","가스 · 독소","썩은 계란 냄새. 시안화물과 같은 계열의 미토콘드리아 독성을 가집니다. SRB의 산물.","→ 독성: 세포 호흡 억제"),
@@ -119,6 +127,9 @@ SX=[
  ("질염","Vaginitis","venus","sx","결과 · 증상","재발성 칸디다 질염 — 진균 과증식과 연결되는 흔한 여성 증상.","← 칸디다"),
  ("생리전 증후군","PMS","cycle","sx","결과 · 증상","호르몬 주기와 장내 상태가 겹쳐 나타나는 주기적 증상 패턴.","← 장내 상태"),
  ("우울증","Depression","raincloud","sx","결과 · 증상","에거텔라·황화수소와 연결이 연구되는 기분 저하.","← 에거텔라 · H₂S"),
+ ("복부팽만","Bloating","bloating","sx","결과 · 증상","가스와 팽만이 반복되는 상태. SIBO·발효 가스가 장의 부피를 채운 결과.","← SIBO · 발효 가스"),
+ ("폭풍설사","Explosive diarrhea","diarrhea","sx","결과 · 증상","갑작스러운 수양성 설사. 감염·독소·과발효가 장을 밀어내는 신호.","← 감염 · 독소 · 과발효"),
+ ("평생변비","Chronic constipation","constipation","sx","결과 · 증상","오래 이어지는 변비. 메탄 생성균이 장운동을 늦추는 패턴과 연결됩니다.","← 메탄 · 장운동 지연"),
 ]
 FIX=[
  ("호흡가스 분석기","Breath gas analyzer","analyzer","fix","해법 · 도구","현대 웰니스 식단의 '거짓말 탐지기'. 표준 검사가 놓치는 황 가스를 직접 측정합니다.","★ 이 프레임의 심장"),
@@ -137,6 +148,9 @@ DRUG=[
  ("플루코나졸","Fluconazole","cap_spore","drug","항진균제","칸디다 등 효모에 널리 쓰이는 대표 항진균제.","→ 표적: 칸디다 · 효모"),
  ("이트라코나졸","Itraconazole","cap_fungi","drug","항진균제","광범위 항진균제. 곰팡이·말라쎄지아까지 폭넓게.","→ 표적: 곰팡이 · 말라쎄지아"),
  ("테르비나핀","Terbinafine","tab_fungi","drug","항진균제","피부·손발톱 곰팡이의 대표 무기.","→ 표적: 피부 진균"),
+ ("알벤다졸","Albendazole","albendazole","drug","구충제","광범위 구충제(anthelmintic). 장내 기생충·연충을 겨눕니다.","→ 표적: 기생충"),
+ ("항생제","Antibiotics","abx","drug","항생제 · 총칭","세균을 겨누는 약의 총칭. 표적·스펙트럼에 따라 선택이 갈립니다.","→ 표적: 세균(총칭)"),
+ ("항진균제","Antifungals","afg","drug","항진균 · 총칭","진균을 겨누는 약의 총칭. 칸디다·곰팡이·말라쎄지아 등에.","→ 표적: 진균(총칭)"),
 ]
 
 # ---- 사진 아트 (art/): 카드 이름 → 파일명. 없는 카드는 SVG 글리프 유지 ----

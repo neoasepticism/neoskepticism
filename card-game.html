@@ -67,6 +67,8 @@
   .card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c);z-index:2}
   .card .art{height:62px;background:var(--surface);overflow:hidden}
   .card .art img{width:100%;height:100%;object-fit:cover;display:block}
+  .card .art.ph{display:grid;place-items:center;font-size:26px;
+    background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--c) 22%,var(--surface)),var(--surface))}
   .card .nm{font-size:11.5px;font-weight:800;letter-spacing:-.02em;padding:5px 7px 1px;line-height:1.15}
   .card .role{font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--c);padding:0 7px}
   .card .ab{font-size:9.5px;color:var(--ink2,#9fb0ad);line-height:1.35;padding:3px 7px 8px;min-height:34px}
@@ -206,6 +208,8 @@ const DEFS = [
     text:'흔한 장내 세균 유닛.'},
   {id:'egg', nm:'에거텔라', role:'용의자·세균', suit:'u', cat:'bacteria', img:'egerthella.jpg', power:4, ab:{k:'none'},
     text:'황화수소와 연결되는 세균 유닛.'},
+  {id:'para', nm:'기생충', role:'용의자·기생충', suit:'u', cat:'parasite', img:null, emoji:'🪱', power:5, ab:{k:'none'},
+    text:'기생충 유닛. 항생제·항진균제로 안 잡히고 구충제(알벤다졸)로만 제거.'},
 
   // 먹이 · 버프 (소모)
   {id:'fiber', nm:'섬유질', role:'먹이', suit:'food', img:'fiber.jpg', power:1,
@@ -226,6 +230,8 @@ const DEFS = [
     ab:{k:'destroy', filter:'fungus'}, text:'상대 진균 유닛 1장 파괴.'},
   {id:'clari', nm:'클래리스로마이신', role:'무기·항생제', suit:'drug', img:'clarithromycin.jpg', power:0,
     ab:{k:'destroy', filter:'bacteria', pierce:true}, text:'상대 세균 파괴. 보호(바이오필름) 무시.'},
+  {id:'alben', nm:'알벤다졸', role:'무기·구충제', suit:'drug', img:null, emoji:'💊', power:0,
+    ab:{k:'destroy', filter:'parasite'}, text:'상대 기생충 유닛 1장 파괴(구충).'},
 
   // 산물 · 가스 데미지 (소모)
   {id:'h2s', nm:'황화수소', role:'산물·가스', suit:'gas', img:'h2s.jpg', power:0,
@@ -250,6 +256,8 @@ const DEFS = [
   // 결과 · 증상 (조건부 점수, 필드 잔류)
   {id:'crc', nm:'대장암', role:'결과·증상', suit:'sx', img:'coloncancer.jpg', power:7,
     ab:{k:'symptom', requires:'fuso'}, text:'후소박테리움이 내 필드에 있으면 전투력 7, 없으면 0.'},
+  {id:'bloat', nm:'복부팽만', role:'결과·증상', suit:'sx', img:null, emoji:'🎈', power:5,
+    ab:{k:'symptom', requiresCat:'bacteria'}, text:'내 필드에 세균이 있으면 전투력 5, 없으면 0.'},
 ];
 const DEF = Object.fromEntries(DEFS.map(d=>[d.id,d]));
 const ENABLE_MAP = {대장암:'crc'}; // symptom name -> id (for flavor logs)
@@ -286,7 +294,12 @@ function draw(side,n){ for(let i=0;i<n && S.deck[side].length;i++) S.hand[side].
 
 /* ---------------- POWER / RULES ---------------- */
 function unitPower(u){ return Math.max(0, u.def.power + u.mods); }
-function symptomActive(side,u){ return S.board[side].some(x=>x.def.id===u.def.ab.requires); }
+function symptomActive(side,u){
+  const ab=u.def.ab;
+  if(ab.requires) return S.board[side].some(x=>x.def.id===ab.requires);
+  if(ab.requiresCat) return S.board[side].some(x=>x.def.cat===ab.requiresCat);
+  return false;
+}
 function cardPower(side,u){
   if(u.def.suit==='sx') return symptomActive(side,u)? u.def.power : 0;
   return unitPower(u);
@@ -311,8 +324,7 @@ function canTarget(def, side){
 }
 function validDestroyTarget(def,u){
   if(u.def.suit==='sx') return false;
-  if(def.ab.filter==='fungus' && u.def.cat!=='fungus') return false;
-  if(def.ab.filter==='bacteria' && u.def.cat!=='bacteria') return false;
+  if(def.ab.filter && u.def.cat!==def.ab.filter) return false; // bacteria|fungus|parasite
   if(def.ab.maxPower!=null && unitPower(u)>def.ab.maxPower) return false;
   return true;
 }
@@ -475,7 +487,11 @@ function evalCard(def){
     default: return {val:def.power, target:null};
   }
 }
-function symptomActiveWouldBe(side,def){ return S.board[side].some(u=>u.def.id===def.ab.requires); }
+function symptomActiveWouldBe(side,def){
+  if(def.ab.requires) return S.board[side].some(u=>u.def.id===def.ab.requires);
+  if(def.ab.requiresCat) return S.board[side].some(u=>u.def.cat===def.ab.requiresCat);
+  return false;
+}
 
 /* ---------------- ROUND / MATCH END ---------------- */
 function endRound(){
@@ -545,7 +561,7 @@ function cardHTML(u, ctx){ // ctx: 'board'|'hand'|'enemyhand'
   const shield = (inst&&inst.protected)?'<span class="shield">🛡️</span>':'';
   const prot = (inst&&inst.protected)?'protium':'';
   return `<div class="card ${cls} ${prot} ${ctx==='enemyhand'?'facedown':''}" data-role="${ctx}">
-    <div class="art">${ctx==='enemyhand'?'✦':`<img src="art/${def.img}" alt="${def.nm}" loading="lazy">`}</div>
+    ${ctx==='enemyhand'?'<div class="art">✦</div>':(def.img?`<div class="art"><img src="art/${def.img}" alt="${def.nm}" loading="lazy"></div>`:`<div class="art ph">${def.emoji||'🧬'}</div>`)}
     ${ctx==='enemyhand'?'':`<div class="nm">${def.nm}</div><div class="role">${def.role}</div><div class="ab">${def.text}</div>`}
     ${(showPw&&ctx!=='enemyhand')?`<div class="pw ${pcls}">${pw}</div>`:''}
     ${shield}
