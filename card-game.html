@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>장내 전투 — 과증식 vs 제균 | Neo-Skepticism</title>
+<meta name="description" content="Neo-Skepticism 개념 카드로 만든 궨트식 카드게임 프로토타입. 세균·먹이·가스·약이 실제 기전대로 싸운다 (교육 목적).">
+<link rel="stylesheet" href="style.css">
+<style>
+  :root{color-scheme:dark;
+    --mech:#93a0f2;--fix:#5cc78c;--drug:#74b8d0;--sx:#e492a6;
+    --u:var(--accent);}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+  .topbar{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar .row{display:flex;align-items:center;gap:14px;height:54px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px;letter-spacing:-.03em;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+  .brand small{font-family:var(--mono);font-weight:500;font-size:10px;color:var(--faint)}
+  .topbar .sp{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#04110f;
+    font-weight:700;font-size:13px;padding:8px 14px;border-radius:8px;border:none;cursor:pointer;font-family:var(--sans)}
+  .btn:hover{background:var(--accent2,#2fae9f)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line2,#2c3b39)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn.pass{background:var(--sulfur-line);color:#160f02}
+
+  h1.gt{font-size:clamp(19px,3vw,26px);font-weight:800;margin:18px 0 2px;letter-spacing:-.02em}
+  .sub{color:var(--ink2,#9fb0ad);font-size:13.5px;margin:0 0 12px}
+  details.help{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:0 16px;margin-bottom:14px}
+  details.help summary{cursor:pointer;font-weight:700;font-size:13.5px;padding:12px 0;list-style:none}
+  details.help summary::-webkit-details-marker{display:none}
+  details.help summary::before{content:"▸ ";color:var(--accent)}
+  details.help[open] summary::before{content:"▾ "}
+  details.help .hb{font-size:13px;color:var(--ink2,#9fb0ad);line-height:1.6;padding:0 0 14px}
+  details.help .hb b{color:var(--ink)}
+  details.help .hb code{font-family:var(--mono);background:var(--surface2,#0f1716);padding:1px 5px;border-radius:4px;font-size:11.5px}
+
+  /* board zones */
+  .zone{border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-bottom:12px;padding:10px 12px}
+  .zone.enemy{border-color:color-mix(in srgb,var(--danger) 40%,var(--line))}
+  .zone.mine{border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+  .zhead{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:12.5px}
+  .zhead .who{font-weight:800;letter-spacing:-.02em;font-size:14px}
+  .zhead .who small{font-family:var(--mono);font-weight:500;font-size:10.5px;color:var(--faint);margin-left:5px}
+  .zhead .score{margin-left:auto;font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);min-width:34px;text-align:right}
+  .zone.enemy .zhead .score{color:var(--danger)}
+  .gems{display:flex;gap:5px}
+  .gem{width:13px;height:13px;border-radius:50%;border:2px solid var(--line2,#2c3b39)}
+  .gem.on{background:var(--accent);border-color:var(--accent);box-shadow:0 0 8px -1px var(--accent)}
+  .zone.enemy .gem.on{background:var(--danger);border-color:var(--danger);box-shadow:0 0 8px -1px var(--danger)}
+  .handcount{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+  .row-cards{display:flex;gap:8px;flex-wrap:wrap;min-height:150px;align-items:flex-start}
+  .row-cards.board{min-height:150px}
+  .empty{color:var(--faint);font-size:12px;font-family:var(--mono);align-self:center;padding:16px 4px}
+
+  /* card */
+  .card{position:relative;width:104px;flex:none;border:1px solid var(--line);border-radius:10px;
+    background:var(--surface2,#0f1716);overflow:hidden;--c:var(--accent);cursor:default;
+    transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease}
+  .card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c);z-index:2}
+  .card .art{height:62px;background:var(--surface);overflow:hidden}
+  .card .art img{width:100%;height:100%;object-fit:cover;display:block}
+  .card .nm{font-size:11.5px;font-weight:800;letter-spacing:-.02em;padding:5px 7px 1px;line-height:1.15}
+  .card .role{font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--c);padding:0 7px}
+  .card .ab{font-size:9.5px;color:var(--ink2,#9fb0ad);line-height:1.35;padding:3px 7px 8px;min-height:34px}
+  .card .pw{position:absolute;right:5px;bottom:5px;width:24px;height:24px;border-radius:50%;
+    background:var(--c);color:#04110f;font-family:var(--mono);font-weight:700;font-size:13px;
+    display:grid;place-items:center;z-index:2;box-shadow:0 2px 6px #0007}
+  .card .pw.buffed{background:#4fd18a;color:#03130a}
+  .card .pw.hurt{background:var(--danger);color:#fff}
+  .card.u{--c:var(--accent)} .card.food{--c:var(--danger)} .card.gas{--c:var(--sulfur-line)}
+  .card.drug{--c:var(--drug)} .card.mech{--c:var(--mech)} .card.fix{--c:var(--fix)}
+  .card.sx{--c:var(--sx)} .card.stage{--c:var(--accent)}
+  .card.protium{outline:2px solid var(--mech);outline-offset:1px}
+  .card .shield{position:absolute;left:5px;bottom:5px;font-size:13px;z-index:2}
+  .hand .card{cursor:pointer}
+  .hand .card.playable:hover{transform:translateY(-6px);box-shadow:0 12px 24px -12px #000b;border-color:var(--c)}
+  .hand .card.dead{opacity:.45}
+  .card.targetable{cursor:crosshair;outline:2px dashed var(--accent);outline-offset:2px;animation:tp 1s ease-in-out infinite}
+  @keyframes tp{50%{outline-color:var(--sulfur-line)}}
+  .card.facedown{background:linear-gradient(135deg,#12201d,#0c1512);}
+  .card.facedown .art{display:grid;place-items:center;color:var(--faint);font-size:20px}
+
+  .center{display:flex;align-items:center;gap:12px;margin:2px 0 12px;flex-wrap:wrap}
+  .log{flex:1;min-width:200px;font-size:12.5px;color:var(--ink2,#9fb0ad);font-family:var(--mono);
+    background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:9px 12px;min-height:38px;line-height:1.5}
+  .log b{color:var(--ink)}
+  .turnpill{font-family:var(--mono);font-size:11px;padding:5px 10px;border-radius:100px;border:1px solid var(--line2,#2c3b39);color:var(--faint)}
+  .turnpill.you{color:var(--accent);border-color:var(--accent)}
+
+  .banner{position:fixed;inset:0;display:none;place-items:center;z-index:60;background:#000a;backdrop-filter:blur(3px)}
+  .banner.show{display:grid}
+  .banner .box{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px 34px;text-align:center;max-width:360px}
+  .banner .box h2{margin:0 0 8px;font-size:26px;font-weight:800}
+  .banner .box p{margin:0 0 18px;color:var(--ink2,#9fb0ad);font-size:14px}
+
+  footer{border-top:1px solid var(--line);margin-top:20px;padding:20px 0 40px;color:var(--faint);font-size:11.5px;line-height:1.6}
+  @media(max-width:560px){ .card{width:92px} .card .art{height:54px} }
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="wrap row">
+  <a class="brand" href="index.html"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>
+  <div class="sp">
+    <a class="btn ghost" href="card.html">카드덱</a>
+    <button class="btn" id="restart">새 게임</button>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <h1 class="gt">장내 전투 — 과증식 <span style="color:var(--faint)">vs</span> 제균</h1>
+  <p class="sub">Neo-Skepticism 개념 카드로 만든 궨트식 대전. 카드의 능력은 실제 기전에서 나옵니다 — 먹이는 세균을 키우고, 약은 세균을 죽이고, 가스는 몸을 흔듭니다.</p>
+
+  <details class="help"><summary>규칙 (처음이면 열어보세요)</summary>
+    <div class="hb">
+      <b>목표.</b> 한 라운드에 <b>필드 전투력 합계</b>가 상대보다 높으면 그 라운드 승리. <b>3판 2선승</b>이면 매치 승리.<br>
+      <b>턴.</b> 번갈아 카드를 1장 내거나 <code>패스</code>. 한 번 패스하면 그 라운드는 끝(상대는 계속 낼 수 있음). 둘 다 패스하면 라운드 종료.<br>
+      <b>손패.</b> 라운드 중 보충 없음 — 카드를 아껴 쓰는 판단이 핵심입니다(궨트와 동일). 매 라운드 시작에 2장씩 드로우.<br>
+      <b>카드 역할.</b>
+      <b style="color:var(--accent)">용의자</b>(세균·진균)는 필드에 남아 전투력이 됩니다.
+      <b style="color:var(--danger)">먹이</b>는 내 세균을 강화,
+      <b style="color:var(--drug)">약</b>은 상대 세균/진균을 파괴,
+      <b style="color:var(--sulfur-line)">가스</b>는 상대 전투력을 깎고,
+      <b style="color:var(--mech)">기전</b>은 보호·회복,
+      <b style="color:var(--fix)">해법</b>은 상대 버프를 지우며,
+      <b style="color:var(--sx)">증상</b>은 조건이 맞을 때 큰 점수가 됩니다. 먹이·약·가스·해법은 <b>한 번 쓰면 소모</b>됩니다.<br>
+      <b>조준.</b> 파괴·단일버프·보호 카드는 낸 뒤 대상(점선 강조)을 클릭하세요.
+    </div>
+  </details>
+
+  <!-- ENEMY -->
+  <div class="zone enemy">
+    <div class="zhead">
+      <span class="who">균총 <small>AI</small></span>
+      <span class="gems" id="gemsA"></span>
+      <span class="handcount" id="handA">손패 0</span>
+      <span class="score" id="scoreA">0</span>
+    </div>
+    <div class="row-cards board" id="boardA"><span class="empty">필드 비어 있음</span></div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="center">
+    <span class="turnpill" id="turnpill">—</span>
+    <div class="log" id="log">새 게임을 시작합니다.</div>
+    <button class="btn pass" id="passBtn">패스</button>
+    <button class="btn ghost" id="cancelBtn" style="display:none">조준 취소</button>
+  </div>
+
+  <!-- ME -->
+  <div class="zone mine">
+    <div class="zhead">
+      <span class="who">나 <small>제균</small></span>
+      <span class="gems" id="gemsP"></span>
+      <span class="score" id="scoreP">0</span>
+    </div>
+    <div class="row-cards board" id="boardP"><span class="empty">필드 비어 있음</span></div>
+  </div>
+
+  <!-- HAND -->
+  <div class="zone">
+    <div class="zhead"><span class="who" style="font-size:12.5px;color:var(--faint);font-family:var(--mono);font-weight:600">내 손패</span></div>
+    <div class="row-cards hand" id="hand"></div>
+  </div>
+
+  <footer>
+    <b style="color:var(--ink2,#9fb0ad)">고지.</b> 교육·성찰 목적의 놀이형 자료입니다. 카드의 전투력·능력은 게임을 위한 단순화이며 의학적 사실의 정량이 아닙니다. 진단·치료는 반드시 의사의 진료로 결정하세요.
+  </footer>
+</div>
+
+<div class="banner" id="banner"><div class="box">
+  <h2 id="bTitle">—</h2><p id="bText">—</p>
+  <button class="btn" id="bBtn">다시 하기</button>
+</div></div>
+
+<script>
+"use strict";
+/* ---------------- CARD DEFINITIONS (24) ---------------- */
+// suit: u(용의자) food(먹이) gas(산물) drug(무기) mech(회로) fix(반대편) sx(결과)
+// cat: bacteria | fungus (용의자 only)
+// ability: {k:type, ...}
+const DEFS = [
+  // 용의자 · 세균/진균 (필드 잔류)
+  {id:'srb', nm:'SRB', role:'용의자·세균', suit:'u', cat:'bacteria', img:'SRB.jpg', power:5,
+    ab:{k:'onDeploy', buff:{scope:'bacteria',amt:1}, flag:'disableSol'},
+    text:'배치: 내 세균 +1. 필드에 있는 동안 상대 해법 무효(GLP-1 봉쇄).'},
+  {id:'fuso', nm:'후소박테리움', role:'용의자·세균', suit:'u', cat:'bacteria', img:'fusobacterium.jpg', power:6,
+    ab:{k:'onDeploy', buff:{scope:'bacteria',amt:1}, enables:'대장암'},
+    text:'배치: 내 세균 +1. 대장암 증상을 활성화.'},
+  {id:'candida', nm:'칸디다', role:'용의자·진균', suit:'u', cat:'fungus', img:'candida.jpg', power:5, ab:{k:'none'},
+    text:'큰 진균 유닛. 항진균제의 표적.'},
+  {id:'yeast', nm:'효모', role:'용의자·진균', suit:'u', cat:'fungus', img:'yeast.jpg', power:4, ab:{k:'none'},
+    text:'진균 유닛. SIFO의 핵심.'},
+  {id:'staph', nm:'황색포도상구균', role:'용의자·세균', suit:'u', cat:'bacteria', img:'staphylococcus.jpg', power:4,
+    ab:{k:'onDeploy', enables:'피부염'}, text:'배치: 피부염 증상을 활성화.'},
+  {id:'gingi', nm:'진지발리스', role:'용의자·세균', suit:'u', cat:'bacteria', img:'gingivalis.jpg', power:4,
+    ab:{k:'onDeploy', enables:'치은염'}, text:'배치: 치은염 증상을 활성화.'},
+  {id:'ecoli', nm:'대장균', role:'용의자·세균', suit:'u', cat:'bacteria', img:'ecoli.jpg', power:3, ab:{k:'none'},
+    text:'흔한 장내 세균 유닛.'},
+  {id:'egg', nm:'에거텔라', role:'용의자·세균', suit:'u', cat:'bacteria', img:'egerthella.jpg', power:4, ab:{k:'none'},
+    text:'황화수소와 연결되는 세균 유닛.'},
+
+  // 먹이 · 버프 (소모)
+  {id:'fiber', nm:'섬유질', role:'먹이', suit:'food', img:'fiber.jpg', power:1,
+    ab:{k:'buff', scope:'bacteria', amt:2}, text:'내 모든 세균 +2 (발효 기질 공급).'},
+  {id:'kimchi', nm:'김치·발효식품', role:'먹이', suit:'food', img:'kimchi.jpg', power:2,
+    ab:{k:'buff', scope:'all', amt:1}, text:'내 모든 유닛 +1 (외부 균 투입).'},
+  {id:'garlic', nm:'마늘', role:'먹이', suit:'food', img:'garlic.jpg', power:1,
+    ab:{k:'garlic'}, text:'내 유닛 +1, 상대 최강 유닛 -1 (식물 황).'},
+  {id:'probio', nm:'프로바이오틱스', role:'먹이', suit:'food', img:'probiotics.jpg', power:1,
+    ab:{k:'buffOne', amt:3}, text:'내 유닛 1장 +3 (대상 선택).'},
+
+  // 무기 · 파괴 (소모)
+  {id:'rifax', nm:'리팍시민', role:'무기·항생제', suit:'drug', img:'rifaximine.jpg', power:0,
+    ab:{k:'destroy', filter:'bacteria', maxPower:5}, text:'상대 세균(전투력 ≤5) 1장 파괴. 장 특화.'},
+  {id:'metro', nm:'메트로니다졸', role:'무기·항생제', suit:'drug', img:'metronidazole.jpg', power:0,
+    ab:{k:'destroy', filter:'bacteria'}, text:'상대 세균 유닛 1장 파괴(혐기성 강).'},
+  {id:'fluco', nm:'플루코나졸', role:'무기·항진균', suit:'drug', img:'fluconazole.jpg', power:0,
+    ab:{k:'destroy', filter:'fungus'}, text:'상대 진균 유닛 1장 파괴.'},
+  {id:'clari', nm:'클래리스로마이신', role:'무기·항생제', suit:'drug', img:'clarithromycin.jpg', power:0,
+    ab:{k:'destroy', filter:'bacteria', pierce:true}, text:'상대 세균 파괴. 보호(바이오필름) 무시.'},
+
+  // 산물 · 가스 데미지 (소모)
+  {id:'h2s', nm:'황화수소', role:'산물·가스', suit:'gas', img:'h2s.jpg', power:0,
+    ab:{k:'damageAll', amt:1}, text:'상대 모든 유닛 -1 (황 가스).'},
+  {id:'ch3sh', nm:'메틸메르캅탄', role:'산물·가스', suit:'gas', img:'CH3SH.jpg', power:0,
+    ab:{k:'damageTop', amt:3}, text:'상대 최강 유닛 -3 (미토콘드리아 독성).'},
+  {id:'hist', nm:'히스타민', role:'산물·가스', suit:'gas', img:'histamine.jpg', power:0,
+    ab:{k:'damageTop', amt:2}, text:'상대 최강 유닛 -2 (알러지 반응).'},
+
+  // 회로 · 기전 (보호는 유닛에 부착, 나머지 소모)
+  {id:'biofilm', nm:'바이오필름', role:'회로·기전', suit:'mech', img:'biofilm.jpg', power:0,
+    ab:{k:'protect'}, text:'내 유닛 1장에 보호 부여 — 제균 1회 무효.'},
+  {id:'glp1', nm:'GLP-1', role:'회로·기전', suit:'mech', img:'GLP1.jpg', power:2,
+    ab:{k:'restore'}, text:'내 유닛의 디버프 제거 + 전체 +1 (포만 회복).'},
+
+  // 반대편 · 해법 (소모)
+  {id:'rice', nm:'흰쌀밥', role:'반대편·해법', suit:'fix', img:'whiterice.jpg', power:2,
+    ab:{k:'strip'}, text:'상대 유닛의 버프를 모두 제거(기질 차단).'},
+  {id:'analyzer', nm:'호흡가스 분석기', role:'반대편·해법', suit:'fix', img:'analyzer.jpg', power:2,
+    ab:{k:'reveal'}, text:'상대 손패 공개 + 1장 드로우(측정).'},
+
+  // 결과 · 증상 (조건부 점수, 필드 잔류)
+  {id:'crc', nm:'대장암', role:'결과·증상', suit:'sx', img:'coloncancer.jpg', power:7,
+    ab:{k:'symptom', requires:'fuso'}, text:'후소박테리움이 내 필드에 있으면 전투력 7, 없으면 0.'},
+];
+const DEF = Object.fromEntries(DEFS.map(d=>[d.id,d]));
+const ENABLE_MAP = {대장암:'crc'}; // symptom name -> id (for flavor logs)
+
+/* ---------------- STATE ---------------- */
+let S;
+let uidSeq = 1;
+function freshDeck(){ // each side gets identical 24-card deck, shuffled
+  const arr = DEFS.map(d=>d.id);
+  for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+  return arr;
+}
+function newUnit(id){ return {uid:uidSeq++, id, def:DEF[id], mods:0, protected:false}; }
+
+function newGame(){
+  S = {
+    deck:{p:freshDeck(), a:freshDeck()},
+    hand:{p:[], a:[]},
+    board:{p:[], a:[]},
+    gems:{p:0, a:0},
+    passed:{p:false, a:false},
+    round:1,
+    turn:'p',
+    over:false,
+    pending:null,        // {handIndex, def} awaiting target
+    revealEnemy:false,
+  };
+  draw('p',8); draw('a',8);
+  S.turn = 'p';
+  log('라운드 1 시작. 카드를 내거나 패스하세요.');
+  render();
+}
+function draw(side,n){ for(let i=0;i<n && S.deck[side].length;i++) S.hand[side].push(S.deck[side].shift()); }
+
+/* ---------------- POWER / RULES ---------------- */
+function unitPower(u){ return Math.max(0, u.def.power + u.mods); }
+function symptomActive(side,u){ return S.board[side].some(x=>x.def.id===u.def.ab.requires); }
+function cardPower(side,u){
+  if(u.def.suit==='sx') return symptomActive(side,u)? u.def.power : 0;
+  return unitPower(u);
+}
+function boardPower(side){ return S.board[side].reduce((s,u)=>s+cardPower(side,u),0); }
+function staysOnBoard(def){ return def.suit==='u' || def.suit==='sx'; }
+function solutionsDisabled(side){ // opponent has SRB on board -> this side's 해법 fizzle
+  const opp = side==='p'?'a':'p';
+  return S.board[opp].some(u=>u.def.id==='srb');
+}
+
+/* ---------------- PLAY A CARD ---------------- */
+function canTarget(def, side){
+  const opp = side==='p'?'a':'p';
+  if(def.ab.k==='destroy'){
+    return S.board[opp].some(u=>validDestroyTarget(def,u));
+  }
+  if(def.ab.k==='buffOne' || def.ab.k==='protect'){
+    return S.board[side].some(u=>u.def.suit!=='sx');
+  }
+  return null; // no target needed
+}
+function validDestroyTarget(def,u){
+  if(u.def.suit==='sx') return false;
+  if(def.ab.filter==='fungus' && u.def.cat!=='fungus') return false;
+  if(def.ab.filter==='bacteria' && u.def.cat!=='bacteria') return false;
+  if(def.ab.maxPower!=null && unitPower(u)>def.ab.maxPower) return false;
+  return true;
+}
+function needsTarget(def, side){
+  const t = canTarget(def, side);
+  if(def.ab.k==='destroy' || def.ab.k==='buffOne' || def.ab.k==='protect') return t===true; // has valid target
+  return false;
+}
+function playable(def, side){
+  // a card is playable if it needs no target, or a valid target exists
+  if(def.ab.k==='destroy'){ return canTarget(def,side)===true; }
+  if(def.ab.k==='buffOne'||def.ab.k==='protect'){ return canTarget(def,side)===true; }
+  return true;
+}
+
+function resolve(side, def, targetUid){
+  const opp = side==='p'?'a':'p';
+  const ab = def.ab;
+  const nameB = side==='p'?'나':'AI';
+  // place unit / symptom on board first (deploy effects can reference it)
+  if(staysOnBoard(def)){
+    const u = newUnit(def.id);
+    S.board[side].push(u);
+    if(def.suit==='u') log(`<b>${nameB}</b> ▸ ${def.nm} 배치 (전투력 ${def.power})`);
+    else log(`<b>${nameB}</b> ▸ ${def.nm} — 조건부 증상 배치`);
+  }
+  switch(ab.k){
+    case 'none': break;
+    case 'onDeploy':
+      if(ab.buff){ applyBuff(side, ab.buff.scope, ab.buff.amt); }
+      if(ab.enables) log(`&nbsp;&nbsp;↳ ${ab.enables} 활성 가능`);
+      break;
+    case 'buff':
+      applyBuff(side, ab.scope, ab.amt);
+      log(`<b>${nameB}</b> ▸ ${def.nm} — 내 ${ab.scope==='bacteria'?'세균':'유닛'} +${ab.amt}`); break;
+    case 'garlic':
+      applyBuff(side,'all',1);
+      { const t=topUnit(opp); if(t){ t.mods-=1; } }
+      log(`<b>${nameB}</b> ▸ 마늘 — 내 유닛 +1, 상대 최강 -1`); break;
+    case 'buffOne':
+      { const u = byUid(side,targetUid); if(u){ u.mods+=ab.amt; log(`<b>${nameB}</b> ▸ ${def.nm} — ${u.def.nm} +${ab.amt}`);} } break;
+    case 'destroy':
+      { const u = byUid(opp,targetUid);
+        if(u){
+          if(u.protected && !ab.pierce){ u.protected=false; log(`<b>${nameB}</b> ▸ ${def.nm} — ${u.def.nm} 의 보호가 막음(바이오필름 소모)`);}
+          else { removeUnit(opp,targetUid); log(`<b>${nameB}</b> ▸ ${def.nm} — 상대 ${u.def.nm} 파괴`);}
+        } } break;
+    case 'damageAll':
+      S.board[opp].forEach(u=>{ if(u.def.suit!=='sx') u.mods-=ab.amt; });
+      log(`<b>${nameB}</b> ▸ ${def.nm} — 상대 전체 -${ab.amt}`); break;
+    case 'damageTop':
+      { const t=topUnit(opp); if(t){ t.mods-=ab.amt; log(`<b>${nameB}</b> ▸ ${def.nm} — ${t.def.nm} -${ab.amt}`);} else log(`<b>${nameB}</b> ▸ ${def.nm} — 대상 없음`);} break;
+    case 'protect':
+      { const u=byUid(side,targetUid); if(u){ u.protected=true; log(`<b>${nameB}</b> ▸ 바이오필름 — ${u.def.nm} 보호`);} } break;
+    case 'restore':
+      S.board[side].forEach(u=>{ if(u.def.suit!=='sx'){ if(u.mods<0)u.mods=0; u.mods+=1; } });
+      log(`<b>${nameB}</b> ▸ GLP-1 — 내 유닛 회복 +1`); break;
+    case 'strip':
+      if(solutionsDisabled(side)){ log(`<b>${nameB}</b> ▸ 흰쌀밥 무효 — 상대 SRB(GLP-1 봉쇄)`); break; }
+      S.board[opp].forEach(u=>{ if(u.mods>0)u.mods=0; });
+      log(`<b>${nameB}</b> ▸ 흰쌀밥 — 상대 버프 제거`); break;
+    case 'reveal':
+      if(solutionsDisabled(side)){ log(`<b>${nameB}</b> ▸ 분석기 무효 — 상대 SRB(GLP-1 봉쇄)`); break; }
+      if(side==='p'){ S.revealEnemy=true; draw('p',1); log('<b>나</b> ▸ 호흡가스 분석기 — 상대 손패 공개 + 1 드로우'); }
+      else { draw('a',1); log('<b>AI</b> ▸ 호흡가스 분석기 — 1 드로우'); }
+      break;
+    case 'symptom': break; // scoring handled dynamically
+  }
+}
+function applyBuff(side, scope, amt){
+  S.board[side].forEach(u=>{
+    if(u.def.suit==='sx') return;
+    if(scope==='bacteria' && u.def.cat!=='bacteria') return;
+    u.mods += amt;
+  });
+}
+function topUnit(side){
+  let best=null;
+  S.board[side].forEach(u=>{ if(u.def.suit==='sx')return; const p=unitPower(u); if(best==null||p>unitPower(best)) best=u; });
+  return best;
+}
+function byUid(side,uid){ return S.board[side].find(u=>u.uid===uid); }
+function removeUnit(side,uid){ S.board[side]=S.board[side].filter(u=>u.uid!==uid); }
+
+/* ---------------- TURN FLOW ---------------- */
+function humanPlay(handIndex, targetUid){
+  if(S.turn!=='p'||S.over) return;
+  const id = S.hand.p[handIndex]; const def = DEF[id];
+  S.hand.p.splice(handIndex,1);
+  resolve('p', def, targetUid);
+  S.pending=null;
+  render();
+  advance();
+}
+function humanPass(){
+  if(S.turn!=='p'||S.over||S.pending) return;
+  S.passed.p=true; log('<b>나</b> ▸ 패스');
+  render(); advance();
+}
+function advance(){
+  if(S.passed.p && S.passed.a){ endRound(); return; }
+  // switch to other player if they haven't passed
+  const other = S.turn==='p'?'a':'p';
+  if(!S.passed[other]) S.turn=other;
+  // if the "other" passed, keep turn with current active (who hasn't passed)
+  render();
+  if(S.turn==='a' && !S.over){ setTimeout(aiTurn, 620); }
+}
+
+/* ---------------- AI ---------------- */
+function aiTurn(){
+  if(S.over||S.turn!=='a') return;
+  // if AI already passed somehow
+  if(S.passed.a){ advance(); return; }
+  const before = boardPower('a') - boardPower('p');
+  let best=null, bestVal=-1e9, bestTarget=null;
+  S.hand.a.forEach((id,idx)=>{
+    const def=DEF[id];
+    if(!playable(def,'a')) { // still could be a body-less unplayable weapon; value very low
+      return;
+    }
+    const {val,target} = evalCard(def);
+    if(val>bestVal){ bestVal=val; best={idx,def}; bestTarget=target; }
+  });
+  const aheadLocked = boardPower('a')>boardPower('p') && S.passed.p; // ahead & opponent done
+  // Decide pass: if opponent passed and AI is ahead -> pass to bank round & save cards
+  if(S.passed.p && boardPower('a')>boardPower('p')){
+    S.passed.a=true; log('<b>AI</b> ▸ 패스'); render(); advance(); return;
+  }
+  // if no useful card and (ahead or nothing to gain) -> pass
+  if(!best || (bestVal<=0 && boardPower('a')>=boardPower('p'))){
+    S.passed.a=true; log('<b>AI</b> ▸ 패스'); render(); advance(); return;
+  }
+  // play best
+  const id=S.hand.a[best.idx]; S.hand.a.splice(best.idx,1);
+  resolve('a', DEF[id], bestTarget);
+  render(); advance();
+}
+function evalCard(def){
+  const ab=def.ab; const opp='p';
+  // returns {val, target}
+  if(def.suit==='u'){
+    let v=def.power;
+    if(ab.k==='onDeploy'&&ab.buff){ v += ab.buff.amt * S.board.a.filter(u=>ab.buff.scope!=='bacteria'||u.def.cat==='bacteria').length; }
+    if(ab.enables && S.board.a.some(u=>u.def.id===ENABLE_MAP[ab.enables] )) v+=7; // enables a symptom already down
+    return {val:v, target:null};
+  }
+  if(def.suit==='sx'){ return {val: symptomActiveWouldBe('a',def)?def.power:0.1, target:null}; }
+  switch(ab.k){
+    case 'buff':{ const n=S.board.a.filter(u=>u.def.suit!=='sx'&&(ab.scope!=='bacteria'||u.def.cat==='bacteria')).length; return {val:ab.amt*n + def.power, target:null}; }
+    case 'garlic':{ const n=S.board.a.filter(u=>u.def.suit!=='sx').length; const t=topUnit('p'); return {val:n+def.power+(t?1:0), target:null}; }
+    case 'buffOne':{ const t=topUnit('a'); return {val:t?ab.amt+def.power:def.power-2, target:t?t.uid:null}; }
+    case 'destroy':{ let tgt=null,tp=-1; S.board.p.forEach(u=>{ if(validDestroyTarget(def,u)&&!(u.protected&&!ab.pierce)){ const p=unitPower(u); if(p>tp){tp=p;tgt=u;} } }); return {val: tgt?unitPower(tgt):-5, target:tgt?tgt.uid:null}; }
+    case 'damageAll':{ let v=0; S.board.p.forEach(u=>{ if(u.def.suit!=='sx') v+=Math.min(ab.amt,unitPower(u)); }); return {val:v, target:null}; }
+    case 'damageTop':{ const t=topUnit('p'); return {val:t?Math.min(ab.amt,unitPower(t)):-5, target:null}; }
+    case 'protect':{ const t=topUnit('a'); return {val:t?2:-3, target:t?t.uid:null}; }
+    case 'restore':{ let neg=0; S.board.a.forEach(u=>{ if(u.mods<0)neg-=u.mods; }); const n=S.board.a.filter(u=>u.def.suit!=='sx').length; return {val:neg+n+def.power, target:null}; }
+    case 'strip':{ if(solutionsDisabled('a'))return{val:-5,target:null}; let v=0; S.board.p.forEach(u=>{ if(u.mods>0)v+=u.mods; }); return {val:v+def.power, target:null}; }
+    case 'reveal':{ if(solutionsDisabled('a'))return{val:-3,target:null}; return {val:def.power+1, target:null}; }
+    default: return {val:def.power, target:null};
+  }
+}
+function symptomActiveWouldBe(side,def){ return S.board[side].some(u=>u.def.id===def.ab.requires); }
+
+/* ---------------- ROUND / MATCH END ---------------- */
+function endRound(){
+  const pp=boardPower('p'), ap=boardPower('a');
+  let msg;
+  if(pp>ap){ S.gems.p++; msg=`라운드 ${S.round} — <b>내 승리</b> (${pp} : ${ap})`; }
+  else if(ap>pp){ S.gems.a++; msg=`라운드 ${S.round} — <b>AI 승리</b> (${pp} : ${ap})`; }
+  else { S.gems.p++; S.gems.a++; msg=`라운드 ${S.round} — 무승부 (${pp} : ${ap})`; }
+  log(msg);
+  render();
+  if(S.gems.p>=2 || S.gems.a>=2 || S.round>=3){ return matchEnd(); }
+  // next round
+  const loserFirst = pp>ap ? 'a' : 'p'; // loser starts next
+  S.round++;
+  S.board.p=[]; S.board.a=[];
+  S.passed.p=false; S.passed.a=false;
+  S.revealEnemy=false;
+  draw('p',2); draw('a',2);
+  S.turn = loserFirst;
+  setTimeout(()=>{
+    log(`라운드 ${S.round} 시작. ${S.turn==='p'?'내':'AI'} 선공.`);
+    render();
+    if(S.turn==='a') setTimeout(aiTurn,700);
+  }, 900);
+}
+function matchEnd(){
+  S.over=true;
+  let win = S.gems.p>S.gems.a ? 'win' : (S.gems.a>S.gems.p?'lose':'draw');
+  if(S.gems.p===S.gems.a){ // decide by total? use last-round already counted; fallback board
+    win = boardPower('p')>boardPower('a')?'win':(boardPower('a')>boardPower('p')?'lose':'draw');
+  }
+  const T = {win:'제균 성공',lose:'과증식 우세',draw:'무승부'}[win];
+  const P = {win:'세균을 다스렸습니다. 균총을 이겼어요.',lose:'균총이 우세했습니다. 다시 도전해보세요.',draw:'막상막하. 한 번 더?'}[win];
+  document.getElementById('bTitle').textContent=T;
+  document.getElementById('bText').textContent=`${P}  (${S.gems.p} : ${S.gems.a})`;
+  document.getElementById('banner').classList.add('show');
+  render();
+}
+
+/* ---------------- TARGETING (human) ---------------- */
+function beginTarget(handIndex){
+  const def = DEF[S.hand.p[handIndex]];
+  S.pending = {handIndex, def};
+  log(`<b>조준</b> ▸ ${def.nm}: 대상을 클릭하세요`);
+  render();
+}
+function cancelTarget(){ S.pending=null; log('조준 취소'); render(); }
+function targetValidFor(def, side, u){
+  if(def.ab.k==='destroy') return side==='a' && validDestroyTarget(def,u) && !(u.protected && !def.ab.pierce);
+  if(def.ab.k==='buffOne'||def.ab.k==='protect') return side==='p' && u.def.suit!=='sx';
+  return false;
+}
+
+/* ---------------- RENDER ---------------- */
+function cardHTML(u, ctx){ // ctx: 'board'|'hand'|'enemyhand'
+  const d = u.def || u; // hand passes def-like {def} or raw
+  const def = u.def ? u.def : DEF[u];
+  const inst = u.def ? u : null;
+  const cls = def.suit;
+  let pw = def.power, pcls='';
+  if(ctx==='board' && inst){
+    pw = cardPower(u._side, inst);
+    if(inst.mods>0) pcls='buffed'; else if(inst.mods<0) pcls='hurt';
+    if(def.suit==='sx'){ pcls = symptomActive(u._side,inst)?'buffed':'hurt'; }
+  }
+  const showPw = (def.suit==='u'||def.suit==='sx'|| (ctx==='hand' && def.power>0));
+  const shield = (inst&&inst.protected)?'<span class="shield">🛡️</span>':'';
+  const prot = (inst&&inst.protected)?'protium':'';
+  return `<div class="card ${cls} ${prot} ${ctx==='enemyhand'?'facedown':''}" data-role="${ctx}">
+    <div class="art">${ctx==='enemyhand'?'✦':`<img src="art/${def.img}" alt="${def.nm}" loading="lazy">`}</div>
+    ${ctx==='enemyhand'?'':`<div class="nm">${def.nm}</div><div class="role">${def.role}</div><div class="ab">${def.text}</div>`}
+    ${(showPw&&ctx!=='enemyhand')?`<div class="pw ${pcls}">${pw}</div>`:''}
+    ${shield}
+  </div>`;
+}
+function renderBoard(side, el){
+  const arr = S.board[side];
+  if(!arr.length){ el.innerHTML='<span class="empty">필드 비어 있음</span>'; return; }
+  el.innerHTML='';
+  arr.forEach(u=>{ u._side=side; const html=cardHTML(u,'board'); const wrap=document.createElement('div'); wrap.innerHTML=html; const node=wrap.firstElementChild;
+    if(S.pending && targetValidFor(S.pending.def, side, u)){ node.classList.add('targetable'); node.onclick=()=>{ const hi=S.pending.handIndex; S.pending=null; humanPlay(hi,u.uid); }; }
+    el.appendChild(node);
+  });
+}
+function render(){
+  // scores & gems
+  document.getElementById('scoreP').textContent=boardPower('p');
+  document.getElementById('scoreA').textContent=boardPower('a');
+  document.getElementById('handA').textContent='손패 '+S.hand.a.length;
+  gemHTML('gemsP',S.gems.p); gemHTML('gemsA',S.gems.a);
+  // boards
+  renderBoard('a', document.getElementById('boardA'));
+  renderBoard('p', document.getElementById('boardP'));
+  // enemy hand as facedown row? show count only (already). If revealed, could show — keep simple: reveal via log.
+  // hand
+  const hand=document.getElementById('hand'); hand.innerHTML='';
+  S.hand.p.forEach((id,idx)=>{
+    const def=DEF[id]; const wrap=document.createElement('div'); wrap.innerHTML=cardHTML({def},'hand'); const node=wrap.firstElementChild;
+    const ok = playable(def,'p') && S.turn==='p' && !S.over && !S.passed.p;
+    if(ok){ node.classList.add('playable'); node.onclick=()=>{
+        if(S.turn!=='p'||S.over||S.passed.p) return;
+        if(S.pending){ return; }
+        if(needsTarget(def,'p')) beginTarget(idx);
+        else humanPlay(idx,null);
+      };
+    } else if(!playable(def,'p')){ node.classList.add('dead'); }
+    if(S.pending && S.pending.handIndex===idx){ node.style.outline='2px solid var(--accent)'; }
+    hand.appendChild(node);
+  });
+  // turn pill + buttons
+  const tp=document.getElementById('turnpill');
+  if(S.over){ tp.textContent='게임 종료'; tp.className='turnpill'; }
+  else if(S.passed.p && !S.passed.a){ tp.textContent='AI 진행 중 (나 패스)'; tp.className='turnpill'; }
+  else { tp.textContent = S.turn==='p'?'내 턴':'AI 턴'; tp.className='turnpill'+(S.turn==='p'?' you':''); }
+  document.getElementById('passBtn').disabled = !(S.turn==='p'&&!S.over&&!S.passed.p&&!S.pending);
+  document.getElementById('cancelBtn').style.display = S.pending?'inline-flex':'none';
+}
+function gemHTML(id,n){ let s=''; for(let i=0;i<2;i++) s+=`<span class="gem ${i<n?'on':''}"></span>`; document.getElementById(id).innerHTML=s; }
+let logLine=0;
+function log(html){ const el=document.getElementById('log'); el.innerHTML=html; }
+
+/* ---------------- WIRE ---------------- */
+document.getElementById('passBtn').onclick=humanPass;
+document.getElementById('cancelBtn').onclick=cancelTarget;
+document.getElementById('restart').onclick=()=>{ document.getElementById('banner').classList.remove('show'); newGame(); };
+document.getElementById('bBtn').onclick=()=>{ document.getElementById('banner').classList.remove('show'); newGame(); };
+newGame();
+</script>
+</body>
+</html>
