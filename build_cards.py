@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Neo-Skepticism 개념 카드덱 생성기 → cards.html.  실행: python3 build_cards.py"""
+"""Neo-Skepticism 개념 카드덱 생성기 → card.html.  실행: python3 build_cards.py"""
 def svg(inner): return '<svg viewBox="0 0 100 100" aria-hidden="true">'+inner+'</svg>'
 G={}
 G['overgrowth']=svg('<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><rect x="16" y="30" width="24" height="11" rx="5.5"/><rect x="46" y="40" width="24" height="11" rx="5.5"/><rect x="26" y="54" width="24" height="11" rx="5.5"/><rect x="56" y="60" width="20" height="10" rx="5"/><path d="M74 26 l7 6 -7 6"/></g>')
@@ -216,6 +216,6 @@ HTML=('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
 'if(!c){c=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";}root.setAttribute("data-theme",c==="dark"?"light":"dark");});})();\n</script>\n'
 '</body>\n</html>\n')
 
-open('cards.html','w',encoding='utf-8').write(HTML)
+open('card.html'),'w',encoding='utf-8').write(HTML)
 miss=[r[2] for grp in groups for r in grp if r[2] not in G]
-print('cards.html', len(HTML), 'bytes ·', HTML.count('class="pcard'), 'cards · total', total, '· missing glyphs:', miss or 'none')
+print('card.html', len(HTML), 'bytes ·', HTML.count('class="pcard'), 'cards · total', total, '· missing glyphs:', miss or 'none')
