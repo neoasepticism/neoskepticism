@@ -156,6 +156,10 @@ IMG={
  '락토바실러스':'lactobacillus.jpg','트리메틸아민':'trimethylamine.jpg','히스타민':'histamine.jpg',
  '호흡가스 분석기':'analyzer.jpg','흰쌀밥':'whiterice.jpg','경험적 제균':'medicine.jpg',
  '뜨거운 음식':'hotfood.jpg','흰빵':'whitebread.jpg','치은염':'gingivitis.jpg',
+ '인돌·스카톨':'indole.jpg',
+ '메트로니다졸':'metronidazole.jpg','리팍시민':'rifaximine.jpg','시프로플록사신':'ciprofloxacin.jpg',
+ '아목시실린/클라불란산':'amoxiclav.jpg','독시사이클린':'doxycycline.jpg','클래리스로마이신':'clarithromycin.jpg',
+ '플루코나졸':'fluconazole.jpg','이트라코나졸':'itraconazole.jpg','테르비나핀':'terbinafine.jpg',
 }
 def cls_for(b):
     if '기질' in b: return 'sub'
