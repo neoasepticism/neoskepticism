@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개념 카드덱 — 균·가스·먹이 한눈에 | Neo-Skepticism</title>
+<meta name="description" content="SIBO·SIFO·SRB·후소박테리움·칸디다·말라쎄지아·황화수소·메틸메르캅탄·섬유질·마늘·프로바이오틱스까지 — 만성 증상 뒤의 균·가스·먹이를 18장의 카드로. 양준상 MD Neo-Skepticism (교육 목적).">
+<link rel="stylesheet" href="style.css">
+<style>
+  .deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:16px;margin-top:22px}
+  .pcard{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
+    border-radius:16px;padding:20px 18px 16px;overflow:hidden;--c:var(--accent);
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .pcard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c)}
+  .pcard:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 18px 36px -22px #0008}
+  .pcard.gas{--c:var(--sulfur-line)} .pcard.sub{--c:var(--danger)}
+  .pglyph{height:92px;display:grid;place-items:center;color:var(--c);margin-bottom:12px}
+  .pglyph svg{width:82px;height:82px}
+  .psci{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--faint);line-height:1.3;min-height:26px}
+  .pname{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:3px 0 9px;line-height:1.15}
+  .pbadge{align-self:flex-start;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;padding:3px 8px;border-radius:5px;background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c);margin-bottom:11px}
+  .pdesc{font-size:12.8px;color:var(--ink2);line-height:1.55;flex:1}
+  .pmeta{margin-top:11px;font-family:var(--mono);font-size:10.5px;color:var(--c);border-top:1px solid var(--line);padding-top:9px;line-height:1.5}
+  .pmeta s{color:var(--faint)}
+  .deckhero{padding:30px 0 8px;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+<nav><div class="wrap row">
+  <a class="brand" href="index.html"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>
+  <div class="navlinks">
+    <a href="index.html">홈</a>
+    <a href="index.html#assess">자가진단</a>
+    <a href="index.html#map">증상별</a>
+    <button class="theme" id="themeBtn" aria-label="테마 전환">◐</button>
+    <a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener" class="btn">카카오 상담</a>
+  </div>
+</div></nav>
+
+<div class="wrap"><div class="crumb"><a href="index.html">Neo-Skepticism</a> · <span>개념 카드덱</span></div></div>
+
+<header class="hero deckhero"><div class="wrap">
+  <span class="eyebrow s">五 · 개념 카드덱</span>
+  <h1>흩어진 이름들을, 한 벌의 카드로.</h1>
+  <p class="lede">SIBO·SRB·후소박테리움·메틸메르캅탄·마늘… 진료에서 자주 나오는 이름들을 <b>무대(과증식) · 용의자(균) · 산물(가스) · 먹이(기질)</b> 네 갈래로 정리했습니다. 각 카드가 무엇을 만들고 어디로 이어지는지 한눈에.</p>
+</div></header>
+
+<section><div class="wrap">
+<div class="sechead"><span class="eyebrow ">과증식 상태 · 2</span><h2>무대 — 어디서 벌어지나</h2><p>증상이 시작되는 장소. 세균과 진균이 소장에서 과하게 늘어난 두 상태.</p></div>
+  <div class="deck">
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><rect x="16" y="30" width="24" height="11" rx="5.5"/><rect x="46" y="40" width="24" height="11" rx="5.5"/><rect x="26" y="54" width="24" height="11" rx="5.5"/><rect x="56" y="60" width="20" height="10" rx="5"/><path d="M74 26 l7 6 -7 6"/></g></svg></div>
+      <div class="psci">Small Intestinal Bacterial Overgrowth</div>
+      <div class="pname">SIBO</div>
+      <span class="pbadge">과증식 상태</span>
+      <p class="pdesc">소장에 세균이 과하게 늘어난 상태. 복부팽만·가스·설사·영양흡수 저하의 배경이 됩니다.</p>
+      <div class="pmeta">→ 무대: 세균이 자라는 곳</div>
+    </div>
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="34" cy="40" r="10"/><circle cx="54" cy="34" r="7"/><circle cx="60" cy="56" r="11"/><circle cx="38" cy="62" r="7"/><path d="M74 26 l7 6 -7 6" fill="none" stroke-linecap="round"/></g></svg></div>
+      <div class="psci">Small Intestinal Fungal Overgrowth</div>
+      <div class="pname">SIFO</div>
+      <span class="pbadge">과증식 상태</span>
+      <p class="pdesc">세균이 아니라 진균(효모·곰팡이)이 소장에서 과증식한 상태. SIBO와 증상이 겹쳐 자주 놓칩니다.</p>
+      <div class="pmeta">→ 무대: 곰팡이 버전</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<div class="sechead"><span class="eyebrow ">미생물 · 8</span><h2>용의자들 — 균과 곰팡이</h2><p>흩어진 증상 뒤에서 반복해 등장하는 세균과 진균. 각각이 만드는 것과 결과.</p></div>
+  <div class="deck">
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round"><path d="M32 62 Q34 34 62 34" stroke-width="9"/><path d="M62 34 q12 -3 16 -13 M63 40 q13 2 18 -6" stroke-width="2.4"/></g></svg></div>
+      <div class="psci">Sulfate-Reducing Bacteria · Desulfovibrio</div>
+      <div class="pname">SRB</div>
+      <span class="pbadge">세균</span>
+      <p class="pdesc">황을 환원해 황화수소를 만드는 세균. 포만 호르몬 GLP-1까지 억제하는, 이 프레임의 핵심 용의자.</p>
+      <div class="pmeta">→ 만드는 것: H₂S · GLP-1 억제</div>
+    </div>
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.5"><rect x="26" y="42" width="44" height="17" rx="8.5"/><path d="M35 50 h26" stroke-width="1.6" opacity=".5"/></g></svg></div>
+      <div class="psci">Eggerthella</div>
+      <div class="pname">에거텔라</div>
+      <span class="pbadge">세균</span>
+      <p class="pdesc">황화수소 생산과 연결되는 장내 세균. 우울·양극성 패턴에서 지목됩니다.</p>
+      <div class="pmeta">→ 연결: 우울 · H₂S</div>
+    </div>
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2"><path d="M16 50 Q50 34 84 50 Q50 66 16 50 Z"/><path d="M50 40 V60" stroke-width="1.8" opacity=".55"/></g></svg></div>
+      <div class="psci">Fusobacterium nucleatum</div>
+      <div class="pname">후소박테리움</div>
+      <span class="pbadge">세균</span>
+      <p class="pdesc">한 균이 세 얼굴 — 메틸메르캅탄(입냄새·불안)과 대장암에 모두 관여. 구강에서 장까지.</p>
+      <div class="pmeta">→ 만드는 것: 메틸메르캅탄</div>
+    </div>
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2"><rect x="30" y="40" width="20" height="13" rx="6.5"/><rect x="50" y="52" width="20" height="13" rx="6.5"/><path d="M30 40 l-5 -5 M50 40 l4 -6 M70 52 l6 -3" stroke-width="2" stroke-linecap="round" opacity=".6"/></g></svg></div>
+      <div class="psci">Porphyromonas gingivalis</div>
+      <div class="pname">진지발리스</div>
+      <span class="pbadge">세균</span>
+      <p class="pdesc">치주염의 대표균. 구취·잇몸병을 넘어 전신 염증과의 연결이 연구되는 균.</p>
+      <div class="pmeta">→ 자리: 잇몸 · 구강</div>
+    </div>
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="40" cy="38" r="9"/><circle cx="56" cy="36" r="9"/><circle cx="48" cy="50" r="9"/><circle cx="62" cy="50" r="9"/><circle cx="42" cy="62" r="9"/><circle cx="58" cy="64" r="9"/></g></svg></div>
+      <div class="psci">Staphylococcus aureus</div>
+      <div class="pname">황색포도상구균</div>
+      <span class="pbadge">세균</span>
+      <p class="pdesc">아토피 피부의 ~70%에서 검출. '다양성 부족'이 아니라 이 한 균의 과증식이 문제입니다.</p>
+      <div class="pmeta">→ 결과: 아토피 · 피부염</div>
+    </div>
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><ellipse cx="30" cy="64" rx="10" ry="8"/><ellipse cx="48" cy="52" rx="10" ry="8"/><ellipse cx="66" cy="40" rx="10" ry="8"/><ellipse cx="80" cy="30" rx="6.5" ry="5.5"/></g></svg></div>
+      <div class="psci">Candida</div>
+      <div class="pname">칸디다</div>
+      <span class="pbadge">진균 · 곰팡이</span>
+      <p class="pdesc">재발성 질염과 장 과증식의 주역. 가성균사를 뻗어 조직을 파고듭니다.</p>
+      <div class="pmeta">→ 결과: 재발성 감염</div>
+    </div>
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2"><circle cx="44" cy="56" r="18"/><circle cx="68" cy="38" r="10"/><path d="M57 45 l4 4" stroke-width="2" opacity=".5"/></g></svg></div>
+      <div class="psci">Yeast</div>
+      <div class="pname">효모</div>
+      <span class="pbadge">진균 · 곰팡이</span>
+      <p class="pdesc">당을 발효시키는 미생물. SIFO의 핵심 — 몸 안에서 원치 않는 발효를 일으킵니다.</p>
+      <div class="pmeta">→ 무대: SIFO</div>
+    </div>
+    <div class="pcard ">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2"><circle cx="45" cy="56" r="17"/><path d="M57 45 q5 -1 5 -6 q0 -5 -5 -6" stroke-width="2.6"/><circle cx="66" cy="33" r="8.5"/></g></svg></div>
+      <div class="psci">Malassezia</div>
+      <div class="pname">말라쎄지아</div>
+      <span class="pbadge">진균 · 곰팡이</span>
+      <p class="pdesc">지루성 피부염·비듬의 방아쇠. 피부를 알칼리화시켜 포도상구균 악순환을 엽니다.</p>
+      <div class="pmeta">→ 결과: 지루성 · 비듬</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+<div class="sechead"><span class="eyebrow s">가스 · 독소 · 2</span><h2>산물 — 세균이 뿜는 것</h2><p>미생물이 만들어 몸을 흔드는 두 가지 황 가스. 냄새이자 독성.</p></div>
+  <div class="deck">
+    <div class="pcard gas">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M30 62 L50 44 L70 62" stroke-width="3"/><circle cx="50" cy="44" r="8" fill="currentColor" stroke="none"/><circle cx="30" cy="62" r="5"/><circle cx="70" cy="62" r="5"/></g><text x="50" y="30" text-anchor="middle" font-size="14" font-family="monospace" fill="currentColor">S</text></svg></div>
+      <div class="psci">H₂S · Hydrogen sulfide</div>
+      <div class="pname">황화수소</div>
+      <span class="pbadge">가스 · 독소</span>
+      <p class="pdesc">썩은 계란 냄새의 가스. 시안화물과 같은 계열의 미토콘드리아 독성을 가집니다. SRB의 산물.</p>
+      <div class="pmeta">→ 독성: 세포 호흡 억제</div>
+    </div>
+    <div class="pcard gas">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M22 60 L42 48 L62 60 L82 48" stroke-width="3"/><circle cx="42" cy="48" r="6"/><circle cx="62" cy="60" r="6"/><circle cx="82" cy="48" r="8" fill="currentColor" stroke="none"/><path d="M42 48 l-4 -10 M42 48 l6 -9" stroke-width="2" opacity=".6"/></g><text x="82" y="38" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">S</text></svg></div>
+      <div class="psci">CH₃SH · Methyl mercaptan</div>
+      <div class="pname">메틸메르캅탄</div>
+      <span class="pbadge">가스 · 독소</span>
+      <p class="pdesc">마늘 호흡의 진짜 정체. 표준 검사가 놓치는 가스이며, 불안과 강하게 연결됩니다.</p>
+      <div class="pmeta">→ 검사가 놓침 · 불안</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<div class="sechead"><span class="eyebrow ">기질 · 먹이 · 6</span><h2>먹이 — 무엇이 키우나</h2><p>"몸에 좋다"고 배운 것들이, 이 프레임에서는 세균의 먹이(기질)로 지목됩니다.</p></div>
+  <div class="deck">
+    <div class="pcard sub">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 38 Q50 60 80 38"/><path d="M20 52 Q50 74 80 52"/><path d="M20 66 Q50 44 80 66"/></g></svg></div>
+      <div class="psci">Fiber</div>
+      <div class="pname">섬유질</div>
+      <span class="pbadge">기질 · 먹이</span>
+      <p class="pdesc">장에서 다 흡수되지 않고 대장으로 내려가 발효의 재료가 됩니다.</p>
+      <div class="pmeta">명분 <s>좋은 균의 먹이</s> → 실체: 발효 기질</div>
+    </div>
+    <div class="pcard sub">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><path d="M30 56 Q30 36 50 36 Q70 36 70 56 Q70 72 50 72 Q30 72 30 56 Z"/><path d="M42 38 Q42 58 43 70 M50 36 V72 M58 38 Q58 58 57 70" stroke-width="2" opacity=".6"/><path d="M50 36 Q47 26 50 20 Q53 26 50 36" stroke-width="2.4"/></g></svg></div>
+      <div class="psci">Garlic</div>
+      <div class="pname">마늘</div>
+      <span class="pbadge">기질 · 먹이</span>
+      <p class="pdesc">식물 황(黃)의 대표 공급원. 호흡가스 분석에서 가장 친염증성인 것 중 하나로 꼽힙니다.</p>
+      <div class="pmeta">명분 <s>항염 · 면역</s> → 실체: 식물 황 공급</div>
+    </div>
+    <div class="pcard sub">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><path d="M28 56 Q28 34 50 34 Q72 34 72 56 Q72 74 50 74 Q28 74 28 56 Z"/><ellipse cx="50" cy="55" rx="11" ry="15" stroke-width="2" opacity=".55"/><path d="M50 34 q-4 -8 -1 -14 M50 34 q4 -8 1 -14" stroke-width="2.4"/></g></svg></div>
+      <div class="psci">Onion</div>
+      <div class="pname">양파</div>
+      <span class="pbadge">기질 · 먹이</span>
+      <p class="pdesc">황과 프럭탄(난소화성 당)을 함께 공급해 장내 발효를 키웁니다.</p>
+      <div class="pmeta">명분 <s>항산화</s> → 실체: 황 · 프럭탄</div>
+    </div>
+    <div class="pcard sub">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor"><circle cx="50" cy="50" r="25" stroke-width="4"/><circle cx="50" cy="50" r="20" stroke-width="2" opacity=".5"/><circle cx="50" cy="50" r="7" stroke-width="2.6"/><circle cx="50" cy="38" r="3.2" fill="currentColor" stroke="none"/><circle cx="61" cy="55" r="3.2" fill="currentColor" stroke="none"/><circle cx="40" cy="58" r="3.2" fill="currentColor" stroke="none"/></g></svg></div>
+      <div class="psci">Gimbap</div>
+      <div class="pname">김밥</div>
+      <span class="pbadge">기질 · 먹이</span>
+      <p class="pdesc">생채소·김·밥이 뭉친 상온 보관 한 끼 — 여러 기질과 세균 노출이 한 번에 들어옵니다.</p>
+      <div class="pmeta">명분 <s>간편한 한 끼</s> → 실체: 기질 + 상온 세균</div>
+    </div>
+    <div class="pcard sub">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M50 20 C40 30 30 34 34 50 C36 62 30 66 34 74 C48 72 46 78 50 80 C54 78 52 72 66 74 C70 66 64 62 66 50 C70 34 60 30 50 20 Z"/><path d="M50 30 V74" stroke-width="2" opacity=".55"/><path d="M50 46 L40 42 M50 56 L60 52 M50 40 L58 36" stroke-width="1.8" opacity=".5"/></g></svg></div>
+      <div class="psci">Lettuce</div>
+      <div class="pname">상추</div>
+      <span class="pbadge">기질 · 먹이</span>
+      <p class="pdesc">생채소를 그대로 먹는 것은 세균을 직접 섭취하는 일이며, 알칼리성이 환경을 바꿉니다.</p>
+      <div class="pmeta">명분 <s>생채소 · 다이어트</s> → 실체: 날 세균 · 알칼리</div>
+    </div>
+    <div class="pcard sub">
+      <div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><rect x="24" y="38" width="52" height="24" rx="12"/><path d="M50 38 V62" stroke-width="2"/><circle cx="37" cy="50" r="3.4" fill="currentColor" stroke="none"/><circle cx="61" cy="47" r="3.4" fill="currentColor" stroke="none"/><circle cx="63" cy="55" r="2.6" fill="currentColor" stroke="none"/></g></svg></div>
+      <div class="psci">Probiotics</div>
+      <div class="pname">프로바이오틱스</div>
+      <span class="pbadge">기질 · 먹이</span>
+      <p class="pdesc">'좋은 균'으로 팔리지만, 히스타민을 생산하는 균을 몸에 직접 투입하는 셈입니다.</p>
+      <div class="pmeta">명분 <s>좋은 균 보충</s> → 실체: 히스타민 생산균</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap narrow">
+  <div class="consult"><h2>이 카드들이 당신 안에서 어떻게 엮이는지.</h2><p>증상 자가진단으로 당신의 패턴이 어느 카드와 맞는지 확인하고, 필요하면 상담으로 이어가세요.</p>
+  <a href="index.html#assess" class="btn" style="background:#fff;color:var(--accent2)">자가진단 하러 가기 →</a>
+  <div style="margin-top:16px"><a href="https://blog.naver.com/healthcrew" target="_blank" rel="noopener" style="color:#fff;opacity:.82;font-size:13.5px;text-decoration:underline">네이버 블로그에서 더 읽어보기 →</a></div></div>
+  <p class="disc"><b>고지.</b> 각 카드는 양준상 MD의 임상 프레임을 <b>교육·성찰 목적</b>으로 요약한 것으로, 특정 질병의 진단·치료를 뜻하지 않습니다. 견해 중 일부는 확립된 정설과 다를 수 있으며, 어떤 증상이든 반드시 의료 전문가와 상의하세요.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <a class="brand" href="index.html" style="margin-bottom:16px"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>
+  <div class="dl"><b>고지.</b> 교육·성찰 목적의 콘텐츠이며 의학적 조언을 대체하지 않습니다.</div>
+  <div style="margin-top:16px;font-size:13px"><a href="https://pf.kakao.com/_yEsvT" target="_blank" rel="noopener">카카오톡 채널</a> · <a href="https://blog.naver.com/healthcrew" target="_blank" rel="noopener">네이버 블로그</a></div>
+  <div style="margin-top:18px;font-family:var(--mono);font-size:11.5px">© 2026 Neo-Skepticism · 양준상 MD</div>
+</div></footer>
+
+<script>
+(function(){var root=document.documentElement;document.getElementById("themeBtn").addEventListener("click",function(){var c=root.getAttribute("data-theme");if(!c){c=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";}root.setAttribute("data-theme",c==="dark"?"light":"dark");});})();
+</script>
+</body>
+</html>
