@@ -166,7 +166,7 @@
   var root=document.documentElement;
   document.getElementById('themeBtn').addEventListener('click',function(){
     var cur=root.getAttribute('data-theme');
-    if(!cur){cur=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+    if(!cur){cur='dark';}
     root.setAttribute('data-theme',cur==='dark'?'light':'dark');
   });
 })();

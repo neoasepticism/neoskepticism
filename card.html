@@ -7,8 +7,7 @@
 <meta name="description" content="SIBO·SRB·후소박테리움·GLP-1·호흡가스 분석기·항생제·대장암까지 — 만성 증상 뒤의 무대·먹이·용의자·산물·회로·결과·반대편·무기를 65장의 카드로. 양준상 MD Neo-Skepticism (교육 목적).">
 <link rel="stylesheet" href="style.css">
 <style>
-  :root{--mech:#5860c8;--fix:#2f9160;--drug:#3f7f97;--sx:#a8465f}
-  @media(prefers-color-scheme:dark){:root{--mech:#93a0f2;--fix:#5cc78c;--drug:#74b8d0;--sx:#e492a6}}
+  :root{--mech:#93a0f2;--fix:#5cc78c;--drug:#74b8d0;--sx:#e492a6}
   :root[data-theme="dark"]{--mech:#93a0f2;--fix:#5cc78c;--drug:#74b8d0;--sx:#e492a6}
   :root[data-theme="light"]{--mech:#5860c8;--fix:#2f9160;--drug:#3f7f97;--sx:#a8465f}
   .deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:16px;margin-top:22px}
@@ -634,7 +633,7 @@
 </div></footer>
 
 <script>
-(function(){var root=document.documentElement;document.getElementById("themeBtn").addEventListener("click",function(){var c=root.getAttribute("data-theme");if(!c){c=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";}root.setAttribute("data-theme",c==="dark"?"light":"dark");});})();
+(function(){var root=document.documentElement;document.getElementById("themeBtn").addEventListener("click",function(){var c=root.getAttribute("data-theme");if(!c){c="dark";}root.setAttribute("data-theme",c==="dark"?"light":"dark");});})();
 </script>
 </body>
 </html>

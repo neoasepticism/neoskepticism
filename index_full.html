@@ -11,27 +11,18 @@
 <title>Neo-Skepticism — 당신의 만성 증상은 낫지 않는 게 아닙니다</title>
 <style>
   :root{
-    --bg:#eef2f1; --surface:#ffffff; --surface2:#f6f8f7;
-    --ink:#141d1c; --ink2:#485755; --faint:#7f8e8c;
-    --line:#dde4e2; --line2:#cbd5d2;
-    --accent:#0d7a70; --accent2:#0a5d55; --accent-wash:#e2efed;
-    --sulfur:#8f6412; --sulfur-line:#b8862b; --sulfur-wash:#f4ecd6;
-    --danger:#9e3b2b;
+    --bg:#0c1211; --surface:#121b19; --surface2:#0f1716;
+    --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
+    --line:#233230; --line2:#2c3b39;
+    --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
+    --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e;
+    --danger:#e0846f;
     --sans:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Malgun Gothic',system-ui,sans-serif;
     --mono:'SF Mono',ui-monospace,'JetBrains Mono','Roboto Mono',Menlo,Consolas,monospace;
     --serif:'Apple Myungjo','Nanum Myeongjo',ui-serif,Georgia,serif;
     --maxw:1080px;
   }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --bg:#0c1211; --surface:#121b19; --surface2:#0f1716;
-      --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
-      --line:#233230; --line2:#2c3b39;
-      --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
-      --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e;
-      --danger:#e0846f;
-    }
-  }
+  /* 기본값 = 다크. 라이트는 수동 토글(data-theme="light")로만 진입 */
   :root[data-theme="dark"]{
     --bg:#0c1211; --surface:#121b19; --surface2:#0f1716;
     --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
@@ -494,7 +485,7 @@
   var root=document.documentElement, tb=document.getElementById('themeBtn');
   tb.addEventListener('click',function(){
     var cur=root.getAttribute('data-theme');
-    if(!cur){ cur = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark':'light'; }
+    if(!cur){ cur = 'dark'; }
     root.setAttribute('data-theme', cur==='dark'?'light':'dark');
   });
 
