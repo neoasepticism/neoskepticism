@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /index_full.html
+Disallow: /card-game.html
+
+Sitemap: https://neoasepticism.github.io/neoskepticism/sitemap.xml
