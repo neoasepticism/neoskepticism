@@ -4,6 +4,9 @@
 
 ## 핵심 페이지
 - [SIBO 완전 가이드](https://neoasepticism.github.io/neoskepticism/sibo.html): 소장 내 세균 과증식(SIBO)의 정의·원인·증상·검사·치료·재발 이유를 Q&A로 정리. 유산균·식이섬유가 오히려 과증식을 악화시킬 수 있다는 반직관적 근거 포함.
+- [장-피부 축 완전 가이드](https://neoasepticism.github.io/neoskepticism/axis.html): 모낭염·지루성피부염·주사피부염·아토피가 장내 세균·진균과 연결되는 경로(말라쎄지아 → 알칼리화 → 황색포도상구균 악순환)를 Q&A로 정리.
+- [칸디다·SIFO 가이드](https://neoasepticism.github.io/neoskepticism/candida.html): 소장 내 진균 과증식(SIFO)이 SIBO와 어떻게 다른지, 항생제만 쓰면 왜 악화될 수 있는지를 Q&A로 정리.
+- [지연성 알레르기 가이드](https://neoasepticism.github.io/neoskepticism/allergy.html): IgG 음식물 과민증의 원인·검사·SIBO와의 관계를 Q&A로 정리.
 - [메인 — 자가진단·기전](https://neoasepticism.github.io/neoskepticism/index.html): 장내 세균 과증식이 만성 증상의 상류라는 핵심 주장, 60초 자가진단 도구, 웰니스 역설, 기전 인과사슬.
 - [복부팽만·가스](https://neoasepticism.github.io/neoskepticism/bloating.html): 무취 가스(H₂·CH₄)와 악취 가스(H₂S·CH₃SH)의 구분, SRB 과증식 신호.
 - [구취](https://neoasepticism.github.io/neoskepticism/halitosis.html): 표준 VSC 측정이 놓치는 비-VSC 구취, 장내 세균 기원의 입냄새, 생선냄새증후군(TMAU) 선례.
