@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-theme="dark">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,7 +76,14 @@
     outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
 
   /* hero */
-  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  /* 하이브리드: 히어로는 항상 다크 'readout 밴드'(별자리·계측기 정체성). 본문은 라이트. */
+  .hero{
+    --bg:#0c1211; --surface:#121b19; --surface2:#0f1716; --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
+    --line:#233230; --line2:#2c3b39; --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
+    --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e; --danger:#e0846f;
+    background:#0c1211; color:var(--ink);
+    position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .btn.ghost{color:var(--ink);border-color:var(--line2)}
   #gas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.95;z-index:1}
   /* padding-block only — keep .wrap's horizontal 24px (was padding:76px 0 60px → 0 side padding on mobile) */
   .hero .inner{position:relative;z-index:2;padding-block:76px 60px}
@@ -492,7 +499,7 @@
   /* ---------- hero: generative gas-molecule field ---------- */
   var cv=document.getElementById('gas'), cx=cv&&cv.getContext('2d');
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
+  function css(v){return getComputedStyle((cv&&cv.parentElement)||root).getPropertyValue(v).trim();}
   var W,H,DPR,t=0,raf,mols=[];
   // molecule templates — atom coords (unit) + bonds; 'big' = central/heavy atom index
   var TPL={

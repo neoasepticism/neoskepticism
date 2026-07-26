@@ -1,13 +1,13 @@
 :root{
-  --bg:#0c1211; --surface:#121b19; --surface2:#0f1716; --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
-  --line:#233230; --line2:#2c3b39; --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
-  --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e; --danger:#e0846f;
+  --bg:#eef2f1; --surface:#ffffff; --surface2:#f6f8f7; --ink:#141d1c; --ink2:#485755; --faint:#7f8e8c;
+  --line:#dde4e2; --line2:#cbd5d2; --accent:#0d7a70; --accent2:#0a5d55; --accent-wash:#e2efed;
+  --sulfur:#8f6412; --sulfur-line:#b8862b; --sulfur-wash:#f4ecd6; --danger:#9e3b2b;
   --sans:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Malgun Gothic',system-ui,sans-serif;
   --mono:'SF Mono',ui-monospace,'JetBrains Mono','Roboto Mono',Menlo,Consolas,monospace;
   --serif:'Apple Myungjo','Nanum Myeongjo',ui-serif,Georgia,serif;
   --maxw:1080px;
 }
-/* 기본값 = 다크. 라이트는 수동 토글(data-theme="light")로만 진입 */
+/* 기본값 = 라이트(본문 가독·신뢰). 다크는 수동 토글(data-theme="dark")로 전체 전환 */
 :root[data-theme="dark"]{
   --bg:#0c1211; --surface:#121b19; --surface2:#0f1716; --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
   --line:#233230; --line2:#2c3b39; --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
@@ -50,7 +50,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 
 .crumb{font-family:var(--mono);font-size:12px;color:var(--faint);padding:22px 0 0}
 .crumb a{color:var(--faint)} .crumb a:hover{color:var(--accent)}
-.hero{padding:26px 0 20px;border-bottom:1px solid var(--line)}
+/* 하이브리드: 히어로는 항상 다크 'readout 밴드'(브랜드 정체성). 본문은 라이트. */
+.hero{
+  --bg:#0c1211; --surface:#121b19; --surface2:#0f1716; --ink:#e9f1ef; --ink2:#9fb0ad; --faint:#6b7c79;
+  --line:#233230; --line2:#2c3b39; --accent:#3fc7b8; --accent2:#2fae9f; --accent-wash:#10201e;
+  --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e; --danger:#e0846f;
+  background:#0c1211; color:var(--ink);
+  padding:26px 0 40px; border-bottom:1px solid var(--line)}
+.hero .btn.ghost{color:var(--ink);border-color:var(--line2)}
 .hero .k{margin-bottom:20px}
 .hero h1{font-size:clamp(28px,5vw,46px);line-height:1.1;font-weight:800;max-width:20ch}
 .hero .lede{font-size:clamp(16px,2vw,18.5px);color:var(--ink2);max-width:56ch;margin:22px 0 0;line-height:1.6}

@@ -113,7 +113,7 @@
   var root=document.documentElement;
   document.getElementById('themeBtn').addEventListener('click',function(){
     var cur=root.getAttribute('data-theme');
-    if(!cur){cur='dark';}
+    if(!cur){cur='light';}
     root.setAttribute('data-theme',cur==='dark'?'light':'dark');
   });
 })();
