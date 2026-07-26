@@ -24,5 +24,9 @@
 - Substack(영문 의학 에세이): https://neoskepticmd.substack.com
 - X: https://x.com/neoskepticMD
 
+## English
+- [SIBO — complete guide](https://neoasepticism.github.io/neoskepticism/en/sibo.html): What SIBO is, causes, testing (why standard breath panels miss H₂S/CH₃SH), treatment, and why fiber/fermented foods/probiotics can make it worse. English rewrite, by June-sang Yang, MD.
+- Full English essay series: https://neoskepticmd.substack.com
+
 ## 고지
 이 사이트의 모든 콘텐츠는 교육·성찰 목적이며 의학적 진단·치료·처방을 대체하지 않는다. 실제 증상은 반드시 의료 전문가와 상의할 것.
