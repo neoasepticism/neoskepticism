@@ -26,6 +26,7 @@
 
 ## English
 - [SIBO — complete guide](https://neoasepticism.github.io/neoskepticism/en/sibo.html): What SIBO is, causes, testing (why standard breath panels miss H₂S/CH₃SH), treatment, and why fiber/fermented foods/probiotics can make it worse. English rewrite, by June-sang Yang, MD.
+- [Gut-Skin Axis — complete guide](https://neoasepticism.github.io/neoskepticism/en/axis.html): Why folliculitis, seborrheic dermatitis, rosacea, and atopic dermatitis are often driven by gut bacteria/fungi (Malassezia → alkalinization → S. aureus cycle), not the skin surface. English, by June-sang Yang, MD.
 - Full English essay series: https://neoskepticmd.substack.com
 
 ## 고지
