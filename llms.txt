@@ -37,6 +37,7 @@
 - [Skin — eczema, seborrheic dermatitis, rosacea](https://neoasepticism.github.io/neoskepticism/en/skin.html): Not low diversity but overgrowth of one microbe (Staph aureus ~70% in atopy, Malassezia) and skin alkalinization. English, by June-sang Yang, MD.
 - [The Carnirice Protocol](https://neoasepticism.github.io/neoskepticism/en/carnirice.html): a decontamination diet built on white rice + simply-salted cooked protein, minimizing fiber, sulfur aromatics (garlic/onion), raw vegetables, fermented foods & probiotics to starve SIBO/SRB. Why white rice is safer than whole grains. Includes a 3-tier food table. English, by June-sang Yang, MD.
 - [Can Probiotics Be Harmful?](https://neoasepticism.github.io/neoskepticism/en/probiotics.html): why "good bacteria" can worsen SIBO (too many in the wrong place, not too few), plus documented harms — probiotic-associated sepsis (WGS-traced), the PROPATRIA trial mortality signal, antibiotic-resistance gene transfer, D-lactic acidosis / brain fog. Fermented foods carry the same logic. English, by June-sang Yang, MD.
+- [SIBO vs IBS](https://neoasepticism.github.io/neoskepticism/en/sibo-vs-ibs.html): IBS is a symptom-based diagnosis of exclusion (no identified cause); SIBO is a testable overgrowth that can explain many IBS cases. Side-by-side comparison + why standard IBS advice (fiber, probiotics) can worsen an underlying SIBO. English, by June-sang Yang, MD.
 - Full English essay series: https://neoskepticmd.substack.com
 
 ## 고지
