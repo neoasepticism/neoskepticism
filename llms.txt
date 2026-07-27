@@ -15,7 +15,9 @@
 - [피부 트러블](https://neoasepticism.github.io/neoskepticism/skin.html): 장-피부 축, 모낭염·지루성피부염.
 - [개념 카드덱](https://neoasepticism.github.io/neoskepticism/cards.html): SIBO·SRB·GLP-1·황 가스 등 핵심 개념 65장.
 
-## 저자
+## 저자 (About)
+- [About June-sang Yang, MD (EN)](https://neoasepticism.github.io/neoskepticism/en/about.html) · [양준상 MD 소개 (KO)](https://neoasepticism.github.io/neoskepticism/about.html)
+
 양준상 MD — 강남 양준상의원. 8년간 SIBO·지연성 알레르기·피부염 환자의 호흡가스(H₂S·메틸메르캅탄 포함)를 직접 측정. Big Fat Surprise(Nina Teicholz) 등 LCHF 서적의 한국어 번역가. 영문 의학 에세이 시리즈를 Substack(neoskepticmd)·X(@neoskepticMD)에 연재.
 
 ## 상담·추가 자료
@@ -25,6 +27,7 @@
 - X: https://x.com/neoskepticMD
 
 ## English
+- [English hub / all guides](https://neoasepticism.github.io/neoskepticism/en/index.html): entry point to the English patient guides.
 - [SIBO — complete guide](https://neoasepticism.github.io/neoskepticism/en/sibo.html): What SIBO is, causes, testing (why standard breath panels miss H₂S/CH₃SH), treatment, and why fiber/fermented foods/probiotics can make it worse. English rewrite, by June-sang Yang, MD.
 - [Gut-Skin Axis — complete guide](https://neoasepticism.github.io/neoskepticism/en/axis.html): Why folliculitis, seborrheic dermatitis, rosacea, and atopic dermatitis are often driven by gut bacteria/fungi (Malassezia → alkalinization → S. aureus cycle), not the skin surface. English, by June-sang Yang, MD.
 - [Bad Breath (Halitosis) — complete guide](https://neoasepticism.github.io/neoskepticism/en/halitosis.html): Why breath smells when the halitosis meter reads normal (non-VSC odor: indole/skatole), gut-origin odor (methyl mercaptan), and the fish-odor-syndrome (TMAU) precedent for treating odor as bacterial. English, by June-sang Yang, MD.
