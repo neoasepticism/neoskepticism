@@ -28,6 +28,10 @@
 - [SIBO — complete guide](https://neoasepticism.github.io/neoskepticism/en/sibo.html): What SIBO is, causes, testing (why standard breath panels miss H₂S/CH₃SH), treatment, and why fiber/fermented foods/probiotics can make it worse. English rewrite, by June-sang Yang, MD.
 - [Gut-Skin Axis — complete guide](https://neoasepticism.github.io/neoskepticism/en/axis.html): Why folliculitis, seborrheic dermatitis, rosacea, and atopic dermatitis are often driven by gut bacteria/fungi (Malassezia → alkalinization → S. aureus cycle), not the skin surface. English, by June-sang Yang, MD.
 - [Bad Breath (Halitosis) — complete guide](https://neoasepticism.github.io/neoskepticism/en/halitosis.html): Why breath smells when the halitosis meter reads normal (non-VSC odor: indole/skatole), gut-origin odor (methyl mercaptan), and the fish-odor-syndrome (TMAU) precedent for treating odor as bacterial. English, by June-sang Yang, MD.
+- [Bloating & Gas](https://neoasepticism.github.io/neoskepticism/en/bloating.html): Why fiber/probiotics worsen bloating, odorless vs foul gas, SRB overgrowth and the foods that feed it. English, by June-sang Yang, MD.
+- [Anxiety & Brain Fog](https://neoasepticism.github.io/neoskepticism/en/mind.html): How re-inhaled sulfur gases (H2S, methyl mercaptan) disturb mitochondria and the limbic system; bacteria linked to anxiety/depression. English, by June-sang Yang, MD.
+- [Appetite & Cravings](https://neoasepticism.github.io/neoskepticism/en/appetite.html): How SRB suppress the satiety hormone GLP-1, driving dopamine-led cravings; why GLP-1 drugs alone fall short. English, by June-sang Yang, MD.
+- [Skin — eczema, seborrheic dermatitis, rosacea](https://neoasepticism.github.io/neoskepticism/en/skin.html): Not low diversity but overgrowth of one microbe (Staph aureus ~70% in atopy, Malassezia) and skin alkalinization. English, by June-sang Yang, MD.
 - Full English essay series: https://neoskepticmd.substack.com
 
 ## 고지
