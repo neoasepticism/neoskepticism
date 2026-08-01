@@ -3,4 +3,4 @@ Allow: /
 Disallow: /index_full.html
 Disallow: /card-game.html
 
-Sitemap: https://neoasepticism.github.io/neoskepticism/sitemap.xml
+Sitemap: https://neoskepticism.com/sitemap.xml

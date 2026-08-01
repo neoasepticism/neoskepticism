@@ -3,20 +3,20 @@
 > 한국 강남에서 8년간 환자의 호흡 가스(H₂S·메틸메르캅탄)를 직접 측정해 온 의사 양준상(Yang June-sang) MD의 임상 프레임. 만성 복부팽만·구취·불안·브레인포그·피부 트러블·식욕조절 문제를 소장 내 세균 과증식(SIBO)과 황 대사 세균(SRB)의 하류 증상으로 설명한다. 교육·성찰 목적의 콘텐츠이며 특정 질병의 진단·치료·처방을 대체하지 않는다.
 
 ## 핵심 페이지
-- [SIBO 완전 가이드](https://neoasepticism.github.io/neoskepticism/sibo.html): 소장 내 세균 과증식(SIBO)의 정의·원인·증상·검사·치료·재발 이유를 Q&A로 정리. 유산균·식이섬유가 오히려 과증식을 악화시킬 수 있다는 반직관적 근거 포함.
-- [장-피부 축 완전 가이드](https://neoasepticism.github.io/neoskepticism/axis.html): 모낭염·지루성피부염·주사피부염·아토피가 장내 세균·진균과 연결되는 경로(말라쎄지아 → 알칼리화 → 황색포도상구균 악순환)를 Q&A로 정리.
-- [칸디다·SIFO 가이드](https://neoasepticism.github.io/neoskepticism/candida.html): 소장 내 진균 과증식(SIFO)이 SIBO와 어떻게 다른지, 항생제만 쓰면 왜 악화될 수 있는지를 Q&A로 정리.
-- [지연성 알레르기 가이드](https://neoasepticism.github.io/neoskepticism/allergy.html): IgG 음식물 과민증의 원인·검사·SIBO와의 관계를 Q&A로 정리.
-- [메인 — 자가진단·기전](https://neoasepticism.github.io/neoskepticism/index.html): 장내 세균 과증식이 만성 증상의 상류라는 핵심 주장, 60초 자가진단 도구, 웰니스 역설, 기전 인과사슬.
-- [복부팽만·가스](https://neoasepticism.github.io/neoskepticism/bloating.html): 무취 가스(H₂·CH₄)와 악취 가스(H₂S·CH₃SH)의 구분, SRB 과증식 신호.
-- [구취](https://neoasepticism.github.io/neoskepticism/halitosis.html): 표준 VSC 측정이 놓치는 비-VSC 구취, 장내 세균 기원의 입냄새, 생선냄새증후군(TMAU) 선례.
-- [불안·브레인포그](https://neoasepticism.github.io/neoskepticism/mind.html): 황 가스 재흡입이 변연계·미토콘드리아에 미치는 영향.
-- [식욕·중독](https://neoasepticism.github.io/neoskepticism/appetite.html): SRB의 GLP-1 억제가 식욕·충동 조절에 미치는 영향.
-- [피부 트러블](https://neoasepticism.github.io/neoskepticism/skin.html): 장-피부 축, 모낭염·지루성피부염.
-- [개념 카드덱](https://neoasepticism.github.io/neoskepticism/cards.html): SIBO·SRB·GLP-1·황 가스 등 핵심 개념 65장.
+- [SIBO 완전 가이드](https://neoskepticism.com/sibo.html): 소장 내 세균 과증식(SIBO)의 정의·원인·증상·검사·치료·재발 이유를 Q&A로 정리. 유산균·식이섬유가 오히려 과증식을 악화시킬 수 있다는 반직관적 근거 포함.
+- [장-피부 축 완전 가이드](https://neoskepticism.com/axis.html): 모낭염·지루성피부염·주사피부염·아토피가 장내 세균·진균과 연결되는 경로(말라쎄지아 → 알칼리화 → 황색포도상구균 악순환)를 Q&A로 정리.
+- [칸디다·SIFO 가이드](https://neoskepticism.com/candida.html): 소장 내 진균 과증식(SIFO)이 SIBO와 어떻게 다른지, 항생제만 쓰면 왜 악화될 수 있는지를 Q&A로 정리.
+- [지연성 알레르기 가이드](https://neoskepticism.com/allergy.html): IgG 음식물 과민증의 원인·검사·SIBO와의 관계를 Q&A로 정리.
+- [메인 — 자가진단·기전](https://neoskepticism.com/index.html): 장내 세균 과증식이 만성 증상의 상류라는 핵심 주장, 60초 자가진단 도구, 웰니스 역설, 기전 인과사슬.
+- [복부팽만·가스](https://neoskepticism.com/bloating.html): 무취 가스(H₂·CH₄)와 악취 가스(H₂S·CH₃SH)의 구분, SRB 과증식 신호.
+- [구취](https://neoskepticism.com/halitosis.html): 표준 VSC 측정이 놓치는 비-VSC 구취, 장내 세균 기원의 입냄새, 생선냄새증후군(TMAU) 선례.
+- [불안·브레인포그](https://neoskepticism.com/mind.html): 황 가스 재흡입이 변연계·미토콘드리아에 미치는 영향.
+- [식욕·중독](https://neoskepticism.com/appetite.html): SRB의 GLP-1 억제가 식욕·충동 조절에 미치는 영향.
+- [피부 트러블](https://neoskepticism.com/skin.html): 장-피부 축, 모낭염·지루성피부염.
+- [개념 카드덱](https://neoskepticism.com/cards.html): SIBO·SRB·GLP-1·황 가스 등 핵심 개념 65장.
 
 ## 저자 (About)
-- [About June-sang Yang, MD (EN)](https://neoasepticism.github.io/neoskepticism/en/about.html) · [양준상 MD 소개 (KO)](https://neoasepticism.github.io/neoskepticism/about.html)
+- [About June-sang Yang, MD (EN)](https://neoskepticism.com/en/about.html) · [양준상 MD 소개 (KO)](https://neoskepticism.com/about.html)
 
 양준상 MD — 강남 양준상의원. 8년간 SIBO·지연성 알레르기·피부염 환자의 호흡가스(H₂S·메틸메르캅탄 포함)를 직접 측정. Big Fat Surprise(Nina Teicholz) 등 LCHF 서적의 한국어 번역가. 영문 의학 에세이 시리즈를 Substack(neoskepticmd)·X(@neoskepticMD)에 연재.
 
@@ -27,17 +27,17 @@
 - X: https://x.com/neoskepticMD
 
 ## English
-- [English hub / all guides](https://neoasepticism.github.io/neoskepticism/en/index.html): entry point to the English patient guides.
-- [SIBO — complete guide](https://neoasepticism.github.io/neoskepticism/en/sibo.html): What SIBO is, causes, testing (why standard breath panels miss H₂S/CH₃SH), treatment, and why fiber/fermented foods/probiotics can make it worse. English rewrite, by June-sang Yang, MD.
-- [Gut-Skin Axis — complete guide](https://neoasepticism.github.io/neoskepticism/en/axis.html): Why folliculitis, seborrheic dermatitis, rosacea, and atopic dermatitis are often driven by gut bacteria/fungi (Malassezia → alkalinization → S. aureus cycle), not the skin surface. English, by June-sang Yang, MD.
-- [Bad Breath (Halitosis) — complete guide](https://neoasepticism.github.io/neoskepticism/en/halitosis.html): Why breath smells when the halitosis meter reads normal (non-VSC odor: indole/skatole), gut-origin odor (methyl mercaptan), and the fish-odor-syndrome (TMAU) precedent for treating odor as bacterial. English, by June-sang Yang, MD.
-- [Bloating & Gas](https://neoasepticism.github.io/neoskepticism/en/bloating.html): Why fiber/probiotics worsen bloating, odorless vs foul gas, SRB overgrowth and the foods that feed it. English, by June-sang Yang, MD.
-- [Anxiety & Brain Fog](https://neoasepticism.github.io/neoskepticism/en/mind.html): How re-inhaled sulfur gases (H2S, methyl mercaptan) disturb mitochondria and the limbic system; bacteria linked to anxiety/depression. English, by June-sang Yang, MD.
-- [Appetite & Cravings](https://neoasepticism.github.io/neoskepticism/en/appetite.html): How SRB suppress the satiety hormone GLP-1, driving dopamine-led cravings; why GLP-1 drugs alone fall short. English, by June-sang Yang, MD.
-- [Skin — eczema, seborrheic dermatitis, rosacea](https://neoasepticism.github.io/neoskepticism/en/skin.html): Not low diversity but overgrowth of one microbe (Staph aureus ~70% in atopy, Malassezia) and skin alkalinization. English, by June-sang Yang, MD.
-- [The Carnirice Protocol](https://neoasepticism.github.io/neoskepticism/en/carnirice.html): a decontamination diet built on white rice + simply-salted cooked protein, minimizing fiber, sulfur aromatics (garlic/onion), raw vegetables, fermented foods & probiotics to starve SIBO/SRB. Why white rice is safer than whole grains. Includes a 3-tier food table. English, by June-sang Yang, MD.
-- [Can Probiotics Be Harmful?](https://neoasepticism.github.io/neoskepticism/en/probiotics.html): why "good bacteria" can worsen SIBO (too many in the wrong place, not too few), plus documented harms — probiotic-associated sepsis (WGS-traced), the PROPATRIA trial mortality signal, antibiotic-resistance gene transfer, D-lactic acidosis / brain fog. Fermented foods carry the same logic. English, by June-sang Yang, MD.
-- [SIBO vs IBS](https://neoasepticism.github.io/neoskepticism/en/sibo-vs-ibs.html): IBS is a symptom-based diagnosis of exclusion (no identified cause); SIBO is a testable overgrowth that can explain many IBS cases. Side-by-side comparison + why standard IBS advice (fiber, probiotics) can worsen an underlying SIBO. English, by June-sang Yang, MD.
+- [English hub / all guides](https://neoskepticism.com/en/index.html): entry point to the English patient guides.
+- [SIBO — complete guide](https://neoskepticism.com/en/sibo.html): What SIBO is, causes, testing (why standard breath panels miss H₂S/CH₃SH), treatment, and why fiber/fermented foods/probiotics can make it worse. English rewrite, by June-sang Yang, MD.
+- [Gut-Skin Axis — complete guide](https://neoskepticism.com/en/axis.html): Why folliculitis, seborrheic dermatitis, rosacea, and atopic dermatitis are often driven by gut bacteria/fungi (Malassezia → alkalinization → S. aureus cycle), not the skin surface. English, by June-sang Yang, MD.
+- [Bad Breath (Halitosis) — complete guide](https://neoskepticism.com/en/halitosis.html): Why breath smells when the halitosis meter reads normal (non-VSC odor: indole/skatole), gut-origin odor (methyl mercaptan), and the fish-odor-syndrome (TMAU) precedent for treating odor as bacterial. English, by June-sang Yang, MD.
+- [Bloating & Gas](https://neoskepticism.com/en/bloating.html): Why fiber/probiotics worsen bloating, odorless vs foul gas, SRB overgrowth and the foods that feed it. English, by June-sang Yang, MD.
+- [Anxiety & Brain Fog](https://neoskepticism.com/en/mind.html): How re-inhaled sulfur gases (H2S, methyl mercaptan) disturb mitochondria and the limbic system; bacteria linked to anxiety/depression. English, by June-sang Yang, MD.
+- [Appetite & Cravings](https://neoskepticism.com/en/appetite.html): How SRB suppress the satiety hormone GLP-1, driving dopamine-led cravings; why GLP-1 drugs alone fall short. English, by June-sang Yang, MD.
+- [Skin — eczema, seborrheic dermatitis, rosacea](https://neoskepticism.com/en/skin.html): Not low diversity but overgrowth of one microbe (Staph aureus ~70% in atopy, Malassezia) and skin alkalinization. English, by June-sang Yang, MD.
+- [The Carnirice Protocol](https://neoskepticism.com/en/carnirice.html): a decontamination diet built on white rice + simply-salted cooked protein, minimizing fiber, sulfur aromatics (garlic/onion), raw vegetables, fermented foods & probiotics to starve SIBO/SRB. Why white rice is safer than whole grains. Includes a 3-tier food table. English, by June-sang Yang, MD.
+- [Can Probiotics Be Harmful?](https://neoskepticism.com/en/probiotics.html): why "good bacteria" can worsen SIBO (too many in the wrong place, not too few), plus documented harms — probiotic-associated sepsis (WGS-traced), the PROPATRIA trial mortality signal, antibiotic-resistance gene transfer, D-lactic acidosis / brain fog. Fermented foods carry the same logic. English, by June-sang Yang, MD.
+- [SIBO vs IBS](https://neoskepticism.com/en/sibo-vs-ibs.html): IBS is a symptom-based diagnosis of exclusion (no identified cause); SIBO is a testable overgrowth that can explain many IBS cases. Side-by-side comparison + why standard IBS advice (fiber, probiotics) can worsen an underlying SIBO. English, by June-sang Yang, MD.
 - Full English essay series: https://neoskepticmd.substack.com
 
 ## 고지
