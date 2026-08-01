@@ -23,6 +23,7 @@
   /* 사진 아트: 카드 상단 배너로 꽉 채움 (padding 상쇄 후 가장자리까지 bleed) */
   .pglyph.img{height:132px;display:block;margin:-20px -18px 14px;background:var(--surface2)}
   .pglyph.img img{width:100%;height:100%;object-fit:cover;display:block}
+  .pglyph.img img.top{object-position:center 38%}
   .psci{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--faint);line-height:1.3;min-height:26px}
   .pname{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:3px 0 9px;line-height:1.15}
   .pbadge{align-self:flex-start;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
@@ -413,6 +414,14 @@
       <span class="pbadge">결과 · 증상</span>
       <p class="pdesc">진지발리스 등 구강·장내 세균이 혈류로 들어가 혈관벽을 굳히는 저강도 전신 염증의 종착점 중 하나로 연구됩니다.</p>
       <div class="pmeta">← 진지발리스 · 전신 염증</div>
+    </div>
+    <div class="pcard sx">
+      <div class="pglyph img"><img class="top" src="art/chronic-pain.jpg" alt="만성 통증" loading="lazy"></div>
+      <div class="psci">Chronic Pain</div>
+      <div class="pname">만성 통증</div>
+      <span class="pbadge">결과 · 증상</span>
+      <p class="pdesc">황화수소가 통각 통로(Ca<sub>v</sub>3.2·TRPA1)를 직접 열어 전신의 통증 문턱을 낮춥니다. 허리·무릎·어깨 통증이 장을 정리한 뒤 함께 가라앉는 경우가 있습니다.</p>
+      <div class="pmeta">← H₂S · 통각 과민 · <a href="https://mpuncture.org/ko/" target="_blank" rel="noopener">mpuncture.org</a></div>
     </div>
     <div class="pcard sx">
       <div class="pglyph img"><img src="art/dermatitis.jpg" alt="피부염" loading="lazy"></div>
