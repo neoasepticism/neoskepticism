@@ -285,6 +285,21 @@
   .stat .big{transition:none}
   /* mechanism arrows softer */
   .step .arrow{color:var(--line2)}
+  /* reasoning flowchart (text-based, AI-readable) */
+  .rflow{max-width:720px;margin:6px auto 30px;display:flex;flex-direction:column;align-items:center}
+  .rflow .frow{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+  .rflow .fnode{font-size:14px;font-weight:700;border-radius:10px;padding:11px 16px;text-align:center;
+    border:1px solid var(--line2);background:var(--surface);color:var(--ink);text-decoration:none;line-height:1.35}
+  .rflow a.fnode{transition:border-color .15s ease,transform .15s ease}
+  .rflow a.fnode:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .rflow .sym{font-size:13px;font-weight:600}
+  .rflow .conn{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.02em;padding:11px 0;text-align:center}
+  .rflow .conn b{color:var(--ink2);font-weight:600}
+  .rflow .root{font-size:16.5px;font-weight:800;border:2px solid var(--accent);background:var(--accent-wash);padding:14px 26px}
+  .rflow .root span{color:var(--accent)}
+  .rflow .branch{display:flex;gap:11px;flex-wrap:wrap;justify-content:center}
+  .rflow .org{border-color:var(--sulfur-line);background:var(--sulfur-wash)}
+  .rflow .dir{border-color:var(--accent2);background:var(--surface2)}
 </style>
 
 <link rel="canonical" href="https://neoskepticism.com/">
@@ -489,6 +504,23 @@
 <section id="reasoning" class="alt">
   <div class="wrap">
     <div class="sechead"><span class="eyebrow s">추론 노트</span><h2>증상 하나를 붙잡고, 상류까지 따라가 봅니다.</h2><p>진단명을 붙이는 대신, 흩어진 증상을 하나의 뿌리로 잇는 <b>생각의 흐름</b>을 그대로 보여주는 익명·합성 사례들입니다.</p></div>
+    <div class="rflow" role="img" aria-label="여러 증상이 하나의 상류(소장 과증식)로 수렴하고, 세균성 또는 진균성으로 갈라지며, 발효의 연료와 자리로 방향을 잡는 흐름">
+      <div class="frow">
+        <a class="fnode sym" href="reasoning-bloating.html">가스·브레인포그·피로</a>
+        <a class="fnode sym" href="reasoning-halitosis.html">구취</a>
+        <a class="fnode sym" href="reasoning-skin.html">피부 트러블</a>
+        <a class="fnode sym" href="reasoning-appetite.html">식욕</a>
+      </div>
+      <div class="conn">↓&nbsp;&nbsp;각각이 아니라, <b>하나의 상류</b>를 의심</div>
+      <div class="fnode root">소장 과증식 <span>· 한 뿌리</span></div>
+      <div class="conn">↓&nbsp;&nbsp;세균이냐 진균이냐 — 뿌리는 같다</div>
+      <div class="branch">
+        <div class="fnode org">세균성 · SIBO / 황산염환원균</div>
+        <div class="fnode org">진균성 · SIFO / 칸디다</div>
+      </div>
+      <div class="conn">↓</div>
+      <div class="fnode dir">방향 — 발효의 <b>연료와 자리</b></div>
+    </div>
     <div class="dives">
       <a class="dive" href="reasoning-bloating.html"><span class="de">추론 노트</span><span class="dt">가스·브레인포그·피로가 한 뿌리일 때</span><span class="dp">진단명을 붙이는 대신, 세 증상을 하나로 묶는 생각의 흐름을 그대로 따라가 봅니다. (익명·합성 사례)</span><span class="dgo">읽어보기 →</span></a>
       <a class="dive" href="reasoning-halitosis.html"><span class="de">추론 노트</span><span class="dt">검사는 정상인데 냄새는 그대로일 때</span><span class="dp">입은 다 확인했는데 냄새가 남는다면 — 냄새가 입이 아니라 장에서 올라오는 흐름을 따라가 봅니다. (익명·합성 사례)</span><span class="dgo">읽어보기 →</span></a>
