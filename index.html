@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,6 +29,16 @@
       --sulfur:#dbab54; --sulfur-line:#d6a24a; --sulfur-wash:#211a0e;
       --danger:#e0846f;
     }
+  }
+  /* light locked — data-theme="light" on <html> 가 prefers-color-scheme:dark 를 이긴다 */
+  :root[data-theme="light"]{
+    --bg:#eef2f1; --surface:#ffffff; --surface2:#f6f8f7;
+    --ink:#141d1c; --ink2:#485755; --faint:#7f8e8c;
+    --line:#dde4e2; --line2:#cbd5d2;
+    --accent:#0d7a70; --accent2:#0a5d55; --accent-wash:#e2efed;
+    --sulfur:#8f6412; --sulfur-line:#b8862b; --sulfur-wash:#f4ecd6;
+    --danger:#9e3b2b;
+    color-scheme:light;
   }
   /* dark locked — always applied via data-theme="dark" on <html> */
   :root[data-theme="dark"]{
@@ -61,6 +71,9 @@
     backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   nav .row{display:flex;align-items:center;gap:20px;height:60px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;letter-spacing:-.03em;color:var(--ink)}
+  a.brand{text-decoration:none;color:var(--ink)}
+  a.brand:hover .dot{transform:scale(1.15)}
+  .brand .dot{transition:transform .15s ease}
   .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--accent);
     box-shadow:0 0 0 3px var(--accent-wash);flex:none}
   .brand small{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.08em;color:var(--faint);text-transform:none}
@@ -357,9 +370,9 @@
 }
 </script>
 </head>
-<body>
+<body id="top">
 <nav><div class="wrap row">
-  <div class="brand"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></div>
+  <a class="brand" href="#top" aria-label="맨 위로"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>
   <div class="navlinks">
     <a href="#assess">자가진단</a>
     <a href="#mechanism">기전</a>
@@ -765,6 +778,14 @@
       el.textContent=pre+'0'+suf; requestAnimationFrame(step);
     });
   }
+
+  // 좌상단 워드마크 → 페이지 맨 위 (프래그먼트 대신 명시적 스크롤)
+  var brandLink=document.querySelector('a.brand');
+  if(brandLink) brandLink.addEventListener('click',function(e){
+    e.preventDefault();
+    if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+  });
 
   // nav active-section highlight
   if(hasIO){
