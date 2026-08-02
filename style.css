@@ -146,3 +146,16 @@ footer .dl{max-width:760px;line-height:1.7} footer b{color:var(--ink2)}
 .rflow .branch{display:flex;gap:11px;flex-wrap:wrap;justify-content:center}
 .rflow .org{border-color:var(--sulfur-line);background:var(--sulfur-wash)}
 .rflow .dir{border-color:var(--accent2);background:var(--surface2)}
+
+/* bibliography — 번역·감수 서지 */
+.biblio{list-style:none;margin:22px 0 0;padding:0;max-width:64ch;border-top:1px solid var(--line)}
+.biblio li{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;
+  padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.5}
+.biblio .t{font-weight:700;color:var(--ink)}
+.biblio .by{color:var(--ink2)}
+.biblio .role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--accent);
+  border:1px solid var(--line2);border-radius:100px;padding:2px 8px;flex:none}
+.biblio .meta{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-left:auto}
+@media(max-width:560px){ .biblio .meta{margin-left:0;flex-basis:100%} }
+.biblio .t a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line2)}
+.biblio .t a:hover{color:var(--accent);border-color:var(--accent)}
