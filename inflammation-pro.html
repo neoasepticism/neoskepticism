@@ -9,9 +9,9 @@
 <link rel="canonical" href="https://neoskepticism.com/inflammation-pro.html">
 <link rel="stylesheet" href="style.css">
 <style>
+  /* 사이트는 data-theme 토글 전용(OS 다크모드 미사용) → danger-wash도 동일하게 키잉 */
   main.pro{ --danger-wash:#f4e3df; }
   :root[data-theme="dark"] main.pro{ --danger-wash:#2a1712; }
-  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) main.pro{ --danger-wash:#2a1712; } }
 
   .medbanner{ display:flex; flex-wrap:wrap; align-items:center; gap:10px;
     background:var(--sulfur-wash); border:1px solid var(--sulfur-line); border-radius:9px;
@@ -49,7 +49,7 @@
   .pro thead th{ font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--faint); background:var(--surface2); }
   .pro tbody th{ text-align:left; font-weight:640; color:var(--ink); }
   .pro td.y{ color:var(--accent2); font-weight:700; }
-  .pro td.n{ color:var(--line2); }
+  .pro td.n{ color:var(--faint); }
   .pro td.w{ color:var(--danger); font-weight:700; }
   .pro tbody tr:last-child td, .pro tbody tr:last-child th{ border-bottom:0; }
   .pro tr.warn-row th, .pro tr.warn-row td{ background:var(--danger-wash); }
@@ -70,6 +70,16 @@
   .pro .kicker{ font-family:var(--mono); font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--faint); margin:0 0 10px; }
   .pro .disc{ font-size:13px; color:var(--faint); background:var(--surface2); border-radius:8px; padding:16px 18px; margin:0 0 14px; }
   .pro .disc b{ color:var(--ink2); }
+
+  /* 밝은 톤 헤더 (기존 다크 .hero 밴드 대체) */
+  .pro .prohead{ padding:4px 0 26px; border-bottom:1px solid var(--line); margin-bottom:12px; }
+  .pro .prohead .eyebrow{ color:var(--accent); }
+  .pro .prohead h1{ font-size:clamp(25px,4.4vw,39px); line-height:1.14; font-weight:800;
+    letter-spacing:-.012em; margin:15px 0 0; color:var(--ink); max-width:26ch; text-wrap:balance; }
+  .pro .prohead .lede{ font-size:clamp(15.5px,1.9vw,18px); color:var(--ink2); max-width:60ch;
+    margin:16px 0 0; line-height:1.62; }
+  .pro .prohead .lede b{ color:var(--ink); }
+  .pro .prohead .lede .muted{ display:block; margin-top:9px; color:var(--faint); font-size:.86em; }
 </style>
 </head>
 <body>
@@ -91,10 +101,10 @@
 
   <div class="medbanner"><b>의료인 대상</b><span>이 페이지는 <b>의료 전문가</b>를 위한 기전·문헌 정리입니다. 구체적 약물명·근거가 포함되며, 일반 환자를 위한 치료 안내가 아닙니다. 환자용 요약은 <a href="inflammation.html">여기</a>.</span></div>
 
-  <header class="hero" style="padding-top:8px">
-    <span class="eyebrow s k">의료인 대상 · Mechanism review</span>
+  <header class="prohead">
+    <span class="eyebrow">기전 심화 · Mechanism Review</span>
     <h1>항균제의 비항균 항염작용 — NF-κB·MMP 등 pleiotropic 기전</h1>
-    <p class="lede">여러 항균제(항생제·항진균제)는 <b>항미생물 작용과 별개로</b> 숙주 염증 신호(NF-κB·MMP·사이토카인·호중구·iNOS 등)를 직접 억제한다. "표적 제균 → 만성 하류 증상 소실"의 약리적 근거 정리. <span style="color:var(--faint);font-size:.9em">교육·문헌 정리이며 치료 프로토콜·효과 보장이 아님.</span></p>
+    <p class="lede">여러 항균제(항생제·항진균제)는 <b>항미생물 작용과 별개로</b> 숙주 염증 신호(NF-κB·MMP·사이토카인·호중구·iNOS 등)를 직접 억제한다. "표적 제균 → 만성 하류 증상 소실"의 약리적 근거 정리.<span class="muted">교육·문헌 정리이며 치료 프로토콜·효과 보장이 아님.</span></p>
   </header>
 
   <section>
