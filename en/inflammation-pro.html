@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>Antimicrobials' non-antimicrobial anti-inflammatory action — NF-κB·MMP and other pleiotropic mechanisms (for clinicians) | Neo-Skepticism</title>
+<meta name="description" content="For clinicians. How several antimicrobials (antibiotics·antifungals), independent of their antimicrobial action, directly suppress host inflammatory signaling (NF-κB·MMP·cytokines·neutrophils·iNOS). A mechanistic/literature summary — not a treatment protocol and no guarantee of efficacy.">
+<link rel="canonical" href="https://neoskepticism.com/en/inflammation-pro.html">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* Site themes via data-theme only (no OS dark-mode) → key danger-wash the same way */
+  main.pro{ --danger-wash:#f4e3df; }
+  :root[data-theme="dark"] main.pro{ --danger-wash:#2a1712; }
+
+  .medbanner{ display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+    background:var(--sulfur-wash); border:1px solid var(--sulfur-line); border-radius:9px;
+    padding:12px 16px; margin:0 0 26px; font-size:13.5px; color:var(--ink2); }
+  .medbanner b{ font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--sulfur); padding:3px 9px; border:1px solid var(--sulfur-line); border-radius:999px; }
+
+  .pro .targets{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0; }
+  @media (max-width:600px){ .pro .targets{ grid-template-columns:1fr; } }
+  .pro .tg{ background:var(--surface); border:1px solid var(--line); border-radius:7px; padding:12px 14px; font-size:14px; color:var(--ink2); }
+  .pro .tg b{ font-family:var(--mono); font-size:11.5px; letter-spacing:.03em; color:var(--accent2); }
+
+  .pro .drug{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:0 0 16px; }
+  .pro .drug > .h{ display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin:0 0 6px; }
+  .pro .drug .num{ font-family:var(--mono); font-size:13px; color:var(--faint); }
+  .pro .drug .nm{ font-weight:700; font-size:17px; color:var(--ink); }
+  .pro .drug .cls{ font-family:var(--mono); font-size:11.5px; color:var(--faint); }
+  .pro .ev{ margin-left:auto; font-family:var(--mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase;
+    padding:3px 9px; border-radius:999px; white-space:nowrap; }
+  .pro .ev.strong{ color:#fff; background:var(--accent); }
+  .pro .ev.mod{ color:var(--accent2); background:var(--accent-wash); }
+  .pro .ev.ltd{ color:var(--sulfur); background:var(--sulfur-wash); }
+  .pro .ev.dual{ color:var(--danger); background:var(--danger-wash); }
+  .pro .drug ul{ margin:8px 0 4px; padding:0; list-style:none; }
+  .pro .drug li{ position:relative; padding-left:17px; margin:0 0 7px; font-size:14.5px; line-height:1.6; color:var(--ink2); }
+  .pro .drug li::before{ content:""; position:absolute; left:2px; top:9px; width:5px; height:5px; background:var(--accent); border-radius:50%; }
+  .pro .drug li b, .pro .drug li strong{ color:var(--ink); }
+  .pro code{ font-family:var(--mono); font-size:.86em; background:var(--surface2); padding:1px 5px; border-radius:3px; }
+  .pro .refs{ font-size:12.5px; color:var(--faint); margin:8px 0 0; }
+  .pro .refs a{ color:var(--faint); }
+
+  .pro .tbl-wrap{ overflow-x:auto; margin:16px 0; border:1px solid var(--line); border-radius:8px; }
+  .pro table{ border-collapse:collapse; width:100%; font-size:13px; min-width:640px; }
+  .pro th, .pro td{ text-align:center; padding:8px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  .pro thead th{ font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--faint); background:var(--surface2); }
+  .pro tbody th{ text-align:left; font-weight:640; color:var(--ink); }
+  .pro td.y{ color:var(--accent2); font-weight:700; }
+  .pro td.n{ color:var(--faint); }
+  .pro td.w{ color:var(--danger); font-weight:700; }
+  .pro tbody tr:last-child td, .pro tbody tr:last-child th{ border-bottom:0; }
+  .pro tr.warn-row th, .pro tr.warn-row td{ background:var(--danger-wash); }
+
+  .pro .warn{ background:var(--danger-wash); border-radius:10px; padding:18px 20px; margin:10px 0; }
+  .pro .warn .t{ font-weight:700; color:var(--danger); margin:0 0 8px; }
+  .pro .warn p{ margin:0 0 8px; font-size:14.5px; color:var(--ink); }
+  .pro .warn p:last-child{ margin:0; }
+
+  .pro .note{ border-left:3px solid var(--accent); background:var(--surface); border-radius:0 8px 8px 0; padding:16px 20px; margin:18px 0; }
+  .pro .note .t{ font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:7px; }
+  .pro .note p{ margin:0; font-size:14.5px; color:var(--ink2); }
+  .pro .note b{ color:var(--accent2); }
+
+  .pro .refgrp{ margin:0 0 16px; }
+  .pro .refgrp .g{ font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; color:var(--accent2); margin:0 0 5px; }
+  .pro .refgrp p{ margin:0 0 5px; font-size:13px; color:var(--ink2); max-width:none; }
+  .pro .kicker{ font-family:var(--mono); font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--faint); margin:0 0 10px; }
+  .pro .disc{ font-size:13px; color:var(--faint); background:var(--surface2); border-radius:8px; padding:16px 18px; margin:0 0 14px; }
+  .pro .disc b{ color:var(--ink2); }
+
+  /* Light-tone header (replaces the dark .hero band) */
+  .pro .prohead{ padding:4px 0 26px; border-bottom:1px solid var(--line); margin-bottom:12px; }
+  .pro .prohead .eyebrow{ color:var(--accent); }
+  .pro .prohead h1{ font-size:clamp(25px,4.4vw,39px); line-height:1.14; font-weight:800;
+    letter-spacing:-.012em; margin:15px 0 0; color:var(--ink); max-width:30ch;
+    text-wrap:balance; word-break:keep-all; }
+  .pro .prohead .lede{ font-size:clamp(15.5px,1.9vw,18px); color:var(--ink2); max-width:62ch;
+    margin:16px 0 0; line-height:1.62; }
+  .pro .prohead .lede b{ color:var(--ink); }
+  .pro .prohead h1 .nowrap{ white-space:nowrap; }
+  .pro .prohead .lede .muted{ display:block; margin-top:9px; color:var(--faint); font-size:.86em; }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap row">
+  <a class="brand" href="index.html"><span class="dot"></span>Neo-Skepticism <small>June-sang Yang, MD</small></a>
+  <div class="navlinks">
+    <a href="index.html">Home</a>
+    <a href="index.html#mechanism">Mechanism</a>
+    <a href="inflammation.html">Patient summary</a>
+    <a href="/inflammation-pro.html">KO</a>
+    <button class="theme" id="themeBtn" aria-label="Toggle theme">◐</button>
+  </div>
+</div></nav>
+
+<div class="wrap"><div class="crumb"><a href="index.html">Neo-Skepticism</a> · <span>For clinicians</span></div></div>
+
+<main class="pro">
+<div class="wrap narrow">
+
+  <div class="medbanner"><b>For clinicians</b><span>This page is a mechanistic/literature summary for <b>healthcare professionals</b>. It names specific drugs and evidence and is <strong>not</strong> treatment guidance for patients. The patient summary is <a href="inflammation.html">here</a>.</span></div>
+
+  <header class="prohead">
+    <span class="eyebrow">Mechanism Review · For clinicians</span>
+    <h1>Antimicrobials' non-antimicrobial anti-inflammatory action — <span class="nowrap">NF-κB·MMP</span> and other pleiotropic mechanisms</h1>
+    <p class="lede">Several antimicrobials (antibiotics·antifungals), <b>independent of their antimicrobial action</b>, directly suppress host inflammatory signaling (NF-κB·MMP·cytokines·neutrophils·iNOS, etc.). A pharmacologic rationale for "targeted clearance → resolution of chronic downstream symptoms."<span class="muted">A mechanistic/literature summary — not a treatment protocol and no guarantee of efficacy.</span></p>
+  </header>
+
+  <section>
+    <p class="kicker">Cross-cutting targets</p>
+    <h2>What they aim at</h2>
+    <div class="targets">
+      <div class="tg"><b>NF-κB</b> — master inflammatory transcription factor. Inhibition ↓ TNF-α·IL-1β·IL-6·IL-8·COX-2·iNOS·adhesion molecules</div>
+      <div class="tg"><b>MMPs</b> — tissue degradation·remodeling·fibrosis·angiogenesis (MMP-2/8/9/13)</div>
+      <div class="tg"><b>iNOS / NO</b> — inducible nitric-oxide burst</div>
+      <div class="tg"><b>Neutrophil</b> — chemotaxis·infiltration·superoxide·LTB4·adhesion</div>
+      <div class="tg"><b>MAPK · PI3K/Akt · AP-1</b> — upstream signaling (ERK1/2·p38)</div>
+      <div class="tg"><b>Angiogenesis · Hedgehog · mTOR</b> — tissue remodeling (esp. azoles)</div>
+    </div>
+    <div class="note">
+      <span class="t">★ Anti-inflammatory ≠ antimicrobial — separable</span>
+      <p><b>Sub-antimicrobial-dose doxycycline (SDD)</b> — even at doses with no antibacterial activity, the MMP/anti-inflammatory action alone is effective (periodontitis Periostat 20 mg, rosacea Oracea 40 mg, both FDA-approved). The decisive example that the two actions can be separated.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Mechanisms by class</p>
+    <h2>Classes with an anti-inflammatory axis</h2>
+
+    <div class="drug">
+      <div class="h"><span class="num">1</span><span class="nm">Macrolides</span><span class="cls">clarithromycin · azithromycin</span><span class="ev strong">Established</span></div>
+      <ul>
+        <li><b>NF-κB·ERK1/2 inhibition</b> — clarithromycin binds <code>NIPSNAP1/2</code>, blocking NF-κB-mediated IL-8 induction on TLR4 stimulation. Cytokine modulation via mitochondrial quality control.</li>
+        <li>Cytokines: IL-1·IL-6·IL-8·TNF-α ↓ / GM-CSF·CCL2·sE-selectin ↓</li>
+        <li>Neutrophils: chemotaxis·infiltration ↓, superoxide ↓, <b>LTB4 formation ↓</b>, adhesion-molecule blockade, mucus ↓</li>
+        <li>Clinical: low-dose long-term <b>anti-inflammatory</b> therapy in DPB·COPD·asthma·CF (distinct from the antimicrobial effect)</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://journals.asm.org/doi/10.1128/cmr.00078-09">CMR 2010</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15586558/">15586558</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/19633061/">19633061</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10824736/">NIPSNAP1/2</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">2</span><span class="nm">Tetracyclines</span><span class="cls">doxycycline · minocycline</span><span class="ev strong">Established</span></div>
+      <ul>
+        <li><b>The archetypal MMP inhibitor</b> — inhibits both synthesis and activity of MMP-8·MMP-9. Mechanism: active-site <b>Zn²⁺·Ca²⁺ chelation</b> (direct) + <b>gene-expression suppression</b>.</li>
+        <li>NF-κB downregulation → TNF-α·IL-6·IL-1β ↓</li>
+        <li>iNOS: <b>dose-dependent suppression at the expression level</b> of mRNA·protein (not direct enzyme inhibition)</li>
+        <li><b>minocycline</b>: MMP + microglia inhibition + p38 MAPK·PI3K/Akt modulation, IL-10 ↑, iNOS·MMP inhibition (colitis), CNS penetration</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.pnas.org/doi/pdf/10.1073/pnas.93.24.14014">PNAS 1996</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15088884/">SDD 15088884</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471324/">PMC3471324</a> · <a href="https://www.sciencedirect.com/science/article/abs/pii/S0041008X09000982">minocycline colitis</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">3</span><span class="nm">Fluoroquinolones</span><span class="cls">ciprofloxacin</span><span class="ev dual">Dual-edged</span></div>
+      <ul>
+        <li>Anti-inflammatory: macrophage TNF-α·IL-1β ↓, serum TNF-α ↓ in LPS mice</li>
+        <li>Mechanism: <b>inhibition of TLR4/MD2/LPS complex·receptor dimerization·NF-κB nuclear translocation</b>. PDE inhibition; AP-1·NFAT·NF-IL6·NF-κB suppression. The keto-carbonyl's Mg²⁺ binding is key.</li>
+        <li>⚠️ <b>Dual-edged</b>: tendinopathy (MMP↑·collagen damage in tendon)·mitochondrial toxicity — hard to view as a pure anti-inflammatory</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.ncbi.nlm.nih.gov/pubmed/16518713">16518713</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6637517/">Cipro/Levo microglia TLR4/NF-κB</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">4</span><span class="nm">Azole antifungals</span><span class="cls">itraconazole</span><span class="ev mod">Non-NF-κB axis</span></div>
+      <ul>
+        <li>Different in kind: not NF-κB anti-inflammation but an <b>anti-angiogenic·anti-Hedgehog</b> axis</li>
+        <li>① anti-Hedgehog (Gli1·Ptch1·SMO inhibition) ② <b>inhibition of VEGFR2 glycosylation·trafficking·signaling</b> ③ AKT/mTOR inhibition (+ P-gp reversal)</li>
+        <li>From the inflammation angle: inhibiting angiogenesis·endothelial proliferation = blocking the vascular component of chronic inflammation</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6522620/">Non-fungal cutaneous disease review</a> · <a href="https://aacrjournals.org/cancerres/article/71/21/6764/568424/">VEGFR2 (Cancer Res 2011)</a> · <a href="https://pubs.acs.org/doi/10.1021/cb600362d">ACS Chem Biol</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">4-b</span><span class="nm">Allylamine antifungals</span><span class="cls">terbinafine</span><span class="ev ltd">Limited evidence</span></div>
+      <ul>
+        <li>Squalene-epoxidase inhibitor class. Independent of antifungal action, reported <b>anti-inflammatory + antioxidant (free-radical scavenging)</b></li>
+        <li>Allylamines (including naftifine) inhibit neutrophil chemotaxis·reactive oxygen·<b>LTB4 (5-LOX pathway)</b> → improve inflammatory tinea·seborrheic dermatitis</li>
+        <li>⚠️ NF-κB·MMP mechanisms are not as precisely characterized as for macrolides/tetracyclines (overview level)</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/terbinafine">Terbinafine overview (ScienceDirect)</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">5</span><span class="nm">Nitroimidazoles</span><span class="cls">metronidazole</span><span class="ev mod">Moderate</span></div>
+      <ul>
+        <li>Anti-inflammatory via <b>modulation of neutrophil function</b> (rosacea·acne). The antioxidant effect is via neutrophil cell function, not direct ROS scavenging. Suppresses cell-mediated immunity·chemotaxis</li>
+        <li>Clinical: topical for rosacea; Crohn's·periodontitis (dual anaerobe + anti-inflammatory)</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://pubmed.ncbi.nlm.nih.gov/2936372/">BJD 1986 (2936372)</a> · <a href="https://link.springer.com/article/10.1007/BF00402621">neutrophil free-radical inhibition</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">6</span><span class="nm">Rifaximin</span><span class="cls">rifaximin — gut-selective</span><span class="ev strong">Established</span></div>
+      <ul>
+        <li>Gut-selective <b>PXR (pregnane-X-receptor) activation → NF-κB inhibition</b> → gut inflammatory mediators ↓. Serum IL-1β·IL-6·TNF-α ↓</li>
+        <li>Microbiota modulation + <b>reduced bacterial translocation</b> + direct anti-inflammatory. Nonabsorbed → few systemic effects</li>
+        <li>Clinical: standard in IBS·IBD·hepatic encephalopathy·SIBO. The exemplar of "clearance + anti-inflammatory + barrier"</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9656351/">Rifaximin PXR·NF-κB (PMC9656351)</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">7</span><span class="nm">Lincosamides</span><span class="cls">clindamycin</span><span class="ev mod">Moderate</span></div>
+      <ul>
+        <li><b>Inhibits neutrophil recruitment·NF-κB activity·TNF-α production</b>. Suppresses exotoxin·superantigen production in toxic shock (via protein-synthesis inhibition). Anti-inflammatory in acne</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.sciencedirect.com/science/article/pii/S1567576923009347">Clindamycin derivative — NF-κB·TNF-α·neutrophil</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">8</span><span class="nm">Sulfonamides/sulfones · antimalarials</span><span class="cls">sulfasalazine · dapsone · hydroxychloroquine</span><span class="ev mod">Moderate</span></div>
+      <ul>
+        <li><b>sulfasalazine / 5-ASA</b>: NF-κB inhibition (IBD·RA DMARD)</li>
+        <li><b>dapsone</b>: potent neutrophilic anti-inflammatory (MPO·reactive-oxygen inhibition)</li>
+        <li><b>hydroxychloroquine / chloroquine</b>: inhibits TLR signaling·lysosome·antigen presentation (lupus·RA DMARD)</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3927068/">Dapsone (PMC3927068)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/7903034/">HCQ·sulfasalazine RA (7903034)</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">9</span><span class="nm">Others</span><span class="cls">nitazoxanide · polymyxin · rifampin · tigecycline</span><span class="ev mod">Adjunct</span></div>
+      <ul>
+        <li><b>nitazoxanide</b>: NF-κB inhibition·anti-inflammatory (gut). <b>polymyxin/colistin</b>: <b>direct LPS binding·neutralization</b> (toxin neutralization, not clearance). <b>rifampin</b>: some immunomodulation</li>
+        <li>Same-class extensions: azithromycin·roxithromycin·erythromycin; tetracycline derivative <b>tigecycline</b>. nystatin (gut-topical, weak anti-inflammatory). Quorum-sensing·biofilm inhibition → indirectly reduces virulence·inflammatory stimulus</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Summary matrix</p>
+    <h2>Drug × mechanism</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Drug</th><th>NF-κB</th><th>MMP</th><th>iNOS</th><th>Cytokines</th><th>Neutrophil/ROS</th><th>Notable</th></tr></thead>
+        <tbody>
+          <tr><th>macrolide</th><td class="y">✓</td><td class="n">·</td><td class="n">·</td><td class="y">✓✓</td><td class="y">✓✓</td><td>ERK1/2·NIPSNAP</td></tr>
+          <tr><th>doxycycline (SDD)</th><td class="y">✓</td><td class="y">✓✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">·</td><td>Zn-chelation + expression</td></tr>
+          <tr><th>minocycline</th><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓✓</td><td class="y">✓</td><td>microglia·CNS·IL-10↑</td></tr>
+          <tr><th>ciprofloxacin</th><td class="y">✓</td><td class="w">⚠︎↑</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>TLR4·PDE — dual-edged</td></tr>
+          <tr><th>itraconazole</th><td class="n">(limited)</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td>Hedgehog·VEGFR2·mTOR</td></tr>
+          <tr><th>terbinafine</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="y">✓ (LTB4)</td><td>allylamine · overview-level</td></tr>
+          <tr><th>metronidazole</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td>neutrophil function</td></tr>
+          <tr><th>rifaximin</th><td class="y">✓ (PXR)</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>gut-selective·nonabsorbed·SIBO</td></tr>
+          <tr><th>clindamycin</th><td class="y">✓</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="y">✓</td><td>toxin production ↓</td></tr>
+          <tr><th>sulfasalazine</th><td class="y">✓</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>IBD·RA DMARD</td></tr>
+          <tr><th>dapsone</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="y">✓✓</td><td>neutrophil (MPO·ROS)</td></tr>
+          <tr><th>hydroxychloroquine</th><td class="n">(TLR)</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>lysosome·antigen presentation</td></tr>
+          <tr><th>polymyxin/colistin</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>direct LPS neutralization</td></tr>
+          <tr class="warn-row"><th>β-lactam·aminoglycoside</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="w">⚠︎↑</td><td class="w">⚠︎↑</td><td>bacteriolysis → endotoxin·Herxheimer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="refs">✓✓ strong/core · ✓ present · · no clear/weak evidence · (…) indirect/limited · ⚠︎↑ increases instead</p>
+  </section>
+
+  <section>
+    <p class="kicker">Caution</p>
+    <h2>No anti-inflammatory / rather pro-inflammatory</h2>
+    <div class="warn">
+      <p class="t">⚠️ Not every antibiotic is anti-inflammatory</p>
+      <p><strong>β-lactams (penicillins·cephalosporins)·aminoglycosides·vancomycin</strong>: no clear anti-inflammatory action. On the contrary, <strong>bacteriolysis releases cell-wall·endotoxin (LPS·peptidoglycan), spiking cytokines</strong> → <strong>Jarisch–Herxheimer reaction</strong> (transient worsening early in clearance).</p>
+      <p>An exceptional non-antibiotic effect: <strong>ceftriaxone</strong> upregulates the glutamate transporter (GLT-1) → neuroprotection (ALS studies). A distinct action rather than anti-inflammatory.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Link to the clinical frame</p>
+    <h2>Targeted clearance → loss of downstream inflammation</h2>
+    <p class="body">The observation that "after clearance, chronic downstream symptoms (pain·skin·gut) improve together" may be the <b>joint effect of a reduced bacterial/fungal load plus these drugs' direct anti-inflammatory action (downregulating NF-κB·MMP·cytokines·neutrophils)</b>. In particular, <b>sub-antimicrobial-dose doxycycline working without any antibacterial activity</b> supports that the two actions are separable.</p>
+    <p class="body"><b>The drug choice itself governs downstream inflammation.</b> Concurrent downstream improvement is seen more when using classes with an anti-inflammatory axis (macrolides·tetracyclines·clindamycin·rifaximin, etc.), whereas β-lactams·aminoglycosides can instead cause early worsening (Herxheimer).</p>
+    <div class="note">
+      <span class="t">Guardrail</span>
+      <p>This is a <b>mechanistic/literature summary (for education·research)</b>, not a treatment protocol or guarantee of efficacy. Actual agent·dose·duration are individual clinical decisions. When moved to public content, medical-advertising guardrails apply (no efficacy guarantees, no patient testimonials).</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">References</p>
+    <h2>References</h2>
+    <div class="refgrp"><p class="g">Macrolides</p>
+      <p><a href="https://journals.asm.org/doi/10.1128/cmr.00078-09">Kanoh &amp; Rubin. Mechanisms of Action &amp; Clinical Application of Macrolides as Immunomodulatory Medications. Clin Microbiol Rev 2010.</a></p>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/15586558/">Clinical implications of the immunomodulatory effects of macrolides (PubMed 15586558).</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10824736/">NIPSNAP1/2 · mitochondrial quality control (PMC10824736).</a></p>
+    </div>
+    <div class="refgrp"><p class="g">Tetracyclines</p>
+      <p><a href="https://www.pnas.org/doi/pdf/10.1073/pnas.93.24.14014">Tetracyclines inhibit iNOS — a novel mechanism. PNAS 1996.</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15088884/">Sub-antimicrobial doxycycline as MMP inhibitor (15088884).</a></p>
+      <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471324/">Non-antibacterial tetracycline formulations (PMC3471324).</a> · <a href="https://www.sciencedirect.com/science/article/abs/pii/S0041008X09000982">Minocycline attenuates colitis via iNOS/MMP.</a></p>
+    </div>
+    <div class="refgrp"><p class="g">Fluoroquinolones · Azoles · Allylamine</p>
+      <p><a href="https://www.ncbi.nlm.nih.gov/pubmed/16518713">Immunomodulatory activities of fluoroquinolones (16518713).</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6637517/">Cipro/Levo · TLR4/NF-κB (PMC6637517).</a></p>
+      <p><a href="https://aacrjournals.org/cancerres/article/71/21/6764/568424/">Itraconazole inhibits angiogenesis (VEGFR2). Cancer Res 2011.</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6522620/">Itraconazole in nonfungal cutaneous diseases.</a> · <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/terbinafine">Terbinafine overview.</a></p>
+    </div>
+    <div class="refgrp"><p class="g">Metronidazole · Rifaximin · Clindamycin · Sulfones</p>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/2936372/">Anti-oxidant action of metronidazole (BJD 1986).</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9656351/">Rifaximin · PXR/NF-κB (PMC9656351).</a></p>
+      <p><a href="https://www.sciencedirect.com/science/article/pii/S1567576923009347">Clindamycin derivative · NF-κB/TNF-α/neutrophil.</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3927068/">Dapsone in dermatology.</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/7903034/">HCQ · sulfasalazine (RA).</a></p>
+    </div>
+  </section>
+
+  <section>
+    <p class="disc"><b>Disclaimer.</b> Educational/literature summary for healthcare professionals. It guarantees no specific outcome or cure and is not a treatment protocol. Agent·dose·duration·interactions·safety follow individual clinical judgment and current evidence. Citations are representative and do not substitute for the full body of evidence.</p>
+    <p style="font-family:var(--mono);font-size:11.5px;color:var(--faint);margin:0">© 2026 Neo-Skepticism · June-sang Yang, MD · Clinician deep-dive — NF-κB · MMP · iNOS · neutrophil · PXR · VEGFR2</p>
+  </section>
+
+</div>
+</main>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur='light';}
+    root.setAttribute('data-theme',cur==='dark'?'light':'dark');
+  });
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d901f286ae964bd49de5049a8afc8597"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
