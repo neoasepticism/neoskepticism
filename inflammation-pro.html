@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>항균제의 비항균 항염작용 — NF-κB·MMP 등 pleiotropic 기전 (의료인용) | Neo-Skepticism</title>
+<meta name="description" content="의료인 대상 심화. 여러 항균제(항생제·항진균제)가 항미생물 작용과 별개로 숙주 염증 신호(NF-κB·MMP·사이토카인·호중구·iNOS)를 직접 억제하는 기전 정리. 교육·문헌 요약이며 치료 프로토콜·효과 보장이 아님.">
+<link rel="canonical" href="https://neoskepticism.com/inflammation-pro.html">
+<link rel="stylesheet" href="style.css">
+<style>
+  main.pro{ --danger-wash:#f4e3df; }
+  :root[data-theme="dark"] main.pro{ --danger-wash:#2a1712; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) main.pro{ --danger-wash:#2a1712; } }
+
+  .medbanner{ display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+    background:var(--sulfur-wash); border:1px solid var(--sulfur-line); border-radius:9px;
+    padding:12px 16px; margin:0 0 26px; font-size:13.5px; color:var(--ink2); }
+  .medbanner b{ font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--sulfur); padding:3px 9px; border:1px solid var(--sulfur-line); border-radius:999px; }
+
+  .pro .targets{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0; }
+  @media (max-width:600px){ .pro .targets{ grid-template-columns:1fr; } }
+  .pro .tg{ background:var(--surface); border:1px solid var(--line); border-radius:7px; padding:12px 14px; font-size:14px; color:var(--ink2); }
+  .pro .tg b{ font-family:var(--mono); font-size:11.5px; letter-spacing:.03em; color:var(--accent2); }
+
+  .pro .drug{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:0 0 16px; }
+  .pro .drug > .h{ display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin:0 0 6px; }
+  .pro .drug .num{ font-family:var(--mono); font-size:13px; color:var(--faint); }
+  .pro .drug .nm{ font-weight:700; font-size:17px; color:var(--ink); }
+  .pro .drug .cls{ font-family:var(--mono); font-size:11.5px; color:var(--faint); }
+  .pro .ev{ margin-left:auto; font-family:var(--mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase;
+    padding:3px 9px; border-radius:999px; white-space:nowrap; }
+  .pro .ev.strong{ color:#fff; background:var(--accent); }
+  .pro .ev.mod{ color:var(--accent2); background:var(--accent-wash); }
+  .pro .ev.ltd{ color:var(--sulfur); background:var(--sulfur-wash); }
+  .pro .ev.dual{ color:var(--danger); background:var(--danger-wash); }
+  .pro .drug ul{ margin:8px 0 4px; padding:0; list-style:none; }
+  .pro .drug li{ position:relative; padding-left:17px; margin:0 0 7px; font-size:14.5px; line-height:1.6; color:var(--ink2); }
+  .pro .drug li::before{ content:""; position:absolute; left:2px; top:9px; width:5px; height:5px; background:var(--accent); border-radius:50%; }
+  .pro .drug li b, .pro .drug li strong{ color:var(--ink); }
+  .pro code{ font-family:var(--mono); font-size:.86em; background:var(--surface2); padding:1px 5px; border-radius:3px; }
+  .pro .refs{ font-size:12.5px; color:var(--faint); margin:8px 0 0; }
+  .pro .refs a{ color:var(--faint); }
+
+  .pro .tbl-wrap{ overflow-x:auto; margin:16px 0; border:1px solid var(--line); border-radius:8px; }
+  .pro table{ border-collapse:collapse; width:100%; font-size:13px; min-width:640px; }
+  .pro th, .pro td{ text-align:center; padding:8px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  .pro thead th{ font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--faint); background:var(--surface2); }
+  .pro tbody th{ text-align:left; font-weight:640; color:var(--ink); }
+  .pro td.y{ color:var(--accent2); font-weight:700; }
+  .pro td.n{ color:var(--line2); }
+  .pro td.w{ color:var(--danger); font-weight:700; }
+  .pro tbody tr:last-child td, .pro tbody tr:last-child th{ border-bottom:0; }
+  .pro tr.warn-row th, .pro tr.warn-row td{ background:var(--danger-wash); }
+
+  .pro .warn{ background:var(--danger-wash); border-radius:10px; padding:18px 20px; margin:10px 0; }
+  .pro .warn .t{ font-weight:700; color:var(--danger); margin:0 0 8px; }
+  .pro .warn p{ margin:0 0 8px; font-size:14.5px; color:var(--ink); }
+  .pro .warn p:last-child{ margin:0; }
+
+  .pro .note{ border-left:3px solid var(--accent); background:var(--surface); border-radius:0 8px 8px 0; padding:16px 20px; margin:18px 0; }
+  .pro .note .t{ font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:7px; }
+  .pro .note p{ margin:0; font-size:14.5px; color:var(--ink2); }
+  .pro .note b{ color:var(--accent2); }
+
+  .pro .refgrp{ margin:0 0 16px; }
+  .pro .refgrp .g{ font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; color:var(--accent2); margin:0 0 5px; }
+  .pro .refgrp p{ margin:0 0 5px; font-size:13px; color:var(--ink2); max-width:none; }
+  .pro .kicker{ font-family:var(--mono); font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--faint); margin:0 0 10px; }
+  .pro .disc{ font-size:13px; color:var(--faint); background:var(--surface2); border-radius:8px; padding:16px 18px; margin:0 0 14px; }
+  .pro .disc b{ color:var(--ink2); }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap row">
+  <a class="brand" href="index.html"><span class="dot"></span>Neo-Skepticism <small>양준상 MD</small></a>
+  <div class="navlinks">
+    <a href="index.html">홈</a>
+    <a href="index.html#mechanism">기전</a>
+    <a href="inflammation.html">환자용 요약</a>
+    <button class="theme" id="themeBtn" aria-label="테마 전환">◐</button>
+  </div>
+</div></nav>
+
+<div class="wrap"><div class="crumb"><a href="index.html">Neo-Skepticism</a> · <span>의료인용 심화</span></div></div>
+
+<main class="pro">
+<div class="wrap narrow">
+
+  <div class="medbanner"><b>의료인 대상</b><span>이 페이지는 <b>의료 전문가</b>를 위한 기전·문헌 정리입니다. 구체적 약물명·근거가 포함되며, 일반 환자를 위한 치료 안내가 아닙니다. 환자용 요약은 <a href="inflammation.html">여기</a>.</span></div>
+
+  <header class="hero" style="padding-top:8px">
+    <span class="eyebrow s k">의료인 대상 · Mechanism review</span>
+    <h1>항균제의 비항균 항염작용 — NF-κB·MMP 등 pleiotropic 기전</h1>
+    <p class="lede">여러 항균제(항생제·항진균제)는 <b>항미생물 작용과 별개로</b> 숙주 염증 신호(NF-κB·MMP·사이토카인·호중구·iNOS 등)를 직접 억제한다. "표적 제균 → 만성 하류 증상 소실"의 약리적 근거 정리. <span style="color:var(--faint);font-size:.9em">교육·문헌 정리이며 치료 프로토콜·효과 보장이 아님.</span></p>
+  </header>
+
+  <section>
+    <p class="kicker">공통 표적 (cross-cutting)</p>
+    <h2>어디를 겨냥하나</h2>
+    <div class="targets">
+      <div class="tg"><b>NF-κB</b> — 염증 마스터 전사인자. 억제 시 TNF-α·IL-1β·IL-6·IL-8·COX-2·iNOS·부착분자 ↓</div>
+      <div class="tg"><b>MMPs</b> — 조직 분해·리모델링·섬유화·혈관신생 (MMP-2/8/9/13)</div>
+      <div class="tg"><b>iNOS / NO</b> — 유도형 산화질소 폭주</div>
+      <div class="tg"><b>Neutrophil</b> — 주화성·침윤·superoxide·LTB4·부착분자</div>
+      <div class="tg"><b>MAPK · PI3K/Akt · AP-1</b> — 상류 신호전달(ERK1/2·p38)</div>
+      <div class="tg"><b>Angiogenesis · Hedgehog · mTOR</b> — 조직 리모델링(특히 azole)</div>
+    </div>
+    <div class="note">
+      <span class="t">★ 항염 = 항균과 분리 가능</span>
+      <p><b>저용량 독시사이클린(sub-antimicrobial dose, SDD)</b> — 항균력이 없는 용량에서도 MMP·항염 작용만으로 효과(치주염 Periostat 20 mg, 로사시아 Oracea 40 mg, FDA 승인). 두 작용의 분리 가능성을 보여주는 결정적 사례.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">계열별 기전</p>
+    <h2>항염 축을 가진 계열</h2>
+
+    <div class="drug">
+      <div class="h"><span class="num">1</span><span class="nm">마크로라이드</span><span class="cls">clarithromycin · azithromycin</span><span class="ev strong">확립</span></div>
+      <ul>
+        <li><b>NF-κB·ERK1/2 억제</b> — clarithromycin이 <code>NIPSNAP1/2</code>에 결합, TLR4 자극 시 NF-κB 경유 IL-8 유도 차단. 미토콘드리아 품질관리 경유 사이토카인 조절.</li>
+        <li>사이토카인: IL-1·IL-6·IL-8·TNF-α ↓ / GM-CSF·CCL2·sE-selectin ↓</li>
+        <li>호중구: 주화성·침윤 ↓, superoxide ↓, <b>LTB4 형성 ↓</b>, 부착분자 차단, 점액 ↓</li>
+        <li>임상: DPB·COPD·천식·CF에서 저용량 장기 <b>항염</b> 요법(항균과 별개)</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://journals.asm.org/doi/10.1128/cmr.00078-09">CMR 2010</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15586558/">15586558</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/19633061/">19633061</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10824736/">NIPSNAP1/2</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">2</span><span class="nm">테트라사이클린</span><span class="cls">doxycycline · minocycline</span><span class="ev strong">확립</span></div>
+      <ul>
+        <li><b>MMP 억제의 대표</b> — MMP-8·MMP-9 합성·활성 모두 억제. 기전: 활성부위 <b>Zn²⁺·Ca²⁺ 킬레이션</b>(직접) + <b>유전자 발현 억제</b>.</li>
+        <li>NF-κB 하향 → TNF-α·IL-6·IL-1β ↓</li>
+        <li>iNOS: mRNA·단백을 <b>발현 수준에서 용량의존 억제</b>(효소 직접억제 아님)</li>
+        <li><b>minocycline</b>: MMP + microglia 억제 + p38 MAPK·PI3K/Akt 조절, IL-10 ↑, iNOS·MMP 억제(대장염), CNS 침투</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.pnas.org/doi/pdf/10.1073/pnas.93.24.14014">PNAS 1996</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15088884/">SDD 15088884</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471324/">PMC3471324</a> · <a href="https://www.sciencedirect.com/science/article/abs/pii/S0041008X09000982">minocycline 대장염</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">3</span><span class="nm">플루오로퀴놀론</span><span class="cls">ciprofloxacin</span><span class="ev dual">양면성 주의</span></div>
+      <ul>
+        <li>항염: 대식세포 TNF-α·IL-1β ↓, LPS 마우스 혈청 TNF-α ↓</li>
+        <li>기전: <b>TLR4/MD2/LPS 삼합체·수용체 이량체화·NF-κB 핵전위 억제</b>. PDE 억제, AP-1·NFAT·NF-IL6·NF-κB 억제. keto-carbonyl의 Mg²⁺ 결합이 핵심.</li>
+        <li>⚠️ <b>양면성</b>: 건병증(건에서 MMP↑·콜라겐 손상)·미토콘드리아 독성 — 순수 항염제로 보긴 어려움</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.ncbi.nlm.nih.gov/pubmed/16518713">16518713</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6637517/">Cipro/Levo microglia TLR4/NF-κB</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">4</span><span class="nm">아졸 항진균제</span><span class="cls">itraconazole</span><span class="ev mod">비-NF-κB 축</span></div>
+      <ul>
+        <li>결이 다름: NF-κB 항염이 아니라 <b>항혈관신생·anti-Hedgehog</b> 축</li>
+        <li>① anti-Hedgehog(Gli1·Ptch1·SMO 억제) ② <b>VEGFR2 glycosylation·trafficking·signaling 억제</b> ③ AKT/mTOR 억제 (+ P-gp 역전)</li>
+        <li>염증 관점: 혈관신생·내피세포 증식 억제 = 만성염증의 혈관 성분 차단</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6522620/">비진균 피부질환 리뷰</a> · <a href="https://aacrjournals.org/cancerres/article/71/21/6764/568424/">VEGFR2 (Cancer Res 2011)</a> · <a href="https://pubs.acs.org/doi/10.1021/cb600362d">ACS Chem Biol</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">4-b</span><span class="nm">알릴아민 항진균제</span><span class="cls">terbinafine</span><span class="ev ltd">근거 제한적</span></div>
+      <ul>
+        <li>squalene epoxidase 억제 계열. 항진균과 별개로 <b>항염 + 항산화(free radical scavenger)</b> 보고</li>
+        <li>알릴아민 계열(naftifine 포함)이 호중구 주화성·활성산소·<b>LTB4(5-LOX 경로) 억제</b> → 염증성 백선·지루성피부염 개선</li>
+        <li>⚠️ 마크로라이드/테트라사이클린만큼 NF-κB·MMP 기전이 정밀 규명되진 않음(개괄 수준)</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/terbinafine">Terbinafine overview (ScienceDirect)</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">5</span><span class="nm">니트로이미다졸</span><span class="cls">metronidazole</span><span class="ev mod">중등도</span></div>
+      <ul>
+        <li><b>호중구 기능 조절</b> 통한 항염(로사시아·여드름). 항산화가 ROS 직접 소거가 아니라 호중구 세포기능 경유. 세포매개면역·주화성 억제</li>
+        <li>임상: 로사시아 국소, 크론병·치주(혐기균 + 항염 이중)</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://pubmed.ncbi.nlm.nih.gov/2936372/">BJD 1986 (2936372)</a> · <a href="https://link.springer.com/article/10.1007/BF00402621">호중구 free radical 억제</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">6</span><span class="nm">리팍시민</span><span class="cls">rifaximin — 장 특이</span><span class="ev strong">확립</span></div>
+      <ul>
+        <li>장 특이 <b>PXR(pregnane-X-receptor) 활성 → NF-κB 억제</b> → 장 염증인자 ↓. 혈청 IL-1β·IL-6·TNF-α ↓</li>
+        <li>장내세균 조절 + <b>세균 전위(translocation) 감소</b> + 직접 항염. 비흡수 → 전신 부작용 적음</li>
+        <li>임상: IBS·IBD·간성뇌증·SIBO 표준. "제균+항염+장벽" 대표</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9656351/">Rifaximin PXR·NF-κB (PMC9656351)</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">7</span><span class="nm">린코사마이드</span><span class="cls">clindamycin</span><span class="ev mod">중등도</span></div>
+      <ul>
+        <li><b>호중구 동원·NF-κB 활성·TNF-α 생성 억제</b>. 독성쇼크에서 외독소·초항원 생성 억제(단백합성 억제). 여드름 항염</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.sciencedirect.com/science/article/pii/S1567576923009347">Clindamycin 유도체 — NF-κB·TNF-α·호중구</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">8</span><span class="nm">설폰아미드/설폰 · 항말라리아</span><span class="cls">sulfasalazine · dapsone · hydroxychloroquine</span><span class="ev mod">중등도</span></div>
+      <ul>
+        <li><b>sulfasalazine / 5-ASA</b>: NF-κB 억제(IBD·RA DMARD)</li>
+        <li><b>dapsone</b>: 강력한 호중구성 항염(MPO·활성산소 억제)</li>
+        <li><b>hydroxychloroquine / chloroquine</b>: TLR 신호·리소좀·항원제시 억제(루푸스·RA DMARD)</li>
+      </ul>
+      <p class="refs">Ref: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3927068/">Dapsone (PMC3927068)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/7903034/">HCQ·sulfasalazine RA (7903034)</a></p>
+    </div>
+
+    <div class="drug">
+      <div class="h"><span class="num">9</span><span class="nm">기타</span><span class="cls">nitazoxanide · polymyxin · rifampin · tigecycline</span><span class="ev mod">보조</span></div>
+      <ul>
+        <li><b>nitazoxanide</b>: NF-κB 억제·항염(장). <b>polymyxin/colistin</b>: <b>LPS 직접 결합·중화</b>(제균 아닌 독소 중화). <b>rifampin</b>: 일부 면역조절</li>
+        <li>같은 계열 확장: azithromycin·roxithromycin·erythromycin, tetracycline 유도체 <b>tigecycline</b>. nystatin(장 국소, 항염 약함). quorum sensing·biofilm 억제 → 병독성·염증 자극 간접 감소</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">종합 매트릭스</p>
+    <h2>약물 × 기전</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>약물</th><th>NF-κB</th><th>MMP</th><th>iNOS</th><th>사이토카인</th><th>호중구/ROS</th><th>특이</th></tr></thead>
+        <tbody>
+          <tr><th>macrolide</th><td class="y">✓</td><td class="n">·</td><td class="n">·</td><td class="y">✓✓</td><td class="y">✓✓</td><td>ERK1/2·NIPSNAP</td></tr>
+          <tr><th>doxycycline (SDD)</th><td class="y">✓</td><td class="y">✓✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">·</td><td>Zn킬레이션+발현</td></tr>
+          <tr><th>minocycline</th><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓✓</td><td class="y">✓</td><td>microglia·CNS·IL-10↑</td></tr>
+          <tr><th>ciprofloxacin</th><td class="y">✓</td><td class="w">⚠︎↑</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>TLR4·PDE — 양면성</td></tr>
+          <tr><th>itraconazole</th><td class="n">(제한)</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td>Hedgehog·VEGFR2·mTOR</td></tr>
+          <tr><th>terbinafine</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="y">✓ (LTB4)</td><td>알릴아민·근거 개괄</td></tr>
+          <tr><th>metronidazole</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td>호중구 기능</td></tr>
+          <tr><th>rifaximin</th><td class="y">✓ (PXR)</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>장 특이·비흡수·SIBO</td></tr>
+          <tr><th>clindamycin</th><td class="y">✓</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="y">✓</td><td>독소생성 억제</td></tr>
+          <tr><th>sulfasalazine</th><td class="y">✓</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>IBD·RA DMARD</td></tr>
+          <tr><th>dapsone</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="y">✓✓</td><td>호중구(MPO·ROS)</td></tr>
+          <tr><th>hydroxychloroquine</th><td class="n">(TLR)</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>리소좀·항원제시</td></tr>
+          <tr><th>polymyxin/colistin</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="y">✓</td><td class="n">·</td><td>LPS 직접 중화</td></tr>
+          <tr class="warn-row"><th>β-lactam·aminoglycoside</th><td class="n">·</td><td class="n">·</td><td class="n">·</td><td class="w">⚠︎↑</td><td class="w">⚠︎↑</td><td>균용해→내독소·Herxheimer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="refs">✓✓ 강함/핵심 · ✓ 있음 · · 뚜렷한 근거 없음/약함 · (…) 간접·제한적 · ⚠︎↑ 오히려 증가</p>
+  </section>
+
+  <section>
+    <p class="kicker">주의</p>
+    <h2>항염 없음 / 오히려 pro-inflammatory</h2>
+    <div class="warn">
+      <p class="t">⚠️ 모든 항생제가 항염은 아니다</p>
+      <p><strong>베타락탐(페니실린·세팔로스포린)·아미노글리코사이드·반코마이신</strong>: 뚜렷한 항염 없음. 오히려 <strong>균 용해 시 세포벽·내독소(LPS·펩티도글리칸) 방출로 사이토카인 급증</strong> → <strong>Jarisch–Herxheimer 반응</strong>(제균 초기 일시적 악화).</p>
+      <p>예외적 non-antibiotic 효과: <strong>ceftriaxone</strong>은 글루탐산 수송체(GLT-1) 상향 → 신경보호(ALS 연구). 항염이라기보단 별개 작용.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">임상 프레임과의 연결</p>
+    <h2>표적 제균 → 염증 하류 소실</h2>
+    <p class="body">"제균했더니 만성 하류 증상(통증·피부·장)이 함께 좋아진다"는 관찰은 <b>세균/진균 부하 감소 + 이 약물들의 직접 항염(NF-κB·MMP·사이토카인·호중구 하향)의 합작</b>일 수 있다. 특히 <b>저용량 독시사이클린이 항균 없이 작동</b>하는 것이 두 작용의 분리 가능성을 뒷받침한다.</p>
+    <p class="body"><b>약제 선택 자체가 하류 염증을 좌우한다.</b> 항염 축을 가진 계열(마크로라이드·테트라사이클린·클린다마이신·리팍시민 등)을 쓸 때 하류 증상 동반 호전이 잘 나타나고, 베타락탐·아미노글리코사이드는 오히려 초기 악화(Herxheimer)가 가능하다.</p>
+    <div class="note">
+      <span class="t">가드레일</span>
+      <p>이 정리는 <b>기전·문헌 요약(교육·연구용)</b>이며 치료 프로토콜·효과 보장이 아니다. 실제 약제·용량·기간은 개별 진료 판단. 공개 콘텐츠로 옮길 때는 효과보장·치료경험담 금지 등 의료광고 가드레일 적용.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">참고문헌</p>
+    <h2>References</h2>
+    <div class="refgrp"><p class="g">Macrolides</p>
+      <p><a href="https://journals.asm.org/doi/10.1128/cmr.00078-09">Kanoh &amp; Rubin. Mechanisms of Action &amp; Clinical Application of Macrolides as Immunomodulatory Medications. Clin Microbiol Rev 2010.</a></p>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/15586558/">Clinical implications of the immunomodulatory effects of macrolides (PubMed 15586558).</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10824736/">NIPSNAP1/2 · mitochondrial quality control (PMC10824736).</a></p>
+    </div>
+    <div class="refgrp"><p class="g">Tetracyclines</p>
+      <p><a href="https://www.pnas.org/doi/pdf/10.1073/pnas.93.24.14014">Tetracyclines inhibit iNOS — a novel mechanism. PNAS 1996.</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15088884/">Sub-antimicrobial doxycycline as MMP inhibitor (15088884).</a></p>
+      <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471324/">Non-antibacterial tetracycline formulations (PMC3471324).</a> · <a href="https://www.sciencedirect.com/science/article/abs/pii/S0041008X09000982">Minocycline attenuates colitis via iNOS/MMP.</a></p>
+    </div>
+    <div class="refgrp"><p class="g">Fluoroquinolones · Azoles · Allylamine</p>
+      <p><a href="https://www.ncbi.nlm.nih.gov/pubmed/16518713">Immunomodulatory activities of fluoroquinolones (16518713).</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6637517/">Cipro/Levo · TLR4/NF-κB (PMC6637517).</a></p>
+      <p><a href="https://aacrjournals.org/cancerres/article/71/21/6764/568424/">Itraconazole inhibits angiogenesis (VEGFR2). Cancer Res 2011.</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6522620/">Itraconazole in nonfungal cutaneous diseases.</a> · <a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/terbinafine">Terbinafine overview.</a></p>
+    </div>
+    <div class="refgrp"><p class="g">Metronidazole · Rifaximin · Clindamycin · Sulfones</p>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/2936372/">Anti-oxidant action of metronidazole (BJD 1986).</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9656351/">Rifaximin · PXR/NF-κB (PMC9656351).</a></p>
+      <p><a href="https://www.sciencedirect.com/science/article/pii/S1567576923009347">Clindamycin derivative · NF-κB/TNF-α/neutrophil.</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3927068/">Dapsone in dermatology.</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/7903034/">HCQ · sulfasalazine (RA).</a></p>
+    </div>
+  </section>
+
+  <section>
+    <p class="disc"><b>고지.</b> 의료인 대상 교육·문헌 정리 자료. 특정 효과나 완치를 보장하지 않으며 치료 프로토콜이 아니다. 약제 선택·용량·기간·상호작용·안전성은 개별 임상 판단과 최신 근거에 따른다. 인용은 대표 문헌이며 전체 근거를 대체하지 않는다.</p>
+    <p style="font-family:var(--mono);font-size:11.5px;color:var(--faint);margin:0">© 2026 Neo-Skepticism · 양준상 MD · 의료인용 심화 — NF-κB · MMP · iNOS · neutrophil · PXR · VEGFR2</p>
+  </section>
+
+</div>
+</main>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur='light';}
+    root.setAttribute('data-theme',cur==='dark'?'light':'dark');
+  });
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d901f286ae964bd49de5049a8afc8597"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
